@@ -1,0 +1,64 @@
+// Open Weather Map Local Cleebronn
+//General Station Info
+String          localStationId              "ID [%s]"                                { channel="openweathermap:weather-and-forecast:api:local:station#id" }
+String          localStationName            "Name [%s]"                              { channel="openweathermap:weather-and-forecast:api:local:station#name" }
+Location        localStationLocation        "Ort [%2$s %3$s]"       <location>       { channel="openweathermap:weather-and-forecast:api:local:station#location" }
+
+//Current Local Weather State
+DateTime                localLastMeasurement            "Letzter Zeitstempel [%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS]"   <time>          { channel="openweathermap:weather-and-forecast:api:local:current#time-stamp" }
+String                  localCurrentCondition           "Aktuelle Wetterlage [%s]"                                    <sun_clouds>    { channel="openweathermap:weather-and-forecast:api:local:current#condition" }
+Image                   localCurrentConditionIcon       "Icon"                                                                        { channel="openweathermap:weather-and-forecast:api:local:current#icon" }
+Number:Temperature      localCurrentTemperature         "Aktuelle Temperatur [%.1f %unit%]"                           <temperature>   { channel="openweathermap:weather-and-forecast:api:local:current#temperature" }
+Number:Temperature      localCurrentApparentTemperature "Aktuelle gefühlte Temperatur [%.1f %unit%]"                  <temperature>   { channel="openweathermap:weather-and-forecast:api:local:current#apparent-temperature" }
+Number:Pressure         localCurrentPressure            "Aktueller Luftdruck [%.1f %unit%]"                           <pressure>      { channel="openweathermap:weather-and-forecast:api:local:current#pressure" }
+Number:Dimensionless    localCurrentHumidity            "Aktuelle Luftfeuchtigkeit [%d %unit%]"                       <humidity>      { channel="openweathermap:weather-and-forecast:api:local:current#humidity" }
+Number:Speed            localCurrentGustSpeed           "Aktuelle Windböengeschwindigkeit [%.1f km/h]"                <wind>          { channel="openweathermap:weather-and-forecast:api:local:current#gust-speed" }
+Number:Speed            localCurrentWindSpeed           "Aktuelle Windgeschwindigkeit [%.1f km/h]"                    <wind>          { channel="openweathermap:weather-and-forecast:api:local:current#wind-speed" }
+Number:Angle            localCurrentWindDirection       "Aktuelle Windrichtung [%d %unit%]"                           <wind>          { channel="openweathermap:weather-and-forecast:api:local:current#wind-direction" }
+Number:Dimensionless    localCurrentCloudiness          "Aktuelle Bewölkung [%d %unit%]"                              <clouds>        { channel="openweathermap:weather-and-forecast:api:local:current#cloudiness" }
+Number:Length           localCurrentRainVolume          "Aktuelles Regenvolumen [%.1f %unit%]"                        <rain>          { channel="openweathermap:weather-and-forecast:api:local:current#rain" }
+Number:Length           localCurrentSnowVolume          "Aktuelles Schneevolumen [%.1f %unit%]"                       <snow>          { channel="openweathermap:weather-and-forecast:api:local:current#snow" }
+Number:Length           localCurrentVisibility          "Aktuelle Sichtweite [%.1f km]"                               <visibility>    { channel="openweathermap:weather-and-forecast:api:local:current#visibility" }
+
+
+//Predicted Local Weather State In 3h
+DateTime             localDailyforecastHours3Timestamp             "Zeitstempel der Vorhersage [%1$tY-%1$tm-%1$td]"      <time>          { channel="openweathermap:weather-and-forecast:api:local:forecastHours03#time-stamp" }
+String               localDailyforecastHours3Condition             "Wetterlage in 3h [%s]"                             <sun_clouds>      { channel="openweathermap:weather-and-forecast:api:local:forecastHours03#condition" }
+Image                localDailyforecastHours3ConditionIcon         "Icon"                                                                { channel="openweathermap:weather-and-forecast:api:local:forecastHours03#icon" }
+Number:Pressure      localDailyforecastHours3Pressure              "Luftdruck in 3h [%.1f %unit%]"                     <pressure>        { channel="openweathermap:weather-and-forecast:api:local:forecastHours03#pressure" }
+Number:Dimensionless localDailyforecastHours3Humidity              "Luftfeuchtigkeit in 3h [%d %unit%]"                <humidity>        { channel="openweathermap:weather-and-forecast:api:local:forecastHours03#humidity" }
+Number:Speed         localDailyforecastHours3WindSpeed             "Windgeschwindigkeit in 3h [%.1f km/h]"             <wind>            { channel="openweathermap:weather-and-forecast:api:local:forecastHours03#wind-speed" }
+Number:Speed         localDailyforecastHours3GustSpeed             "Windböengeschwindigkeit in 3h [%.1f km/h]"         <wind>            { channel="openweathermap:weather-and-forecast:api:local:forecastHours03#gust-speed" }
+Number:Angle         localDailyforecastHours3WindDirection         "Windrichtung in 3h [%d %unit%]"                    <wind>            { channel="openweathermap:weather-and-forecast:api:local:forecastHours03#wind-direction" }
+Number:Dimensionless localDailyforecastHours3Cloudiness            "Bewölkung in 3h [%d %unit%]"                       <clouds>          { channel="openweathermap:weather-and-forecast:api:local:forecastHours03#cloudiness" }
+Number:Length        localDailyforecastHours3RainVolume            "Regenvolumen in 3h [%.1f %unit%]"                  <rain>            { channel="openweathermap:weather-and-forecast:api:local:forecastHours03#rain" }
+Number:Length        localDailyforecastHours3SnowVolume            "Schneevolumen in 3h [%.1f %unit%]"                 <snow>            { channel="openweathermap:weather-and-forecast:api:local:forecastHours03#snow" }
+Number:Temperature   localDailyforecastHours3Temperature           "Temperatur in 3h [%.1f %unit%]"                    <temperature>     { channel="openweathermap:weather-and-forecast:api:local:forecastHours03#temperature" }
+Number:Temperature   localDailyforecastHours3ApparentTemperature   "Gefühlte Temperatur in 3h [%.1f %unit%]"           <temperature>     { channel="openweathermap:weather-and-forecast:api:local:forecastHours03#apparent-temperature" }
+Number:Temperature   localDailyforecastHours3MinTemperature        "Minimaltemperatur für 3h [%.1f %unit%]"             <temperature>     { channel="openweathermap:weather-and-forecast:api:local:forecastHours03#min-temperature" }
+Number:Temperature   localDailyforecastHours3MaxTemperature        "Maximaltemperatur für 3h [%.1f %unit%]"             <temperature>    { channel="openweathermap:weather-and-forecast:api:local:forecastHours03#max-temperature" }
+
+//Predicted Local Weather State In 24h
+DateTime             localDailyforecastHours24Timestamp             "Zeitstempel der Vorhersage [%1$tY-%1$tm-%1$td]"      <time>           { channel="openweathermap:weather-and-forecast:api:local:forecastHours24#time-stamp" }
+String               localDailyforecastHours24Condition             "Wetterlage in 24h [%s]"                             <sun_clouds>      { channel="openweathermap:weather-and-forecast:api:local:forecastHours24#condition" }
+Image                localDailyforecastHours24ConditionIcon         "Icon"                                                                 { channel="openweathermap:weather-and-forecast:api:local:forecastHours24#icon" }
+Number:Pressure      localDailyforecastHours24Pressure              "Luftdruck in 24h [%.1f %unit%]"                     <pressure>        { channel="openweathermap:weather-and-forecast:api:local:forecastHours24#pressure" }
+Number:Dimensionless localDailyforecastHours24Humidity              "Luftfeuchtigkeit in 24h [%d %unit%]"                <humidity>        { channel="openweathermap:weather-and-forecast:api:local:forecastHours24#humidity" }
+Number:Speed         localDailyforecastHours24WindSpeed             "Windgeschwindigkeit in 24h [%.1f km/h]"             <wind>            { channel="openweathermap:weather-and-forecast:api:local:forecastHours24#wind-speed" }
+Number:Speed         localDailyforecastHours24GustSpeed             "Windböengeschwindigkeit in 24h [%.1f km/h]"         <wind>            { channel="openweathermap:weather-and-forecast:api:local:forecastHours24#gust-speed" }
+Number:Angle         localDailyforecastHours24WindDirection         "Windrichtung in 24h [%d %unit%]"                    <wind>            { channel="openweathermap:weather-and-forecast:api:local:forecastHours24#wind-direction" }
+Number:Dimensionless localDailyforecastHours24Cloudiness            "Bewölkung in 24h [%d %unit%]"                       <clouds>          { channel="openweathermap:weather-and-forecast:api:local:forecastHours24#cloudiness" }
+Number:Length        localDailyforecastHours24RainVolume            "Regenvolumen in 24h [%.1f %unit%]"                  <rain>            { channel="openweathermap:weather-and-forecast:api:local:forecastHours24#rain" }
+Number:Length        localDailyforecastHours24SnowVolume            "Schneevolumen in 24h [%.1f %unit%]"                 <snow>            { channel="openweathermap:weather-and-forecast:api:local:forecastHours24#snow" }
+Number:Temperature   localDailyforecastHours24Temperature           "Temperatur in 24h [%.1f %unit%]"                    <temperature>     { channel="openweathermap:weather-and-forecast:api:local:forecastHours24#temperature" }
+Number:Temperature   localDailyforecastHours24ApparentTemperature   "Gefühlte Temperatur in 24h [%.1f %unit%]"           <temperature>     { channel="openweathermap:weather-and-forecast:api:local:forecastHours24#apparent-temperature" }
+Number:Temperature   localDailyforecastHours24MinTemperature        "Minimaltemperatur für 24h [%.1f %unit%]"             <temperature>     { channel="openweathermap:weather-and-forecast:api:local:forecastHours24#min-temperature" }
+Number:Temperature   localDailyforecastHours24MaxTemperature        "Maximaltemperatur für 24h [%.1f %unit%]"             <temperature>     { channel="openweathermap:weather-and-forecast:api:local:forecastHours24#max-temperature" }
+
+//Current UV Index
+DateTime             localCurrentUVIndexTimestamp               "Letzter Zeitstempel [%1$tY-%1$tm-%1$td]"             <time>    { channel="openweathermap:uvindex:api:local:current#time-stamp" }
+Number               localCurrentUVIndex                        "Aktueller UV Index [%d]"                                       { channel="openweathermap:uvindex:api:local:current#uvindex" }
+
+//Tomorrow UV Index
+DateTime             localForecastTomorrowUVIndexTimestamp               "Zeitstempel [%1$tY-%1$tm-%1$td]"             <time>    { channel="openweathermap:uvindex:api:local:forecastTomorrow#time-stamp" }
+Number               localForecastTomorrowUVIndex                        "Morgiger UV Index [%d]"                                { channel="openweathermap:uvindex:api:local:forecastTomorrow#uvindex" }

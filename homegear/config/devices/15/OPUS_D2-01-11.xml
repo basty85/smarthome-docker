@@ -1,0 +1,975 @@
+<?xml version="1.0" encoding="utf-8"?>
+<homegearDevice xmlns="https://homegear.eu/xmlNamespaces/HomegearDevice" version="1">
+    <supportedDevices xmlns="https://homegear.eu/xmlNamespaces/DeviceType">
+        <device id="OPUS BRiDGE 2 channel (563.020)" productId="004000000006">
+            <description>OPUS BRiDGE 2 channel (563.020)</description>
+            <typeNumber>0x40D20111</typeNumber>
+        </device>
+    </supportedDevices>
+    <properties>
+        <receiveMode>always</receiveMode>
+        <pairingMethod>setInstallMode+[remoteCommissioning]</pairingMethod>
+    </properties>
+    <functions xmlns="https://homegear.eu/xmlNamespaces/DeviceType">
+        <function xmlns="https://homegear.eu/xmlNamespaces/FunctionGroupType" channel="0" type="MAINTENANCE">
+            <properties>
+                <internal>true</internal>
+            </properties>
+            <configParameters>EnOceanConfig</configParameters>
+            <variables>maint_ch_values</variables>
+        </function>
+        <function xmlns="https://homegear.eu/xmlNamespaces/FunctionGroupType" channel="1" type="EnOceanSwitch">
+            <properties>
+                <linkReceiverFunctionTypes outputSelectorMemoryIndex="10" outputSelectorBitSize="16"
+                                           outputSelectorValue="0">
+                    <type>SWITCH</type>
+                </linkReceiverFunctionTypes>
+            </properties>
+            <variables>EnOceanSwitch1</variables>
+        </function>
+        <function xmlns="https://homegear.eu/xmlNamespaces/FunctionGroupType" channel="2" type="EnOceanSwitch">
+            <properties>
+                <linkReceiverFunctionTypes outputSelectorMemoryIndex="10" outputSelectorBitSize="16"
+                                           outputSelectorValue="1">
+                    <type>SWITCH</type>
+                </linkReceiverFunctionTypes>
+            </properties>
+            <variables>EnOceanSwitch2</variables>
+        </function>
+        <function xmlns="https://homegear.eu/xmlNamespaces/FunctionGroupType" channel="3" type="EnOceanRocker">
+            <properties>
+                <linkSenderFunctionTypes channel="1">
+                    <type>SWITCH</type>
+                </linkSenderFunctionTypes>
+            </properties>
+            <variables>EnOceanRocker1</variables>
+        </function>
+        <function xmlns="https://homegear.eu/xmlNamespaces/FunctionGroupType" channel="4" type="EnOceanRocker">
+            <variables>EnOceanRocker2</variables>
+        </function>
+        <function xmlns="https://homegear.eu/xmlNamespaces/FunctionGroupType" channel="5" type="EnOceanRocker">
+            <properties>
+                <linkSenderFunctionTypes channel="2">
+                    <type>SWITCH</type>
+                </linkSenderFunctionTypes>
+            </properties>
+            <variables>EnOceanRocker3</variables>
+        </function>
+        <function xmlns="https://homegear.eu/xmlNamespaces/FunctionGroupType" channel="6" type="EnOceanRocker">
+            <variables>EnOceanRocker4</variables>
+        </function>
+        <function xmlns="https://homegear.eu/xmlNamespaces/FunctionGroupType" channel="7" type="EnOceanInput">
+            <properties>
+                <linkSenderFunctionTypes channel="3">
+                    <type>SWITCH</type>
+                </linkSenderFunctionTypes>
+            </properties>
+            <variables>EnOceanInput</variables>
+        </function>
+    </functions>
+    <metadata>
+        <remoteManagementInfo>
+            <features>
+                <inboundLinkTableSize>14</inboundLinkTableSize>
+                <outboundLinkTableSize>2</outboundLinkTableSize>
+                <linkTableGatewayEep>D20111</linkTableGatewayEep>
+                <deviceConfigurationSize>17</deviceConfigurationSize>
+
+                <unlock>true</unlock><!-- 0x001 -->
+                <lock>true</lock><!-- 0x002 -->
+                <setCode>false</setCode><!-- 0x003 -->
+                <queryId>true</queryId><!-- 0x004 -->
+                <action>false</action><!-- 0x005 -->
+                <ping>true</ping><!-- 0x006 -->
+                <queryFunction>false</queryFunction><!-- 0x007 -->
+                <queryStatus>true</queryStatus><!-- 0x008 -->
+                <startSession>false</startSession><!-- 0x009 -->
+                <closeSession>false</closeSession><!-- 0x00A -->
+                <rpcRemoteLearn>false</rpcRemoteLearn><!-- 0x201 -->
+                <rpcRemoteFlashWrite>false</rpcRemoteFlashWrite><!-- 0x203 -->
+                <rpcRemoteFlashRead>false</rpcRemoteFlashRead><!-- 0x204 -->
+                <rpcSmartAckRead>false</rpcSmartAckRead><!-- 0x205 -->
+                <rpcSmartAckWrite>false</rpcSmartAckWrite><!-- 0x206 -->
+                <getLinkTableMetadata>false</getLinkTableMetadata><!-- 0x210 -->
+                <getLinkTable>false</getLinkTable><!-- 0x211 -->
+                <setLinkTable>true</setLinkTable><!-- 0x212 -->
+                <getLinkTableGpEntry>false</getLinkTableGpEntry><!-- 0x213 -->
+                <setLinkTableGpEntry>false</setLinkTableGpEntry><!-- 0x214 -->
+                <getSecurityProfile>false</getSecurityProfile><!-- 0x215 -->
+                <setSecurityProfile>false</setSecurityProfile><!-- 0x216 -->
+                <remoteSetLearnMode>false</remoteSetLearnMode><!-- 0x220 -->
+                <triggerOutboundRemoteTeachRequest>false</triggerOutboundRemoteTeachRequest><!-- 0x221 -->
+                <resetToDefaults>false</resetToDefaults><!-- 0x224 -->
+                <radioLinkTestControl>false</radioLinkTestControl><!-- 0x225 -->
+                <applyChanges>false</applyChanges><!-- 0x226 -->
+                <getProductId>true</getProductId><!-- 0x227 -->
+                <getDeviceConfiguration>true</getDeviceConfiguration><!-- 0x230 -->
+                <setDeviceConfiguration>true</setDeviceConfiguration><!-- 0x231 -->
+                <getLinkBasedConfiguration>false</getLinkBasedConfiguration><!-- 0x232 -->
+                <setLinkBasedConfiguration>false</setLinkBasedConfiguration><!-- 0x233 -->
+                <getDeviceSecurityInfo>false</getDeviceSecurityInfo><!-- 0x234 -->
+                <setDeviceSecurityInfo>false</setDeviceSecurityInfo><!-- 0x235 -->
+                <getRepeaterFunctions>false</getRepeaterFunctions><!-- 0x250 -->
+                <setRepeaterFunctions>true</setRepeaterFunctions><!-- 0x251 -->
+                <setRepeaterFilter>false</setRepeaterFilter><!-- 0x252 -->
+            </features>
+        </remoteManagementInfo>
+    </metadata>
+    <packets>
+        <packet id="STATE_INFO">
+            <direction>toCentral</direction>
+            <type>0xD2</type>
+            <channel>1</channel>
+            <binaryPayload>
+                <element>
+                    <bitIndex>8</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>4</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>19</bitIndex>
+                    <bitSize>5</bitSize>
+                    <constValueInteger>0</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>25</bitIndex>
+                    <bitSize>7</bitSize>
+                    <parameterId>STATE</parameterId>
+                </element>
+            </binaryPayload>
+        </packet>
+        <packet id="STATE_SET">
+            <direction>fromCentral</direction>
+            <type>0xD2</type>
+            <subtype>1</subtype>
+            <binaryPayload>
+                <element>
+                    <bitIndex>8</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>24</bitIndex>
+                    <bitSize>8</bitSize>
+                    <parameterId>STATE</parameterId>
+                </element>
+            </binaryPayload>
+        </packet>
+        <packet id="STATE_INFO2">
+            <direction>toCentral</direction>
+            <type>0xD2</type>
+            <channel>2</channel>
+            <binaryPayload>
+                <element>
+                    <bitIndex>8</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>4</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>19</bitIndex>
+                    <bitSize>5</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>25</bitIndex>
+                    <bitSize>7</bitSize>
+                    <parameterId>STATE</parameterId>
+                </element>
+            </binaryPayload>
+        </packet>
+        <packet id="STATE_SET2">
+            <direction>fromCentral</direction>
+            <type>0xD2</type>
+            <subtype>1</subtype>
+            <binaryPayload>
+                <element>
+                    <bitIndex>8</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>19</bitIndex>
+                    <bitSize>5</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>24</bitIndex>
+                    <bitSize>8</bitSize>
+                    <parameterId>STATE</parameterId>
+                </element>
+            </binaryPayload>
+        </packet>
+        <packet id="A0_0_ON">
+            <direction>toCentral</direction>
+            <type>0xF6</type>
+            <channel>3</channel>
+            <binaryPayload>
+                <element>
+                    <bitIndex>51</bitIndex>
+                    <bitSize>1</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>8</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>0x30</constValueInteger>
+                </element>
+                <element>
+                    <parameterId>STATE</parameterId>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+            </binaryPayload>
+        </packet>
+        <packet id="A0_0_OFF">
+            <direction>toCentral</direction>
+            <type>0xF6</type>
+            <channel>3</channel>
+            <binaryPayload>
+                <element>
+                    <bitIndex>51</bitIndex>
+                    <bitSize>1</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>8</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>0x20</constValueInteger>
+                </element>
+                <element>
+                    <parameterId>STATE</parameterId>
+                    <constValueInteger>0</constValueInteger>
+                </element>
+            </binaryPayload>
+        </packet>
+        <packet id="A1_0_ON">
+            <direction>toCentral</direction>
+            <type>0xF6</type>
+            <channel>4</channel>
+            <binaryPayload>
+                <element>
+                    <bitIndex>51</bitIndex>
+                    <bitSize>1</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>8</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>0x10</constValueInteger>
+                </element>
+                <element>
+                    <parameterId>STATE</parameterId>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+            </binaryPayload>
+        </packet>
+        <packet id="A1_0_OFF">
+            <direction>toCentral</direction>
+            <type>0xF6</type>
+            <channel>4</channel>
+            <binaryPayload>
+                <element>
+                    <bitIndex>51</bitIndex>
+                    <bitSize>1</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>8</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>0</constValueInteger>
+                </element>
+                <element>
+                    <parameterId>STATE</parameterId>
+                    <constValueInteger>0</constValueInteger>
+                </element>
+            </binaryPayload>
+        </packet>
+        <packet id="B0_0_ON">
+            <direction>toCentral</direction>
+            <type>0xF6</type>
+            <channel>5</channel>
+            <binaryPayload>
+                <element>
+                    <bitIndex>51</bitIndex>
+                    <bitSize>1</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>8</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>0x70</constValueInteger>
+                </element>
+                <element>
+                    <parameterId>STATE</parameterId>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+            </binaryPayload>
+        </packet>
+        <packet id="B0_0_OFF">
+            <direction>toCentral</direction>
+            <type>0xF6</type>
+            <channel>5</channel>
+            <binaryPayload>
+                <element>
+                    <bitIndex>51</bitIndex>
+                    <bitSize>1</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>8</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>0x60</constValueInteger>
+                </element>
+                <element>
+                    <parameterId>STATE</parameterId>
+                    <constValueInteger>0</constValueInteger>
+                </element>
+            </binaryPayload>
+        </packet>
+        <packet id="B1_0_ON">
+            <direction>toCentral</direction>
+            <type>0xF6</type>
+            <channel>6</channel>
+            <binaryPayload>
+                <element>
+                    <bitIndex>51</bitIndex>
+                    <bitSize>1</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>8</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>0x50</constValueInteger>
+                </element>
+                <element>
+                    <parameterId>STATE</parameterId>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+            </binaryPayload>
+        </packet>
+        <packet id="B1_0_OFF">
+            <direction>toCentral</direction>
+            <type>0xF6</type>
+            <channel>6</channel>
+            <binaryPayload>
+                <element>
+                    <bitIndex>51</bitIndex>
+                    <bitSize>1</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>8</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>0x40</constValueInteger>
+                </element>
+                <element>
+                    <parameterId>STATE</parameterId>
+                    <constValueInteger>0</constValueInteger>
+                </element>
+            </binaryPayload>
+        </packet>
+        <packet id="C_0_ON">
+            <direction>toCentral</direction>
+            <type>0xF6</type>
+            <channel>7</channel>
+            <binaryPayload>
+                <element>
+                    <bitIndex>51</bitIndex>
+                    <bitSize>1</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>8</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>0x90</constValueInteger>
+                </element>
+                <element>
+                    <parameterId>STATE</parameterId>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+            </binaryPayload>
+        </packet>
+        <packet id="C_0_OFF">
+            <direction>toCentral</direction>
+            <type>0xF6</type>
+            <channel>7</channel>
+            <binaryPayload>
+                <element>
+                    <bitIndex>51</bitIndex>
+                    <bitSize>1</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>8</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>0x80</constValueInteger>
+                </element>
+                <element>
+                    <parameterId>STATE</parameterId>
+                    <constValueInteger>0</constValueInteger>
+                </element>
+            </binaryPayload>
+        </packet>
+    </packets>
+    <parameterGroups xmlns="https://homegear.eu/xmlNamespaces/DeviceType">
+        <configParameters id="EnOceanConfig">
+            <parameter id="SECURITY_CODE">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <password>true</password>
+                    <casts>
+                        <rpcBinary/>
+                    </casts>
+                </properties>
+                <logicalString>
+                    <defaultValue>00000000</defaultValue>
+                </logicalString>
+                <physicalNone>
+                    <operationType>config</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="OPERATION_MODE">
+                <properties/>
+                <logicalEnumeration>
+                    <defaultValue>0</defaultValue>
+                    <value>
+                        <id>Toggle</id>
+                        <index>0</index>
+                    </value>
+                    <value>
+                        <id>Bottom on</id>
+                        <index>1</index>
+                    </value>
+                    <value>
+                        <id>Top on</id>
+                        <index>2</index>
+                    </value>
+                    <value>
+                        <id>Timer</id>
+                        <index>3</index>
+                    </value>
+                </logicalEnumeration>
+                <physicalInteger>
+                    <memoryIndex>0</memoryIndex>
+                    <bitSize>8</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="ON_TIME">
+                <properties>
+                    <unit>s</unit>
+                </properties>
+                <logicalInteger>
+                    <defaultValue>0x012C</defaultValue>
+                    <minimumValue>60</minimumValue>
+                    <maximumValue>7200</maximumValue>
+                </logicalInteger>
+                <physicalInteger>
+                    <memoryIndex>1</memoryIndex>
+                    <bitSize>16</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="ON_TIME_CLEANING_MODE">
+                <properties>
+                    <unit>s</unit>
+                </properties>
+                <logicalInteger>
+                    <defaultValue>0x0E10</defaultValue>
+                    <minimumValue>300</minimumValue>
+                    <maximumValue>18000</maximumValue>
+                </logicalInteger>
+                <physicalInteger>
+                    <memoryIndex>2</memoryIndex>
+                    <bitSize>16</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="OFF_WARNING_TIME">
+                <properties>
+                    <unit>s</unit>
+                </properties>
+                <logicalInteger>
+                    <defaultValue>0x1E</defaultValue>
+                    <minimumValue>0</minimumValue>
+                    <maximumValue>45</maximumValue>
+                </logicalInteger>
+                <physicalInteger>
+                    <memoryIndex>3</memoryIndex>
+                    <bitSize>8</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="OFF_WARNING_DURATION">
+                <properties>
+                    <unit>ms</unit>
+                </properties>
+                <logicalInteger>
+                    <defaultValue>0x01F4</defaultValue>
+                    <minimumValue>200</minimumValue>
+                    <maximumValue>2000</maximumValue>
+                </logicalInteger>
+                <physicalInteger>
+                    <memoryIndex>4</memoryIndex>
+                    <bitSize>16</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+            <!--<parameter id="PARAMETER_5">
+                <properties/>
+                <logicalInteger>
+                    <defaultValue>0x0E</defaultValue>
+                </logicalInteger>
+                <physicalInteger>
+                    <memoryIndex>5</memoryIndex>
+                    <bitSize>8</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>-->
+            <parameter id="BRIGHTNESS_THRESHOLD">
+                <properties/>
+                <logicalInteger>
+                    <defaultValue>80</defaultValue>
+                    <minimumValue>20</minimumValue>
+                    <maximumValue>1500</maximumValue>
+                </logicalInteger>
+                <physicalInteger>
+                    <memoryIndex>6</memoryIndex>
+                    <bitSize>16</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+            <!--<parameter id="PARAMETER_7">
+                <properties/>
+                <logicalInteger>
+                    <defaultValue>0x0000</defaultValue>
+                </logicalInteger>
+                <physicalInteger>
+                    <memoryIndex>7</memoryIndex>
+                    <bitSize>16</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="PARAMETER_8">
+                <properties/>
+                <logicalInteger>
+                    <defaultValue>0x0000</defaultValue>
+                </logicalInteger>
+                <physicalInteger>
+                    <memoryIndex>8</memoryIndex>
+                    <bitSize>16</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="PARAMETER_9">
+                <properties/>
+                <logicalInteger>
+                    <defaultValue>0x0000</defaultValue>
+                </logicalInteger>
+                <physicalInteger>
+                    <memoryIndex>9</memoryIndex>
+                    <bitSize>16</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="PARAMETER_10">
+                <properties/>
+                <logicalInteger>
+                    <defaultValue>0x0000</defaultValue>
+                </logicalInteger>
+                <physicalInteger>
+                    <memoryIndex>10</memoryIndex>
+                    <bitSize>16</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>-->
+            <parameter id="ROCKER_A">
+                <logicalEnumeration>
+                    <defaultValue>0</defaultValue>
+                    <value>
+                        <id>No output</id>
+                        <index>3</index>
+                    </value>
+                    <value>
+                        <id>Output 1</id>
+                        <index>0</index>
+                    </value>
+                    <value>
+                        <id>Output 2</id>
+                        <index>1</index>
+                    </value>
+                    <value>
+                        <id>Output 1 and 2</id>
+                        <index>2</index>
+                    </value>
+                </logicalEnumeration>
+                <physicalInteger>
+                    <memoryIndex>11</memoryIndex>
+                    <bitSize>8</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="ROCKER_B">
+                <logicalEnumeration>
+                    <defaultValue>1</defaultValue>
+                    <value>
+                        <id>No output</id>
+                        <index>3</index>
+                    </value>
+                    <value>
+                        <id>Output 1</id>
+                        <index>0</index>
+                    </value>
+                    <value>
+                        <id>Output 2</id>
+                        <index>1</index>
+                    </value>
+                    <value>
+                        <id>Output 1 and 2</id>
+                        <index>2</index>
+                    </value>
+                </logicalEnumeration>
+                <physicalInteger>
+                    <memoryIndex>12</memoryIndex>
+                    <bitSize>8</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="INPUT_230V">
+                <logicalEnumeration>
+                    <defaultValue>1</defaultValue>
+                    <value>
+                        <id>No output</id>
+                        <index>3</index>
+                    </value>
+                    <value>
+                        <id>Output 1</id>
+                        <index>0</index>
+                    </value>
+                    <value>
+                        <id>Output 2</id>
+                        <index>1</index>
+                    </value>
+                    <value>
+                        <id>Output 1 and 2</id>
+                        <index>2</index>
+                    </value>
+                </logicalEnumeration>
+                <physicalInteger>
+                    <memoryIndex>13</memoryIndex>
+                    <bitSize>8</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="VINET">
+                <properties/>
+                <logicalEnumeration>
+                    <defaultValue>0</defaultValue>
+                    <value>
+                        <id>Off</id>
+                        <index>0</index>
+                    </value>
+                    <value>
+                        <id>On</id>
+                        <index>0x1E</index>
+                    </value>
+                </logicalEnumeration>
+                <physicalInteger>
+                    <memoryIndex>14</memoryIndex>
+                    <bitSize>8</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="LED_OUTPUT_ASSOCIATION">
+                <properties/>
+                <logicalEnumeration>
+                    <defaultValue>0</defaultValue>
+                    <value>
+                        <id>Output 1</id>
+                        <index>0</index>
+                    </value>
+                    <value>
+                        <id>Output 2</id>
+                        <index>1</index>
+                    </value>
+                </logicalEnumeration>
+                <physicalInteger>
+                    <memoryIndex>15</memoryIndex>
+                    <bitSize>8</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="STATUS_LED">
+                <properties/>
+                <logicalEnumeration>
+                    <defaultValue>0</defaultValue>
+                    <value>
+                        <id>None</id>
+                        <index>0</index>
+                    </value>
+                    <value>
+                        <id>Green</id>
+                        <index>1</index>
+                    </value>
+                    <value>
+                        <id>Red</id>
+                        <index>2</index>
+                    </value>
+                </logicalEnumeration>
+                <physicalInteger>
+                    <memoryIndex>16</memoryIndex>
+                    <bitSize>8</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="REPEATER_LEVEL">
+                <properties/>
+                <logicalEnumeration>
+                    <defaultValue>0</defaultValue>
+                    <value>
+                        <id>Off</id>
+                        <index>0</index>
+                    </value>
+                    <value>
+                        <id>Level 1</id>
+                        <index>1</index>
+                    </value>
+                    <value>
+                        <id>Level 2</id>
+                        <index>2</index>
+                    </value>
+                </logicalEnumeration>
+                <physicalNone>
+                    <operationType>config</operationType>
+                </physicalNone>
+            </parameter>
+        </configParameters>
+        <variables id="maint_ch_values">
+            <parameter id="UNREACH">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>false</writeable>
+                    <service>true</service>
+                </properties>
+                <logicalBoolean/>
+                <physicalBoolean>
+                    <operationType>internal</operationType>
+                </physicalBoolean>
+            </parameter>
+            <parameter id="STICKY_UNREACH">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <service>true</service>
+                    <sticky>true</sticky>
+                </properties>
+                <logicalBoolean/>
+                <physicalBoolean>
+                    <operationType>internal</operationType>
+                </physicalBoolean>
+            </parameter>
+            <parameter id="CONFIG_PENDING">
+                <properties>
+                    <writeable>false</writeable>
+                    <service>true</service>
+                </properties>
+                <logicalBoolean/>
+                <physicalInteger groupId="CONFIG_PENDING">
+                    <operationType>internal</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="RSSI_DEVICE">
+                <properties>
+                    <writeable>false</writeable>
+                </properties>
+                <logicalInteger/>
+                <physicalInteger groupId="RSSI_DEVICE">
+                    <operationType>internal</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="RF_CHANNEL">
+                <properties>
+                    <writeable>false</writeable>
+                </properties>
+                <logicalInteger>
+                    <minimumValue>-1</minimumValue>
+                    <maximumValue>127</maximumValue>
+                    <defaultValue>-1</defaultValue>
+                </logicalInteger>
+                <physicalInteger groupId="RF_CHANNEL">
+                    <operationType>internal</operationType>
+                </physicalInteger>
+            </parameter>
+        </variables>
+        <variables id="EnOceanSwitch1">
+            <parameter id="STATE">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <casts>
+                        <booleanInteger>
+                            <trueValue>0x64</trueValue>
+                            <falseValue>0</falseValue>
+                            <threshold>1</threshold>
+                        </booleanInteger>
+                    </casts>
+                </properties>
+                <logicalBoolean>
+                    <defaultValue>false</defaultValue>
+                </logicalBoolean>
+                <physicalInteger groupId="STATE">
+                    <operationType>command</operationType>
+                </physicalInteger>
+                <packets>
+                    <packet id="STATE_INFO">
+                        <type>event</type>
+                    </packet>
+                    <packet id="STATE_SET">
+                        <type>set</type>
+                        <responseId>ANY</responseId>
+                    </packet>
+                </packets>
+            </parameter>
+        </variables>
+        <variables id="EnOceanSwitch2">
+            <parameter id="STATE">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <casts>
+                        <booleanInteger>
+                            <trueValue>0x64</trueValue>
+                            <falseValue>0</falseValue>
+                            <threshold>1</threshold>
+                        </booleanInteger>
+                    </casts>
+                </properties>
+                <logicalBoolean>
+                    <defaultValue>false</defaultValue>
+                </logicalBoolean>
+                <physicalInteger groupId="STATE">
+                    <operationType>command</operationType>
+                </physicalInteger>
+                <packets>
+                    <packet id="STATE_INFO2">
+                        <type>event</type>
+                    </packet>
+                    <packet id="STATE_SET2">
+                        <type>set</type>
+                        <responseId>ANY</responseId>
+                    </packet>
+                </packets>
+            </parameter>
+        </variables>
+        <variables id="EnOceanRocker1">
+            <parameter id="STATE">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>false</writeable>
+                </properties>
+                <logicalBoolean>
+                    <defaultValue>false</defaultValue>
+                </logicalBoolean>
+                <physicalInteger groupId="STATE">
+                    <operationType>command</operationType>
+                </physicalInteger>
+                <packets>
+                    <packet id="A0_0_ON">
+                        <type>event</type>
+                    </packet>
+                    <packet id="A0_0_OFF">
+                        <type>event</type>
+                    </packet>
+                </packets>
+            </parameter>
+        </variables>
+        <variables id="EnOceanRocker2">
+            <parameter id="STATE">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>false</writeable>
+                </properties>
+                <logicalBoolean>
+                    <defaultValue>false</defaultValue>
+                </logicalBoolean>
+                <physicalInteger groupId="STATE">
+                    <operationType>command</operationType>
+                </physicalInteger>
+                <packets>
+                    <packet id="A1_0_ON">
+                        <type>event</type>
+                    </packet>
+                    <packet id="A1_0_OFF">
+                        <type>event</type>
+                    </packet>
+                </packets>
+            </parameter>
+        </variables>
+        <variables id="EnOceanRocker3">
+            <parameter id="STATE">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>false</writeable>
+                </properties>
+                <logicalBoolean>
+                    <defaultValue>false</defaultValue>
+                </logicalBoolean>
+                <physicalInteger groupId="STATE">
+                    <operationType>command</operationType>
+                </physicalInteger>
+                <packets>
+                    <packet id="B0_0_ON">
+                        <type>event</type>
+                    </packet>
+                    <packet id="B0_0_OFF">
+                        <type>event</type>
+                    </packet>
+                </packets>
+            </parameter>
+        </variables>
+        <variables id="EnOceanRocker4">
+            <parameter id="STATE">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>false</writeable>
+                </properties>
+                <logicalBoolean>
+                    <defaultValue>false</defaultValue>
+                </logicalBoolean>
+                <physicalInteger groupId="STATE">
+                    <operationType>command</operationType>
+                </physicalInteger>
+                <packets>
+                    <packet id="B1_0_ON">
+                        <type>event</type>
+                    </packet>
+                    <packet id="B1_0_OFF">
+                        <type>event</type>
+                    </packet>
+                </packets>
+            </parameter>
+        </variables>
+        <variables id="EnOceanInput">
+            <parameter id="STATE">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>false</writeable>
+                </properties>
+                <logicalBoolean>
+                    <defaultValue>false</defaultValue>
+                </logicalBoolean>
+                <physicalInteger groupId="STATE">
+                    <operationType>command</operationType>
+                </physicalInteger>
+                <packets>
+                    <packet id="C_0_ON">
+                        <type>event</type>
+                    </packet>
+                    <packet id="C_0_OFF">
+                        <type>event</type>
+                    </packet>
+                </packets>
+            </parameter>
+        </variables>
+    </parameterGroups>
+</homegearDevice>

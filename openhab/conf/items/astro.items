@@ -1,0 +1,10 @@
+//Sonne Mond
+DateTime         Sunrise_Time       "Sonnenaufgang [%1$tH:%1$tM]"           { channel="astro:sun:home:rise#start" }
+DateTime         Noon_Time          "Mittag [%1$tH:%1$tM]"                  { channel="astro:sun:home:noon#start" }
+DateTime         Sunset_Time        "Sonnenuntergang [%1$tH:%1$tM]"         { channel="astro:sun:home:set#start" }
+Number:Angle     Azimuth            "Azimut"                                { channel="astro:sun:home:position#azimuth" }
+Number:Angle     Elevation          "Elevation"                             { channel="astro:sun:home:position#elevation" }
+String           MoonPhase          "Mondphase"                             { channel="astro:moon:home:phase#name" }
+Number:Length    MoonDistance       "Mondabstand [%.1f %unit%]"             { channel="astro:moon:home:distance#distance" }
+Number:Intensity Total_Radiation    "Strahlung [%.2f %unit%]"               { channel="astro:sun:home:radiation#total" }
+Number:Intensity Diffuse_Radiation  "Diffusstrahlung [%.2f %unit%]"         { channel="astro:sun:home:radiation#diffuse" }

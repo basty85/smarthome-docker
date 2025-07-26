@@ -1,0 +1,10 @@
+Bridge zwave:serial_zstick:1 "Bridge Z-Wave" [ port="/dev/ttyAMA0", controller_softreset="false", controller_master="true", heal_enable="true", security_networkkey="36 05 66 8F F9 E4 DF E4 0A EF E7 DF AC DF 21 07" ] {
+
+//Unterputzaktoren
+qubino_zmnhad_00_000    lightActor1    "HWR Lichtaktor"            @ "HWR"                 [ node_id=23 ]
+qubino_zmnhad_00_000    lightActor2    "Flur Lichtaktor"           @ "Flur"                [ node_id=18 ]
+qubino_zmnhad_00_000    lightActor3    "Treppenhaus Lichtaktor UG" @ "Treppenhaus UG"      [ node_id=19 ]
+qubino_zmnhdd_00_000    lightActor4    "Esszimmer Dimmeraktor"     @ "Wohn-/Esszimmer"     [ node_id=20 ]
+qubino_zmnhad_00_000    lightActor5    "Draußen Lichtaktor"        @ "Draußen"             [ node_id=21 ]
+
+}

@@ -1,0 +1,23 @@
+//Outdoor
+		rule "DetectDarknessAndSwitchLight_Outdoor"
+			when
+
+				Item lightLevelSensorOutdoor_Dark changed
+			
+			then
+
+				if (lightLevelSensorOutdoor_Dark.state == ON) {
+					
+					sendCommand(hueWhiteFlowers_Switch, ON)
+
+				}
+
+				else if (lightLevelSensorOutdoor_Dark.state == OFF) {
+
+					sendCommand(hueWhiteFlowers_Switch, OFF)
+					
+				}
+				
+				else {}
+				
+			end

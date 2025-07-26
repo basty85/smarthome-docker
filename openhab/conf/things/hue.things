@@ -1,0 +1,53 @@
+Bridge hue:bridge:1 "Bridge Hue" [ ipAddress="192.168.1.33", userName="tpqgk-FwAurb-pBiHH1SDeMsQzAMY5zXCQMRrU5p" ] {
+
+//Lampen
+//Hue Musikzimmer
+0210  lightStrip1           "Musikzimmer Lightstrip Vorne"          @ "Musikzimmer"         [ lightId="5" ]
+0210  lightStrip2           "Musikzimmer Lightstrip Hinten"         @ "Musikzimmer"         [ lightId="4" ]
+0210  huePlay1              "Musikzimmer Hue Play Rechts"           @ "Musikzimmer"         [ lightId="6" ]
+0210  huePlay2              "Musikzimmer Hue Play Links"            @ "Musikzimmer"         [ lightId="7" ]
+
+//Hue Flur
+0220  mainEntranceLight     "Flur Lampe"                            @ "Flur"                [ lightId="13" ]
+
+//Hue Wohn-/Esszimmer
+0210  hueColor1             "Wohnzimmer Hue Color Todesstern"                 @ "Wohn-/Esszimmer"     [ lightId="2" ]
+0210  hueColor2             "Wohnzimmer Hue Color Eckstehlampe"               @ "Wohn-/Esszimmer"     [ lightId="9" ]
+0210  lightStrip3           "Wohnzimmer Lightstrip Fernseher"       @ "Wohn-/Esszimmer"     [ lightId="8" ]
+0210  lightStrip4           "Wohnzimmer Lightstrip Sofa"            @ "Wohn-/Esszimmer"     [ lightId="10" ]
+0210  lightStrip5           "Esszimmer Lightstrip"                  @ "Wohn-/Esszimmer"     [ lightId="11" ]
+
+//Outdoor
+0210  lightStrip6           "Draußen Lightstrip Blumenbeet"                    @ "Draußen"             [ lightId="12" ]
+0210  lightStrip7           "Draußen Lightstrip Terrasse"                      @ "Draußen"             [ lightId="3" ]
+0100  hueWhite1             "Draußen Hue White Blumenbeet"                     @ "Draußen"             [ lightId="14" ]
+
+
+//Outdoor Sensoren
+//Sensor Draußen HWR
+0106  lightSensorOutdoor       "Draußen Lichtsensor HWR"               @ "Draußen"             [ sensorId="23" ]
+0107  presenceSensorOutdoor    "Draußen Bewegungssensor HWR"           @ "Draußen"             [ sensorId="22" ]
+0302  temperatureSensorOutdoor "Draußen Temperatursensor HWR"          @ "Draußen"             [ sensorId="24" ]
+
+//Indoor Sensoren
+//Sensor HWR
+0106  lightSensorUtilRoom       "HWR Lichtsensor"               @ "HWR"             [ sensorId="4" ]
+0107  presenceSensorUtilRoom    "HWR Bewegungssensor"           @ "HWR"             [ sensorId="3" ]
+0302  temperatureSensorUtilRoom "HWR Temperatursensor"          @ "HWR"             [ sensorId="2" ]
+
+//Sensor Flur
+0106  lightSensorEntrance       "Flur Lichtsensor"                     @ "Flur"             [ sensorId="15" ]
+0107  presenceSensorEntrance    "Flur Bewegungssensor"                 @ "Flur"             [ sensorId="14" ]
+0302  temperatureSensorEntrance "Flur Temperatursensor"                @ "Flur"             [ sensorId="16" ]
+
+//Sensor TreppenhausUG
+0106  lightSensorStairsUG       "Treppenhaus Lichtsensor Oben"                     @ "Treppenhaus UG"             [ sensorId="7" ]
+0107  presenceSensorStairsUG    "Treppenhaus Bewegungssensor Oben"                 @ "Treppenhaus UG"             [ sensorId="6" ]
+0302  temperatureSensorStairsUG "Treppenhaus Temperatursensor Oben"                @ "Treppenhaus UG"             [ sensorId="5" ]
+
+//Sensor TreppenhausUG
+0106  lightSensorUG       "Treppenhaus Lichtsensor UG"                     @ "Treppenhaus UG"             [ sensorId="10" ]
+0107  presenceSensorUG    "Treppenhaus Bewegungssensor UG"                 @ "Treppenhaus UG"             [ sensorId="9" ]
+0302  temperatureSensorUG "Treppenhaus Temperatursensor UG"                @ "Treppenhaus UG"             [ sensorId="8" ]
+
+}

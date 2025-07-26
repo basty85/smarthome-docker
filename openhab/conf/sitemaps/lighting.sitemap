@@ -1,0 +1,68 @@
+sitemap lighting label="Beleuchtung"
+{
+	Frame label="Wohn-/Esszimmer" {
+		
+		Switch		item=		hueColorDeathstar_Switch label="Todesstern" icon="light"
+		Colorpicker	item=		hueColorDeathstar_Color  label="Todesstern Farbe" icon="colorlight"
+
+		Switch		item=		hueColorCornerLight_Switch label="Ecklampe" icon="light" 
+		Colorpicker	item=		hueColorCornerLight_Color  label="Ecklampe Farbe" icon="colorlight"
+
+        Switch		item=		lightStripTV_Switch label="Lightstrip TV" icon="light" 
+		Colorpicker	item=		lightStripTV_Color  label="Lightstrip TV Farbe" icon="colorlight"
+
+        Switch		item=		lightStripCouch_Switch label="Lightstrip Sofa" icon="light" 
+		Colorpicker	item=		lightStripCouch_Color  label="Lightstrip Sofa Farbe" icon="colorlight"
+		
+        Switch		item=		lightStripDining_Switch label="Lightstrip Esszimmer" icon="light" 
+		Colorpicker	item=		lightStripDining_Color  label="Lightstrip Esszimmer Farbe" icon="colorlight"
+	}
+
+    Frame label="Musikzimmer" {
+
+    Switch		item=		lightStrip_Front_Switch label="Lightstrip Vorne" icon="light"
+	Colorpicker	item=		lightStrip_Front_Color  label="Lightstrip Vorne Farbe" icon="colorlight"
+
+    Switch		item=		lightStrip_Back_Switch label="Lightstrip Hinten" icon="light"
+	Colorpicker	item=		lightStrip_Back_Color  label="Lightstrip Hinten Farbe" icon="colorlight"
+
+    Switch		item=		huePlay_Right_Switch label="HuePlay Rechts" icon="light"
+	Colorpicker	item=		huePlay_Right_Color  label="HuePlay Rechts Farbe" icon="colorlight"
+
+    Switch		item=		huePlay_Left_Switch label="HuePlay Links" icon="light"
+	Colorpicker	item=		huePlay_Left_Color  label="HuePlay Links Farbe" icon="colorlight"
+    }
+
+    Frame label="Draußen" {
+
+    Switch		item=		lightStripFlowers_Switch label="Lightstrip Blumenbeet" icon="light"
+	Colorpicker	item=		lightStripFlowers_Color  label="Lightstrip Blumenbeet Farbe" icon="colorlight"
+
+    Switch		item=		hueWhiteFlowers_Switch   label="Hue White Blumenbeet" icon="light"
+	Slider	    item=		hueWhiteFlowers_Dimmer   label="Hue White Blumenbeet Dimmer" icon="light"
+
+    Switch		item=		lightStripTerrace_Switch label="Lightstrip Terrasse" icon="light"
+	Colorpicker	item=		lightStripTerrace_Color  label="Lightstrip Terrasse Farbe" icon="colorlight"
+    }
+    
+    Frame label="Lichtaktoren" {
+
+    Switch	item=	  lightActorEntrance_Switch     label="Lichtschalter Flur" icon="wallswitch"
+    Text    item=     lightActorEntrance_MeterWatts label="Leistung [%.1f W]"
+	Slider	item=     entranceLight_ColorTemp       label="Flur Farbtemperatur" icon="colorlight"
+    Slider	item=	  entranceLight_Dimmer          label="Flur Dimmer" icon="light"
+
+    Switch	item=	  lightActorHWR_Switch      label="Lichtschalter HWR" icon="wallswitch"
+    Text    item=     lightActorHWR_MeterWatts  label="Leistung [%.1f W]"
+
+    Switch	item=	  lightActorDining_Switch       label="Lichtschalter Esszimmer" icon="wallswitch"
+    Text    item=     lightActorDining_MeterWatts   label="Leistung [%.1f W]"
+    Slider	item=	  lightActorDining_Dimmer          label="Esszimmer Dimmer" icon="light"
+
+    Switch	item=	  lightActorOutdoor_Switch      label="Lichtschalter Draußen" icon="wallswitch"
+    Text    item=     lightActorOutdoor_MeterWatts  label="Leistung [%.1f W]"
+
+    Switch	item=	  lightActorStairsUG_Switch         label="Lichtschalter Treppenhaus UG" icon="wallswitch"
+    Text    item=     lightActorStairsUG_MeterWatts     label="Leistung [%.1f W]"
+    }
+}

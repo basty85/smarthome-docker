@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="utf-8"?>
+<homegearDevice xmlns="https://homegear.eu/xmlNamespaces/HomegearDevice" version="1">
+    <supportedDevices xmlns="https://homegear.eu/xmlNamespaces/DeviceType">
+        <device id="HG-2CH-EO">
+            <description>HG-2CH-EO</description>
+            <typeNumber>0x33D20110</typeNumber>
+        </device>
+    </supportedDevices>
+    <properties>
+        <timeout>86400</timeout>
+        <receiveMode>always</receiveMode>
+        <pairingMethod>setInstallMode+[remoteCommissioning]</pairingMethod>
+    </properties>
+    <functions xmlns="https://homegear.eu/xmlNamespaces/DeviceType">
+        <function xmlns="https://homegear.eu/xmlNamespaces/FunctionGroupType" channel="0" type="MAINTENANCE">
+            <properties>
+                <internal>true</internal>
+            </properties>
+            <configParameters>EnOceanConfig</configParameters>
+            <variables>maint_ch_values</variables>
+        </function>
+        <function xmlns="https://homegear.eu/xmlNamespaces/FunctionGroupType" channel="1" type="EnOceanSwitch">
+            <variables>EnOceanVariables1</variables>
+        </function>
+        <function xmlns="https://homegear.eu/xmlNamespaces/FunctionGroupType" channel="2" type="EnOceanSwitch">
+            <variables>EnOceanVariables2</variables>
+        </function>
+    </functions>
+    <metadata>
+        <remoteManagementInfo>
+            <features>
+                <maxDataLength>22</maxDataLength><!-- Maximum length of data part in bytes -->
+
+                <addressedRemanPackets>true</addressedRemanPackets>
+
+                <forceEncryption>false</forceEncryption>
+                <unencryptedUpdates>true</unencryptedUpdates>
+                <slf>243</slf>
+
+                <recomVersion>v1.3</recomVersion>
+
+                <!-- Size is actually 30, but this reduces pairing time -->
+                <inboundLinkTableSize>2</inboundLinkTableSize>
+                <outboundLinkTableSize>0</outboundLinkTableSize>
+                <linkTableGatewayEep>A53808</linkTableGatewayEep>
+                <deviceConfigurationSize>4</deviceConfigurationSize>
+
+                <meshingRepeater>false</meshingRepeater>
+                <meshingEndpoint>true</meshingEndpoint>
+                <enforceMeshing>false</enforceMeshing>
+
+                <firmwareUpdates>true</firmwareUpdates>
+
+                <unlock>true</unlock><!-- 0x001 -->
+                <lock>true</lock><!-- 0x002 -->
+                <setCode>true</setCode><!-- 0x003 -->
+                <queryId>false</queryId><!-- 0x004 -->
+                <action>false</action><!-- 0x005 -->
+                <ping>true</ping><!-- 0x006 -->
+                <queryFunction>false</queryFunction><!-- 0x007 -->
+                <queryStatus>true</queryStatus><!-- 0x008 -->
+                <startSession>false</startSession><!-- 0x009 -->
+                <closeSession>false</closeSession><!-- 0x00A -->
+                <rpcRemoteLearn>false</rpcRemoteLearn><!-- 0x201 -->
+                <rpcRemoteFlashWrite>false</rpcRemoteFlashWrite><!-- 0x203 -->
+                <rpcRemoteFlashRead>false</rpcRemoteFlashRead><!-- 0x204 -->
+                <rpcSmartAckRead>false</rpcSmartAckRead><!-- 0x205 -->
+                <rpcSmartAckWrite>false</rpcSmartAckWrite><!-- 0x206 -->
+                <getLinkTableMetadata>true</getLinkTableMetadata><!-- 0x210 -->
+                <getLinkTable>true</getLinkTable><!-- 0x211 -->
+                <setLinkTable>true</setLinkTable><!-- 0x212 -->
+                <getLinkTableGpEntry>false</getLinkTableGpEntry><!-- 0x213 -->
+                <setLinkTableGpEntry>false</setLinkTableGpEntry><!-- 0x214 -->
+                <getSecurityProfile>false</getSecurityProfile><!-- 0x215 -->
+                <setSecurityProfile>true</setSecurityProfile><!-- 0x216 -->
+                <setSecurityProfileHasAddresses>false</setSecurityProfileHasAddresses>
+                <remoteSetLearnMode>false</remoteSetLearnMode><!-- 0x220 -->
+                <triggerOutboundRemoteTeachRequest>false</triggerOutboundRemoteTeachRequest><!-- 0x221 -->
+                <resetToDefaults>false</resetToDefaults><!-- 0x224 -->
+                <radioLinkTestControl>false</radioLinkTestControl><!-- 0x225 -->
+                <applyChanges>true</applyChanges><!-- 0x226 -->
+                <getProductId>true</getProductId><!-- 0x227 -->
+                <getDeviceConfiguration>false</getDeviceConfiguration><!-- 0x230 -->
+                <setDeviceConfiguration>true</setDeviceConfiguration><!-- 0x231 -->
+                <getLinkBasedConfiguration>false</getLinkBasedConfiguration><!-- 0x232 -->
+                <setLinkBasedConfiguration>false</setLinkBasedConfiguration><!-- 0x233 -->
+                <getDeviceSecurityInfo>false</getDeviceSecurityInfo><!-- 0x234 -->
+                <setDeviceSecurityInfo>false</setDeviceSecurityInfo><!-- 0x235 -->
+                <getRepeaterFunctions>false</getRepeaterFunctions><!-- 0x250 -->
+                <setRepeaterFunctions>true</setRepeaterFunctions><!-- 0x251 -->
+                <setRepeaterFilter>true</setRepeaterFilter><!-- 0x252 -->
+            </features>
+        </remoteManagementInfo>
+    </metadata>
+    <packets>
+        <packet id="STATE_INFO_1">
+            <direction>toCentral</direction>
+            <type>0xD2</type>
+            <channel>1</channel>
+            <binaryPayload>
+                <element>
+                    <bitIndex>8</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>4</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>19</bitIndex>
+                    <bitSize>5</bitSize>
+                    <constValueInteger>0</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>25</bitIndex>
+                    <bitSize>7</bitSize>
+                    <parameterId>STATE</parameterId>
+                </element>
+                <element>
+                    <bitIndex>25</bitIndex>
+                    <bitSize>7</bitSize>
+                    <parameterId>LEVEL</parameterId>
+                </element>
+            </binaryPayload>
+        </packet>
+        <packet id="STATE_INFO_2">
+            <direction>toCentral</direction>
+            <type>0xD2</type>
+            <channel>2</channel>
+            <binaryPayload>
+                <element>
+                    <bitIndex>8</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>4</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>19</bitIndex>
+                    <bitSize>5</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>25</bitIndex>
+                    <bitSize>7</bitSize>
+                    <parameterId>STATE</parameterId>
+                </element>
+                <element>
+                    <bitIndex>25</bitIndex>
+                    <bitSize>7</bitSize>
+                    <parameterId>LEVEL</parameterId>
+                </element>
+            </binaryPayload>
+        </packet>
+        <packet id="STATE_SET_1">
+            <direction>fromCentral</direction>
+            <type>0xD2</type>
+            <subtype>1</subtype>
+            <binaryPayload>
+                <element>
+                    <bitIndex>8</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>16</bitIndex>
+                    <bitSize>3</bitSize>
+                    <parameterId>DIM_TIMER</parameterId>
+                </element>
+                <element>
+                    <bitIndex>19</bitIndex>
+                    <bitSize>5</bitSize>
+                    <constValueInteger>0</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>25</bitIndex>
+                    <bitSize>7</bitSize>
+                    <parameterId>STATE</parameterId>
+                </element>
+            </binaryPayload>
+        </packet>
+        <packet id="STATE_SET_2">
+            <direction>fromCentral</direction>
+            <type>0xD2</type>
+            <subtype>1</subtype>
+            <binaryPayload>
+                <element>
+                    <bitIndex>8</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>16</bitIndex>
+                    <bitSize>3</bitSize>
+                    <parameterId>DIM_TIMER</parameterId>
+                </element>
+                <element>
+                    <bitIndex>19</bitIndex>
+                    <bitSize>5</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>25</bitIndex>
+                    <bitSize>7</bitSize>
+                    <parameterId>STATE</parameterId>
+                </element>
+            </binaryPayload>
+        </packet>
+        <packet id="LEVEL_SET_1">
+            <direction>fromCentral</direction>
+            <type>0xD2</type>
+            <subtype>1</subtype>
+            <binaryPayload>
+                <element>
+                    <bitIndex>8</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>16</bitIndex>
+                    <bitSize>3</bitSize>
+                    <parameterId>DIM_TIMER</parameterId>
+                </element>
+                <element>
+                    <bitIndex>19</bitIndex>
+                    <bitSize>5</bitSize>
+                    <constValueInteger>0</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>25</bitIndex>
+                    <bitSize>7</bitSize>
+                    <parameterId>LEVEL</parameterId>
+                </element>
+            </binaryPayload>
+        </packet>
+        <packet id="LEVEL_SET_2">
+            <direction>fromCentral</direction>
+            <type>0xD2</type>
+            <subtype>1</subtype>
+            <binaryPayload>
+                <element>
+                    <bitIndex>8</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>16</bitIndex>
+                    <bitSize>3</bitSize>
+                    <parameterId>DIM_TIMER</parameterId>
+                </element>
+                <element>
+                    <bitIndex>19</bitIndex>
+                    <bitSize>5</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>25</bitIndex>
+                    <bitSize>7</bitSize>
+                    <parameterId>LEVEL</parameterId>
+                </element>
+            </binaryPayload>
+        </packet>
+        <packet id="EXTERNAL_INTERFACE_SETTINGS_SET">
+            <direction>fromCentral</direction>
+            <type>0xD2</type>
+            <subtype>1</subtype>
+            <binaryPayload>
+                <element>
+                    <bitIndex>8</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>11</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>16</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>24</bitIndex>
+                    <bitSize>16</bitSize>
+                    <constValueInteger>0</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>40</bitIndex>
+                    <bitSize>16</bitSize>
+                    <constValueInteger>0</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>56</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>0</constValueInteger>
+                </element>
+            </binaryPayload>
+        </packet>
+        <packet id="STATUS_REQUEST">
+            <direction>fromCentral</direction>
+            <type>0xD2</type>
+            <subtype>1</subtype>
+            <binaryPayload>
+                <element>
+                    <bitIndex>8</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>3</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>19</bitIndex>
+                    <bitSize>5</bitSize>
+                    <constValueInteger>0</constValueInteger>
+                </element>
+            </binaryPayload>
+        </packet>
+    </packets>
+    <parameterGroups xmlns="https://homegear.eu/xmlNamespaces/DeviceType">
+        <configParameters id="EnOceanConfig">
+            <parameter id="PING_INTERVAL">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                </properties>
+                <logicalInteger>
+                    <minimumValue>0</minimumValue>
+                    <maximumValue>86400</maximumValue>
+                    <defaultValue>480</defaultValue>
+                </logicalInteger>
+                <physicalNone>
+                    <operationType>config</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="RESEND_TIMEOUT">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                </properties>
+                <logicalInteger>
+                    <minimumValue>0</minimumValue>
+                    <maximumValue>10000</maximumValue>
+                    <defaultValue>400</defaultValue>
+                </logicalInteger>
+                <physicalNone>
+                    <operationType>config</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="RESENDS_WHEN_NO_ACK">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                </properties>
+                <logicalInteger>
+                    <minimumValue>0</minimumValue>
+                    <maximumValue>20</maximumValue>
+                    <defaultValue>20</defaultValue>
+                </logicalInteger>
+                <physicalNone>
+                    <operationType>config</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="LOCAL_CONTROL">
+                <logicalEnumeration>
+                    <defaultValue>0</defaultValue>
+                    <value>
+                        <id>On</id>
+                        <index>0</index>
+                    </value>
+                    <value>
+                        <id>Off</id>
+                        <index>1</index>
+                    </value>
+                    <value>
+                        <id>Ping-triggered off</id>
+                        <index>2</index>
+                    </value>
+                </logicalEnumeration>
+                <physicalInteger>
+                    <memoryIndex>2</memoryIndex>
+                    <bitSize>8</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="DEVICE_TYPE">
+                <logicalEnumeration>
+                    <defaultValue>0</defaultValue>
+                    <value>
+                        <id>Blind and shutter controller</id>
+                        <index>0</index>
+                    </value>
+                    <value>
+                        <id>Dual channel electronic switch with metering</id>
+                        <index>1</index>
+                    </value>
+                </logicalEnumeration>
+                <physicalInteger>
+                    <memoryIndex>3</memoryIndex>
+                    <bitSize>8</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+        </configParameters>
+        <variables id="maint_ch_values">
+            <parameter id="UNREACH">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>false</writeable>
+                    <service>true</service>
+                </properties>
+                <logicalBoolean/>
+                <physicalBoolean>
+                    <operationType>internal</operationType>
+                </physicalBoolean>
+            </parameter>
+            <parameter id="STICKY_UNREACH">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <service>true</service>
+                    <sticky>true</sticky>
+                </properties>
+                <logicalBoolean/>
+                <physicalBoolean>
+                    <operationType>internal</operationType>
+                </physicalBoolean>
+            </parameter>
+            <parameter id="RSSI_DEVICE">
+                <properties>
+                    <writeable>false</writeable>
+                </properties>
+                <logicalInteger/>
+                <physicalInteger groupId="RSSI_DEVICE">
+                    <operationType>internal</operationType>
+                </physicalInteger>
+            </parameter>
+        </variables>
+        <variables id="EnOceanVariables1">
+            <parameter id="DIM_TIMER">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                </properties>
+                <logicalEnumeration>
+                    <defaultValue>0</defaultValue>
+                    <value>
+                        <id>No timer</id>
+                        <index>0</index>
+                    </value>
+                    <value>
+                        <id>Timer 1</id>
+                        <index>1</index>
+                    </value>
+                    <value>
+                        <id>Timer 2</id>
+                        <index>2</index>
+                    </value>
+                    <value>
+                        <id>Timer 3</id>
+                        <index>3</index>
+                    </value>
+                    <value>
+                        <id>Stop</id>
+                        <index>4</index>
+                    </value>
+                </logicalEnumeration>
+                <physicalInteger groupId="DIM_TIMER">
+                    <operationType>command</operationType>
+                </physicalInteger>
+                <packets>
+                    <packet id="STATE_SET_1">
+                        <type>set</type>
+                        <responseId>STATE_INFO_1</responseId>
+                        <conditionOperator>e</conditionOperator>
+                        <conditionValue>4</conditionValue>
+                        <autoReset>
+                            <parameterId>DIM_TIMER</parameterId>
+                        </autoReset>
+                    </packet>
+                </packets>
+            </parameter>
+            <parameter id="STATE">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <casts>
+                        <booleanInteger>
+                            <trueValue>0x64</trueValue>
+                            <falseValue>0</falseValue>
+                            <threshold>1</threshold>
+                        </booleanInteger>
+                    </casts>
+                </properties>
+                <logicalBoolean>
+                    <defaultValue>false</defaultValue>
+                </logicalBoolean>
+                <physicalInteger groupId="STATE">
+                    <operationType>command</operationType>
+                </physicalInteger>
+                <packets>
+                    <packet id="STATE_INFO_1">
+                        <type>event</type>
+                    </packet>
+                    <packet id="STATE_SET_1">
+                        <type>set</type>
+                        <responseId>STATE_INFO_1</responseId>
+                    </packet>
+                </packets>
+            </parameter>
+            <parameter id="LEVEL">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                </properties>
+                <logicalInteger>
+                    <minimumValue>0</minimumValue>
+                    <maximumValue>100</maximumValue>
+                    <defaultValue>0</defaultValue>
+                </logicalInteger>
+                <physicalInteger groupId="LEVEL">
+                    <operationType>command</operationType>
+                </physicalInteger>
+                <packets>
+                    <packet id="STATE_INFO_1">
+                        <type>event</type>
+                    </packet>
+                    <packet id="LEVEL_SET_1">
+                        <type>set</type>
+                        <responseId>STATE_INFO_1</responseId>
+                    </packet>
+                </packets>
+            </parameter>
+            <parameter id="RESET_EXTERNAL_INTERFACE_SETTINGS">
+                <properties>
+                    <readable>false</readable>
+                    <writeable>true</writeable>
+                </properties>
+                <logicalAction/>
+                <physicalNone groupId="RESET_EXTERNAL_INTERFACE_SETTINGS">
+                    <operationType>command</operationType>
+                </physicalNone>
+                <packets>
+                    <packet id="EXTERNAL_INTERFACE_SETTINGS_SET">
+                        <type>set</type>
+                    </packet>
+                </packets>
+            </parameter>
+        </variables>
+        <variables id="EnOceanVariables2">
+            <parameter id="DIM_TIMER">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                </properties>
+                <logicalEnumeration>
+                    <defaultValue>0</defaultValue>
+                    <value>
+                        <id>No timer</id>
+                        <index>0</index>
+                    </value>
+                    <value>
+                        <id>Timer 1</id>
+                        <index>1</index>
+                    </value>
+                    <value>
+                        <id>Timer 2</id>
+                        <index>2</index>
+                    </value>
+                    <value>
+                        <id>Timer 3</id>
+                        <index>3</index>
+                    </value>
+                    <value>
+                        <id>Stop</id>
+                        <index>4</index>
+                    </value>
+                </logicalEnumeration>
+                <physicalInteger groupId="DIM_TIMER">
+                    <operationType>command</operationType>
+                </physicalInteger>
+                <packets>
+                    <packet id="STATE_SET_2">
+                        <type>set</type>
+                        <responseId>STATE_INFO_2</responseId>
+                        <conditionOperator>e</conditionOperator>
+                        <conditionValue>4</conditionValue>
+                        <autoReset>
+                            <parameterId>DIM_TIMER</parameterId>
+                        </autoReset>
+                    </packet>
+                </packets>
+            </parameter>
+            <parameter id="STATE">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <casts>
+                        <booleanInteger>
+                            <trueValue>0x64</trueValue>
+                            <falseValue>0</falseValue>
+                            <threshold>1</threshold>
+                        </booleanInteger>
+                    </casts>
+                </properties>
+                <logicalBoolean>
+                    <defaultValue>false</defaultValue>
+                </logicalBoolean>
+                <physicalInteger groupId="STATE">
+                    <operationType>command</operationType>
+                </physicalInteger>
+                <packets>
+                    <packet id="STATE_INFO_2">
+                        <type>event</type>
+                    </packet>
+                    <packet id="STATE_SET_2">
+                        <type>set</type>
+                        <responseId>STATE_INFO_2</responseId>
+                    </packet>
+                </packets>
+            </parameter>
+            <parameter id="LEVEL">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                </properties>
+                <logicalInteger>
+                    <minimumValue>0</minimumValue>
+                    <maximumValue>100</maximumValue>
+                    <defaultValue>0</defaultValue>
+                </logicalInteger>
+                <physicalInteger groupId="LEVEL">
+                    <operationType>command</operationType>
+                </physicalInteger>
+                <packets>
+                    <packet id="STATE_INFO_2">
+                        <type>event</type>
+                    </packet>
+                    <packet id="LEVEL_SET_2">
+                        <type>set</type>
+                        <responseId>STATE_INFO_1</responseId>
+                    </packet>
+                </packets>
+            </parameter>
+            <parameter id="RESET_EXTERNAL_INTERFACE_SETTINGS">
+                <properties>
+                    <readable>false</readable>
+                    <writeable>true</writeable>
+                </properties>
+                <logicalAction/>
+                <physicalNone groupId="RESET_EXTERNAL_INTERFACE_SETTINGS">
+                    <operationType>command</operationType>
+                </physicalNone>
+                <packets>
+                    <packet id="EXTERNAL_INTERFACE_SETTINGS_SET">
+                        <type>set</type>
+                    </packet>
+                </packets>
+            </parameter>
+            <parameter id="REQUEST_STATUS">
+                <properties>
+                    <readable>false</readable>
+                    <writeable>true</writeable>
+                </properties>
+                <logicalAction/>
+                <physicalInteger groupId="REQUEST_STATUS">
+                    <operationType>command</operationType>
+                </physicalInteger>
+                <packets>
+                    <packet id="STATUS_REQUEST">
+                        <type>set</type>
+                        <responseId>ANY</responseId>
+                    </packet>
+                </packets>
+            </parameter>
+        </variables>
+    </parameterGroups>
+</homegearDevice>

@@ -1,0 +1,53 @@
+rule "sunset_static_shutter_rule"
+when
+
+    Channel 'astro:sun:home:set#event' triggered START
+    //Item lightActorEntrance_Switch changed //TEST switch
+
+then
+
+    livingRoomShutterLeft_Ang.sendCommand(1)
+    livingRoomShutterLeft_Pos.sendCommand(1)
+    Thread::sleep(100)
+    livingRoomShutterMiddle_Ang.sendCommand(1)
+    livingRoomShutterMiddle_Pos.sendCommand(1)
+    Thread::sleep(100)
+    livingRoomShutterRight_Ang.sendCommand(1)
+    livingRoomShutterRight_Pos.sendCommand(1)
+    Thread::sleep(100)
+    //bedRoomShutterLeft_Ang.sendCommand(0)
+    //bedRoomShutterLeft_Pos.sendCommand(0)
+    //Thread::sleep(100)
+    //bedRoomShutterUp_Ang.sendCommand(0)
+    //bedRoomShutterUp_Pos.sendCommand(0)
+    //Thread::sleep(100)
+    //bedRoomShutterRight_Ang.sendCommand(0)
+    //bedRoomShutterRight_Pos.sendCommand(0)
+    //Thread::sleep(100)
+    //childRoomShutterLeft_Ang.sendCommand(0)
+    //childRoomShutterLeft_Pos.sendCommand(0)
+    //Thread::sleep(100)
+    //childRoomShutterUp_Ang.sendCommand(0)
+    //childRoomShutterUp_Pos.sendCommand(0)
+    //Thread::sleep(100)
+    //childRoomShutterRight_Ang.sendCommand(0)
+    //childRoomShutterRight_Pos.sendCommand(0)
+    //Thread::sleep(100)
+    //diningRoomShutter_Ang.sendCommand(75)
+    //diningRoomShutter_Pos.sendCommand(45)
+    //Thread::sleep(100)
+    changeRoomShutter_Ang.sendCommand(0)
+    changeRoomShutter_Pos.sendCommand(100)
+    Thread::sleep(100)
+
+    //Rolläden
+    musicRoomShutter_Pos.sendCommand(65)
+    Thread::sleep(100)
+    wcShutter_Pos.sendCommand(70)
+    Thread::sleep(100)
+    officeShutter_Pos.sendCommand(80)
+    Thread::sleep(100)
+    bathShutter_Pos.sendCommand(80)
+    Thread::sleep(100)
+
+end

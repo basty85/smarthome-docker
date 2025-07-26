@@ -1,0 +1,125 @@
+//Lampen
+//Hue Musikzimmer
+Group gLightsMusikzimmer
+
+Switch   lightStrip_Front_Switch "Schalter"   (gLightsMusikzimmer)      { channel="hue:0210:1:lightStrip1:color" }
+Color    lightStrip_Front_Color         (gLightsMusikzimmer)            { channel="hue:0210:1:lightStrip1:color" }
+//Dimmer  lightStrip_Front_ColorTemp    (gLightsMusikzimmer)  { channel="hue:0210:1:lightStrip1:color_temperature" }
+
+Switch   lightStrip_Back_Switch "Schalter"    (gLightsMusikzimmer)     { channel="hue:0210:1:lightStrip2:color" }
+Color    lightStrip_Back_Color         (gLightsMusikzimmer)            { channel="hue:0210:1:lightStrip2:color" }
+//Dimmer  lightStrip_Back_ColorTemp   (gLightsMusikzimmer)  { channel="hue:0210:1:lightStrip2:color_temperature" }
+
+Switch   huePlay_Right_Switch "Schalter"     (gLightsMusikzimmer)       { channel="hue:0210:1:huePlay1:color" }
+Color    huePlay_Right_Color         (gLightsMusikzimmer)                { channel="hue:0210:1:huePlay1:color" }
+//Dimmer  huePlay_Right_ColorTemp      (gLightsMusikzimmer)    { channel="hue:0210:1:huePlay1:color_temperature" }
+
+Switch   huePlay_Left_Switch "Schalter"       (gLightsMusikzimmer)        { channel="hue:0210:1:huePlay2:color" }
+Color    huePlay_Left_Color             (gLightsMusikzimmer)             { channel="hue:0210:1:huePlay2:color" }
+//Dimmer  huePlay_Left_ColorTemp      (gLightsMusikzimmer)     { channel="hue:0210:1:huePlay2:color_temperature" }
+
+//Hue Flur
+Dimmer  entranceLight_ColorTemp "Farbtemperatur"        { channel="hue:0220:1:mainEntranceLight:color_temperature" }
+Dimmer  entranceLight_Dimmer    "Dimmer"                { channel="hue:0220:1:mainEntranceLight:brightness" }
+
+//Hue Wohn-/Esszimmer
+Group gLightsWohnzimmer
+
+Switch   hueColorDeathstar_Switch "Schalter"    (gLightsWohnzimmer)    { channel="hue:0210:1:hueColor1:color" }
+Color    hueColorDeathstar_Color           (gLightsWohnzimmer)             { channel="hue:0210:1:hueColor1:color" }
+//Dimmer  hueColorDeathstar_ColorTemp     (gLightsWohnzimmer)     { channel="hue:0210:1:hueColor1:color_temperature" }
+
+Switch   hueColorCornerLight_Switch "Schalter"     (gLightsWohnzimmer)         { channel="hue:0210:1:hueColor2:color" }
+Color    hueColorCornerLight_Color           (gLightsWohnzimmer)               { channel="hue:0210:1:hueColor2:color" }
+//Dimmer  hueColorCornerLight_ColorTemp     (gLightsWohnzimmer)     { channel="hue:0210:1:hueColor2:color_temperature" }
+
+Switch   lightStripTV_Switch "Schalter"     (gLightsWohnzimmer)        { channel="hue:0210:1:lightStrip3:color" }
+Color    lightStripTV_Color           (gLightsWohnzimmer)              { channel="hue:0210:1:lightStrip3:color" }
+//Dimmer  lightStripTV_ColorTemp     (gLightsWohnzimmer)     { channel="hue:0210:1:lightStrip3:color_temperature" }
+
+Switch  lightStripCouch_Switch "Schalter"     (gLightsWohnzimmer)         { channel="hue:0210:1:lightStrip4:color" }
+Color   lightStripCouch_Color           (gLightsWohnzimmer)               { channel="hue:0210:1:lightStrip4:color" }
+//Dimmer  lightStripCouch_ColorTemp     (gLightsWohnzimmer)     { channel="hue:0210:1:lightStrip4:color_temperature" }
+
+Switch  lightStripDining_Switch "Schalter"     (gLightsWohnzimmer)        { channel="hue:0210:1:lightStrip5:color" }
+Color   lightStripDining_Color            (gLightsWohnzimmer)             { channel="hue:0210:1:lightStrip5:color" }
+//Dimmer  lightStripDining_ColorTemp     (gLightsWohnzimmer)     { channel="hue:0210:1:lightStrip5:color_temperature" }
+
+//Outdoor
+Group gLightsOutdoor
+
+
+Switch  lightStripFlowers_Switch  "Schalter"  (gLightsOutdoor)     { channel="hue:0210:1:lightStrip6:color" }
+Color   lightStripFlowers_Color          (gLightsOutdoor)            { channel="hue:0210:1:lightStrip6:color" }
+//Dimmer  lightStripFlowers_ColorTemp   (gLightsOutdoor)    { channel="hue:0210:1:lightStrip6:color_temperature" }
+
+Switch  lightStripTerrace_Switch  "Schalter"    (gLightsOutdoor)     { channel="hue:0210:1:lightStrip7:color" }
+Color   lightStripTerrace_Color          (gLightsOutdoor)            { channel="hue:0210:1:lightStrip7:color" }
+//Dimmer  lightStripTerrace_ColorTemp   (gLightsOutdoor)    { channel="hue:0210:1:lightStrip7:color_temperature" }
+
+Switch  hueWhiteFlowers_Switch    "Schalter"  (gLightsOutdoor)       { channel="hue:0100:1:hueWhite1:brightness" }
+//Color   lightStripTerrace_Color        (gLightsOutdoor)            { channel="hue:0100:1:hueWhite1:color" }
+Dimmer  hueWhiteFlowers_Dimmer         (gLightsOutdoor)              { channel="hue:0100:1:hueWhite1:brightness" }
+
+
+//Outdoor Sensoren
+//Sensor Draußen HWR
+Switch              motionSensorOutdoor_Presence     "Bewegung"          { channel="hue:0107:1:presenceSensorOutdoor:presence" }
+DateTime            motionSensorOutdoor_LastUpdate   "Letztes Update"    { channel="hue:0107:1:presenceSensorOutdoor:last_updated" }
+Number              motionSensorOutdoor_BatteryLevel "Batterie Level"    { channel="hue:0107:1:presenceSensorOutdoor:battery_level" }
+Switch              motionSensorOutdoor_LowBattery   "Batterie Schwach"  { channel="hue:0107:1:presenceSensorOutdoor:battery_low" }
+
+Number:Illuminance  lightLevelSensorOutdoor_Illuminance "Lichtstärke [%.1f lx]"  { channel="hue:0106:1:lightSensorOutdoor:illuminance" }
+Switch              lightLevelSensorOutdoor_Dark        "Dunkel"                 { channel="hue:0106:1:lightSensorOutdoor:dark" }
+Switch              lightLevelSensorOutdoor_Daylight    "Hell"                   { channel="hue:0106:1:lightSensorOutdoor:daylight" }
+
+Number:Temperature  temperatureSensorOutdoor_Temperature "Temperatur"            { channel="hue:0302:1:temperatureSensorOutdoor:temperature" }
+
+//Indoor Sensoren
+//Sensor HWR
+Switch              motionSensorHWR_Presence     "Bewegung"          { channel="hue:0107:1:presenceSensorUtilRoom:presence" }
+DateTime            motionSensorHWR_LastUpdate   "Letztes Update"    { channel="hue:0107:1:presenceSensorUtilRoom:last_updated" }
+Number              motionSensorHWR_BatteryLevel "Batterie Level"    { channel="hue:0107:1:presenceSensorUtilRoom:battery_level" }
+Switch              motionSensorHWR_LowBattery   "Batterie Schwach"  { channel="hue:0107:1:presenceSensorUtilRoom:battery_low" }
+
+Number:Illuminance  lightLevelSensorHWR_Illuminance "Lichtstärke [%.1f lx]"  { channel="hue:0106:1:lightSensorUtilRoom:illuminance" }
+Switch              lightLevelSensorHWR_Dark        "Dunkel"                 { channel="hue:0106:1:lightSensorUtilRoom:dark" }
+Switch              lightLevelSensorHWR_Daylight    "Hell"                   { channel="hue:0106:1:lightSensorUtilRoom:daylight" }
+
+Number:Temperature  temperatureSensorHWR_Temperature "Temperatur"            { channel="hue:0302:1:temperatureSensorUtilRoom:temperature" }
+
+//Sensor Flur
+Switch              motionSensorEntrance_Presence     "Bewegung"          { channel="hue:0107:1:presenceSensorEntrance:presence" }
+DateTime            motionSensorEntrance_LastUpdate   "Letztes Update"    { channel="hue:0107:1:presenceSensorEntrance:last_updated" }
+Number              motionSensorEntrance_BatteryLevel "Batterie Level"    { channel="hue:0107:1:presenceSensorEntrance:battery_level" }
+Switch              motionSensorEntrance_LowBattery   "Batterie Schwach"  { channel="hue:0107:1:presenceSensorEntrance:battery_low" }
+
+Number:Illuminance  lightLevelSensorEntrance_Illuminance "Lichtstärke [%.1f lx]"  { channel="hue:0106:1:lightSensorEntrance:illuminance" }
+Switch              lightLevelSensorEntrance_Dark        "Dunkel"                 { channel="hue:0106:1:lightSensorEntrance:dark" }
+Switch              lightLevelSensorEntrance_Daylight    "Hell"                   { channel="hue:0106:1:lightSensorEntrance:daylight" }
+
+Number:Temperature  temperatureSensorEntrance_Temperature "Temperatur"            { channel="hue:0302:1:temperatureSensorEntrance:temperature" }
+
+//Sensor Treppenhaus
+Switch              motionSensorStairsUG_Presence     "Bewegung"          { channel="hue:0107:1:presenceSensorStairsUG:presence" }
+DateTime            motionSensorStairsUG_LastUpdate   "Letztes Update"    { channel="hue:0107:1:presenceSensorStairsUG:last_updated" }
+Number              motionSensorStairsUG_BatteryLevel "Batterie Level"    { channel="hue:0107:1:presenceSensorStairsUG:battery_level" }
+Switch              motionSensorStairsUG_LowBattery   "Batterie Schwach"  { channel="hue:0107:1:presenceSensorStairsUG:battery_low" }
+
+Number:Illuminance  lightLevelSensorStairsUG_Illuminance "Lichtstärke [%.1f lx]"  { channel="hue:0106:1:lightSensorStairsUG:illuminance" }
+Switch              lightLevelSensorStairsUG_Dark        "Dunkel"                 { channel="hue:0106:1:lightSensorStairsUG:dark" }
+Switch              lightLevelSensorStairsUG_Daylight    "Hell"                   { channel="hue:0106:1:lightSensorStairsUG:daylight" }
+
+Number:Temperature  temperatureSensorStairsUG_Temperature "Temperatur"            { channel="hue:0302:1:temperatureSensorStairsUG:temperature" }
+
+//Sensor UG
+Switch              motionSensorUG_Presence     "Bewegung"          { channel="hue:0107:1:presenceSensorUG:presence" }
+DateTime            motionSensorUG_LastUpdate   "Letztes Update"    { channel="hue:0107:1:presenceSensorUG:last_updated" }
+Number              motionSensorUG_BatteryLevel "Batterie Level"    { channel="hue:0107:1:presenceSensorUG:battery_level" }
+Switch              motionSensorUG_LowBattery   "Batterie Schwach"  { channel="hue:0107:1:presenceSensorUG:battery_low" }
+
+Number:Illuminance  lightLevelSensorUG_Illuminance "Lichtstärke [%.1f lx]"  { channel="hue:0106:1:lightSensorUG:illuminance" }
+Switch              lightLevelSensorUG_Dark        "Dunkel"                 { channel="hue:0106:1:lightSensorUG:dark" }
+Switch              lightLevelSensorUG_Daylight    "Hell"                   { channel="hue:0106:1:lightSensorUG:daylight" }
+
+Number:Temperature  temperatureSensorUG_Temperature "Temperatur"            { channel="hue:0302:1:temperatureSensorUG:temperature" }

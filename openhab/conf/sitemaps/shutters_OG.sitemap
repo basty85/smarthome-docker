@@ -1,0 +1,102 @@
+sitemap shutters_OG label="Verschattung OG"
+{
+	Frame label="Schlafen Jalousie Links" {
+		
+		Switch		item=		bedRoomShutterLeft_Pos           icon="blinds" mappings=[0="AUF", 20="20%", 40="40%"]
+		Switch		item=		bedRoomShutterLeft_Pos           icon="blinds" label="" mappings=[60="60%", 80="80%", 100="ZU"]
+        
+        Switch		item=		bedRoomShutterLeft_Ang           icon="blinds" label="Winkel" mappings=[0="0%", 15="15%", 30="GERADE"]
+		Switch		item=		bedRoomShutterLeft_Ang           icon="blinds" label="" mappings=[50="50%", 75="75%", 100="ZU"]
+
+        Text	    item=		bedRoomShutterLeft_CurrentPos    label="Aktuelle Position [%d %%]" icon="blinds"
+        Text	    item=		bedRoomShutterLeft_CurrentAng    label="Aktueller Winkel [%d %%]" icon="blinds"
+    }
+
+    Frame label="Schlafen Jalousie Rechts" {
+		
+		Switch		item=		bedRoomShutterRight_Pos           icon="blinds" mappings=[0="AUF", 20="20%", 40="40%"]
+		Switch		item=		bedRoomShutterRight_Pos           icon="blinds" label="" mappings=[60="60%", 80="80%", 100="ZU"]
+        
+        Switch		item=		bedRoomShutterRight_Ang           icon="blinds" label="Winkel" mappings=[0="0%", 15="15%", 30="GERADE"]
+		Switch		item=		bedRoomShutterRight_Ang           icon="blinds" label="" mappings=[50="50%", 75="75%", 100="ZU"]
+
+        Text	    item=		bedRoomShutterRight_CurrentPos    label="Aktuelle Position [%d %%]" icon="blinds"
+        Text	    item=		bedRoomShutterRight_CurrentAng    label="Aktueller Winkel [%d %%]" icon="blinds"
+    }
+
+    Frame label="Schlafen Jalousie Oben" {
+		
+		Switch		item=		bedRoomShutterUp_Pos           icon="blinds" mappings=[0="AUF", 20="20%", 40="40%"]
+		Switch		item=		bedRoomShutterUp_Pos           icon="blinds" label="" mappings=[60="60%", 80="80%", 100="ZU"]
+        
+        Switch		item=		bedRoomShutterUp_Ang           icon="blinds" label="Winkel" mappings=[0="0%", 15="15%", 30="GERADE"]
+		Switch		item=		bedRoomShutterUp_Ang           icon="blinds" label="" mappings=[50="50%", 75="75%", 100="ZU"]
+
+        Text	    item=		bedRoomShutterUp_CurrentPos    label="Aktuelle Position [%d %%]" icon="blinds"
+        Text	    item=		bedRoomShutterUp_CurrentAng    label="Aktueller Winkel [%d %%]" icon="blinds"
+    }
+
+    Frame label="Kind Jalousie Links" {
+		
+		Switch		item=		childRoomShutterLeft_Pos           icon="blinds" mappings=[0="AUF", 20="20%", 40="40%"]
+		Switch		item=		childRoomShutterLeft_Pos           icon="blinds" label="" mappings=[60="60%", 80="80%", 100="ZU"]
+        
+        Switch		item=		childRoomShutterLeft_Ang           icon="blinds" label="Winkel" mappings=[0="0%", 15="15%", 30="GERADE"]
+		Switch		item=		childRoomShutterLeft_Ang           icon="blinds" label="" mappings=[50="50%", 75="75%", 100="ZU"]
+
+        Text	    item=		childRoomShutterLeft_CurrentPos    label="Aktuelle Position [%d %%]" icon="blinds"
+        Text	    item=		childRoomShutterLeft_CurrentAng    label="Aktueller Winkel [%d %%]" icon="blinds"
+    }
+
+    Frame label="Kind Jalousie Rechts" {
+		
+		Switch		item=		childRoomShutterRight_Pos           icon="blinds" mappings=[0="AUF", 20="20%", 40="40%"]
+		Switch		item=		childRoomShutterRight_Pos           icon="blinds" label="" mappings=[60="60%", 80="80%", 100="ZU"]
+        
+        Switch		item=		childRoomShutterRight_Ang           icon="blinds" label="Winkel" mappings=[0="0%", 15="15%", 30="GERADE"]
+		Switch		item=		childRoomShutterRight_Ang           icon="blinds" label="" mappings=[50="50%", 75="75%", 100="ZU"]
+
+        Text	    item=		childRoomShutterRight_CurrentPos    label="Aktuelle Position [%d %%]" icon="blinds"
+        Text	    item=		childRoomShutterRight_CurrentAng    label="Aktueller Winkel [%d %%]" icon="blinds"
+    }
+
+    Frame label="Kind Jalousie Oben" {
+		
+		Switch		item=		childRoomShutterUp_Pos           icon="blinds" mappings=[0="AUF", 20="20%", 40="40%"]
+		Switch		item=		childRoomShutterUp_Pos           icon="blinds" label="" mappings=[60="60%", 80="80%", 100="ZU"]
+        
+        Switch		item=		childRoomShutterUp_Ang           icon="blinds" label="Winkel" mappings=[0="0%", 15="15%", 30="GERADE"]
+		Switch		item=		childRoomShutterUp_Ang           icon="blinds" label="" mappings=[50="50%", 75="75%", 100="ZU"]
+
+        Text	    item=		childRoomShutterUp_CurrentPos    label="Aktuelle Position [%d %%]" icon="blinds"
+        Text	    item=		childRoomShutterUp_CurrentAng    label="Aktueller Winkel [%d %%]" icon="blinds"
+    }
+
+    Frame label="Ankleide Jalousie" {
+		
+		Switch		item=		changeRoomShutter_Pos           icon="blinds" mappings=[0="AUF", 20="20%", 40="40%"]
+		Switch		item=		changeRoomShutter_Pos           icon="blinds" label="" mappings=[60="60%", 80="80%", 100="ZU"]
+        
+        Switch		item=		changeRoomShutter_Ang           icon="blinds" label="Winkel" mappings=[0="0%", 15="15%", 30="30%"]
+		Switch		item=		changeRoomShutter_Ang           icon="blinds" label="" mappings=[50="50%", 75="75%", 100="100%"]
+
+        Text	    item=		changeRoomShutter_CurrentPos    label="Aktuelle Position [%d %%]" icon="blinds"
+        Text	    item=		changeRoomShutter_CurrentAng    label="Aktueller Winkel [%d %%]" icon="blinds"
+    }
+
+    Frame label="Büro Rolladen" {
+		
+		Switch		item=		officeShutter_Pos           icon="blinds" mappings=[0="AUF", 20="20%", 40="40%"]
+		Switch		item=		officeShutter_Pos           icon="blinds" label="" mappings=[60="60%", 80="80%", 100="ZU"]
+        
+        Text	    item=		officeShutter_CurrentPos    label="Aktuelle Position [%d %%]" icon="blinds"
+    }
+
+    Frame label="Bad Rolladen" {
+		
+		Switch		item=		bathShutter_Pos           icon="blinds" mappings=[0="AUF", 20="20%", 40="40%"]
+		Switch		item=		bathShutter_Pos           icon="blinds" label="" mappings=[60="60%", 80="80%", 100="ZU"]
+        
+        Text	    item=		bathShutter_CurrentPos    label="Aktuelle Position [%d %%]" icon="blinds"
+    }
+}

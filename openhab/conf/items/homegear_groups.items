@@ -1,0 +1,130 @@
+//Jalousien und Rolladen EG
+//Wohnzimmer
+Group:Rollershutter gWohnzimmer
+
+Number               livingRoomShutterLeft_SignalStrength   "Signalstärke [%d]"         { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF2A4:0#SIGNAL_STRENGTH" }
+Number:Dimensionless livingRoomShutterLeft_CurrentPos       "Aktuelle Position [%d %%]"   { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF2A4:1#CURRENT_POSITION" }
+Number:Dimensionless livingRoomShutterLeft_CurrentAng       "Aktueller Winkel [%d %%]"    { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF2A4:1#CURRENT_ANGLE" }
+Number:Dimensionless livingRoomShutterLeft_Pos              "Position [%d %%]"  (gWohnzimmer)           { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF2A4:1#POSITION" }
+Number:Dimensionless livingRoomShutterLeft_Ang              "Winkel [%d %%]"          { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF2A4:1#ANGLE" }
+//Number               livingRoomShutterLeft_CurrentSpeed     "Aktuelle Geschwindigkeit [%.2f %%/s]"          { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF2A4:1#CURRENT_SPEED" }
+
+Number               livingRoomShutterMiddle_SignalStrength   "Signalstärke [%d]"          { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF887:0#SIGNAL_STRENGTH" }
+Number:Dimensionless livingRoomShutterMiddle_CurrentPos       "Aktuelle Position [%d %%]"   { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF887:1#CURRENT_POSITION" }
+Number:Dimensionless livingRoomShutterMiddle_CurrentAng       "Aktueller Winkel [%d %%]"     { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF887:1#CURRENT_ANGLE" }
+Number:Dimensionless livingRoomShutterMiddle_Pos              "Position [%d %%]"   (gWohnzimmer)          { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF887:1#POSITION" }
+Number:Dimensionless livingRoomShutterMiddle_Ang              "Winkel [%d %%]"           { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF887:1#ANGLE" }
+//Number               livingRoomShutterMiddle_CurrentSpeed     "Aktuelle Geschwindigkeit [%.2f %%/s]"          { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF887:1#CURRENT_SPEED" }
+
+Number               livingRoomShutterRight_SignalStrength   "Signalstärke [%d]"   (gWohnzimmer)         { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF866:0#SIGNAL_STRENGTH" }
+Number:Dimensionless livingRoomShutterRight_CurrentPos       "Aktuelle Position [%d %%]"   (gWohnzimmer)  { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF866:1#CURRENT_POSITION" }
+Number:Dimensionless livingRoomShutterRight_CurrentAng       "Aktueller Winkel [%d %%]"   (gWohnzimmer)  { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF866:1#CURRENT_ANGLE" }
+Number:Dimensionless livingRoomShutterRight_Pos              "Position [%d %%]"   (gWohnzimmer)           { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF866:1#POSITION" }
+Number:Dimensionless livingRoomShutterRight_Ang              "Winkel [%d %%]"   (gWohnzimmer)             { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF866:1#ANGLE" }
+//Number               livingRoomShutterRight_CurrentSpeed     "Aktuelle Geschwindigkeit [%.2f %%/s]"   (gWohnzimmer)        { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF866:1#CURRENT_SPEED" }
+
+
+//Esszimmer
+Number               diningRoomShutter_SignalStrength   "Signalstärke [%d]"         { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF881:0#SIGNAL_STRENGTH" }
+Number:Dimensionless diningRoomShutter_CurrentPos       "Aktuelle Position [%d %%]" { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF881:1#CURRENT_POSITION" }
+Number:Dimensionless diningRoomShutter_CurrentAng       "Aktueller Winkel [%d %%]"  { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF881:1#CURRENT_ANGLE" }
+Number:Dimensionless diningRoomShutter_Pos              "Position [%d %%]"          { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF881:1#POSITION" }
+Number:Dimensionless diningRoomShutter_Ang              "Winkel [%d %%]"            { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF881:1#ANGLE" }
+//Number               diningRoomShutter_CurrentSpeed     "Aktuelle Geschwindigkeit [%.2f %%/s]"        { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF881:1#CURRENT_SPEED" }
+
+
+//Musikzimmer
+Number               musicRoomShutter_SignalStrength   "Signalstärke [%d]"         { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF81B:0#SIGNAL_STRENGTH" }
+Number:Dimensionless musicRoomShutter_CurrentPos       "Aktuelle Position [%d %%]" { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF81B:1#CURRENT_POSITION" }
+//Number:Dimensionless musicRoomShutter_CurrentAng       "Aktueller Winkel [%d %%]"  { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF81B:1#CURRENT_ANGLE" }
+Number:Dimensionless musicRoomShutter_Pos              "Position [%d %%]"          { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF81B:1#POSITION" }
+//Number:Dimensionless musicRoomShutter_Ang              "Winkel [%d %%]"            { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF81B:1#ANGLE" }
+//Number               musicRoomShutter_CurrentSpeed     "Aktuelle Geschwindigkeit [%.2f %%/s]"        { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD050BF81B:1#CURRENT_SPEED" }
+
+
+//WC
+Number               wcShutter_SignalStrength   "Signalstärke [%d]"         { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DFC4:0#SIGNAL_STRENGTH" }
+Number:Dimensionless wcShutter_CurrentPos       "Aktuelle Position [%d %%]" { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DFC4:1#CURRENT_POSITION" }
+//Number:Dimensionless wcShutter_CurrentAng       "Aktueller Winkel [%d %%]"  { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DFC4:1#CURRENT_ANGLE" }
+Number:Dimensionless wcShutter_Pos              "Position [%d %%]"          { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DFC4:1#POSITION" }
+//Number:Dimensionless wcShutter_Ang              "Winkel [%d %%]"            { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DFC4:1#ANGLE" }
+//Number               wcShutter_CurrentSpeed     "Aktuelle Geschwindigkeit [%.2f %%/s]"        { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DFC4:1#CURRENT_SPEED" }
+
+
+//Jalousien und Rolladen OG
+//Schlafen
+Group:Rollershutter gSchlafzimmer
+
+Number               bedRoomShutterLeft_SignalStrength   "Signalstärke [%d]"  (gSchlafzimmer)       { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DD7A:0#SIGNAL_STRENGTH" }
+Number:Dimensionless bedRoomShutterLeft_CurrentPos       "Aktuelle Position [%d %%]"  (gSchlafzimmer)  { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DD7A:1#CURRENT_POSITION" }
+Number:Dimensionless bedRoomShutterLeft_CurrentAng       "Aktueller Winkel [%d %%]"  (gSchlafzimmer)   { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DD7A:1#CURRENT_ANGLE" }
+Number:Dimensionless bedRoomShutterLeft_Pos              "Position [%d %%]"  (gSchlafzimmer)           { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DD7A:1#POSITION" }
+Number:Dimensionless bedRoomShutterLeft_Ang              "Winkel [%d %%]"  (gSchlafzimmer)             { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DD7A:1#ANGLE" }
+//Number               bedRoomShutterLeft_CurrentSpeed     "Aktuelle Geschwindigkeit [%.2f %%/s]"  (gSchlafzimmer)         { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DD7A:1#CURRENT_SPEED" }
+
+Number               bedRoomShutterRight_SignalStrength   "Signalstärke [%d]"   (gSchlafzimmer)         { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DEE3:0#SIGNAL_STRENGTH" }
+Number:Dimensionless bedRoomShutterRight_CurrentPos       "Aktuelle Position [%d %%]"  (gSchlafzimmer)  { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DEE3:1#CURRENT_POSITION" }
+Number:Dimensionless bedRoomShutterRight_CurrentAng       "Aktueller Winkel [%d %%]"  (gSchlafzimmer)   { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DEE3:1#CURRENT_ANGLE" }
+Number:Dimensionless bedRoomShutterRight_Pos              "Position [%d %%]"  (gSchlafzimmer)           { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DEE3:1#POSITION" }
+Number:Dimensionless bedRoomShutterRight_Ang              "Winkel [%d %%]"  (gSchlafzimmer)             { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DEE3:1#ANGLE" }
+//Number               bedRoomShutterRight_CurrentSpeed     "Aktuelle Geschwindigkeit [%.2f %%/s]"   (gSchlafzimmer)         { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DEE3:1#CURRENT_SPEED" }
+
+Number               bedRoomShutterUp_SignalStrength   "Signalstärke [%d]"  (gSchlafzimmer)          { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DFC6:0#SIGNAL_STRENGTH" }
+Number:Dimensionless bedRoomShutterUp_CurrentPos       "Aktuelle Position [%d %%]"   (gSchlafzimmer) { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DFC6:1#CURRENT_POSITION" }
+Number:Dimensionless bedRoomShutterUp_CurrentAng       "Aktueller Winkel [%d %%]"  (gSchlafzimmer)   { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DFC6:1#CURRENT_ANGLE" }
+Number:Dimensionless bedRoomShutterUp_Pos              "Position [%d %%]"   (gSchlafzimmer)          { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DFC6:1#POSITION" }
+Number:Dimensionless bedRoomShutterUp_Ang              "Winkel [%d %%]"   (gSchlafzimmer)            { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DFC6:1#ANGLE" }
+//Number               bedRoomShutterUp_CurrentSpeed     "Aktuelle Geschwindigkeit [%.2f %%/s]"   (gSchlafzimmer)        { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DD7A:1#CURRENT_SPEED" }
+
+
+//Kind
+Group:Rollershutter gKind
+
+
+Number               childRoomShutterLeft_SignalStrength   "Signalstärke [%d]" (gKind)         { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DEB1:0#SIGNAL_STRENGTH" }
+Number:Dimensionless childRoomShutterLeft_CurrentPos       "Aktuelle Position [%d %%]" (gKind)   { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DEB1:1#CURRENT_POSITION" }
+Number:Dimensionless childRoomShutterLeft_CurrentAng       "Aktueller Winkel [%d %%]"  (gKind)   { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DEB1:1#CURRENT_ANGLE" }
+Number:Dimensionless childRoomShutterLeft_Pos              "Position [%d %%]"   (gKind)          { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DEB1:1#POSITION" }
+Number:Dimensionless childRoomShutterLeft_Ang              "Winkel [%d %%]"   (gKind)            { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DEB1:1#ANGLE" }
+//Number               childRoomShutterLeft_CurrentSpeed     "Aktuelle Geschwindigkeit [%.2f %%/s]"  (gKind)         { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DEB1:1#CURRENT_SPEED" }
+
+Number               childRoomShutterRight_SignalStrength   "Signalstärke [%d]"   (gKind)         { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DF21:0#SIGNAL_STRENGTH" }
+Number:Dimensionless childRoomShutterRight_CurrentPos       "Aktuelle Position [%d %%]" (gKind)   { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DF21:1#CURRENT_POSITION" }
+Number:Dimensionless childRoomShutterRight_CurrentAng       "Aktueller Winkel [%d %%]"  (gKind)   { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DF21:1#CURRENT_ANGLE" }
+Number:Dimensionless childRoomShutterRight_Pos              "Position [%d %%]"  (gKind)           { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DF21:1#POSITION" }
+Number:Dimensionless childRoomShutterRight_Ang              "Winkel [%d %%]"   (gKind)            { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DF21:1#ANGLE" }
+//Number               childRoomShutterRight_CurrentSpeed     "Aktuelle Geschwindigkeit [%.2f %%/s]"   (gKind)        { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DF21:1#CURRENT_SPEED" }
+
+Number               childRoomShutterUp_SignalStrength   "Signalstärke [%d]"   (gKind)         { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DF6A:0#SIGNAL_STRENGTH" }
+Number:Dimensionless childRoomShutterUp_CurrentPos       "Aktuelle Position [%d %%]"  (gKind)  { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DF6A:1#CURRENT_POSITION" }
+Number:Dimensionless childRoomShutterUp_CurrentAng       "Aktueller Winkel [%d %%]"   (gKind)  { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DF6A:1#CURRENT_ANGLE" }
+Number:Dimensionless childRoomShutterUp_Pos              "Position [%d %%]"   (gKind)          { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DF6A:1#POSITION" }
+Number:Dimensionless childRoomShutterUp_Ang              "Winkel [%d %%]"   (gKind)            { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DF6A:1#ANGLE" }
+//Number               childRoomShutterUp_CurrentSpeed     "Aktuelle Geschwindigkeit [%.2f %%/s]"   (gKind)        { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DF6A:1#CURRENT_SPEED" }
+
+
+//Ankleide
+Number               changeRoomShutter_SignalStrength   "Signalstärke [%d]"         { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DF11:0#SIGNAL_STRENGTH" }
+Number:Dimensionless changeRoomShutter_CurrentPos       "Aktuelle Position [%d %%]" { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DF11:1#CURRENT_POSITION" }
+Number:Dimensionless changeRoomShutter_CurrentAng       "Aktueller Winkel [%d %%]"  { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DF11:1#CURRENT_ANGLE" }
+Number:Dimensionless changeRoomShutter_Pos              "Position [%d %%]"          { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DF11:1#POSITION" }
+Number:Dimensionless changeRoomShutter_Ang              "Winkel [%d %%]"            { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DF11:1#ANGLE" }
+//Number               changeRoomShutter_CurrentSpeed     "Aktuelle Geschwindigkeit [%.2f %%/s]"        { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DF11:1#CURRENT_SPEED" }
+
+
+//Büro
+Number               officeShutter_SignalStrength   "Signalstärke [%d]"         { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507C5A1:0#SIGNAL_STRENGTH" }
+Number:Dimensionless officeShutter_CurrentPos       "Aktuelle Position [%d %%]" { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507C5A1:1#CURRENT_POSITION" }
+//Number:Dimensionless officeShutter_CurrentAng       "Aktueller Winkel [%d %%]"  { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507C5A1:1#CURRENT_ANGLE" }
+Number:Dimensionless officeShutter_Pos              "Position [%d %%]"          { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507C5A1:1#POSITION" }
+//Number:Dimensionless officeShutter_Ang              "Winkel [%d %%]"            { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507C5A1:1#ANGLE" }
+//Number               officeShutter_CurrentSpeed     "Aktuelle Geschwindigkeit [%.2f %%/s]"        { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507C5A1:1#CURRENT_SPEED" }
+
+
+//Bad OG
+Number               bathShutter_SignalStrength   "Signalstärke [%d]"         { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DFD9:0#SIGNAL_STRENGTH" }
+Number:Dimensionless bathShutter_CurrentPos       "Aktuelle Position [%d %%]" { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DFD9:1#CURRENT_POSITION" }
+//Number:Dimensionless bathShutter_CurrentAng       "Aktueller Winkel [%d %%]"  { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DFD9:1#CURRENT_ANGLE" }
+Number:Dimensionless bathShutter_Pos              "Position [%d %%]"          { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DFD9:1#POSITION" }
+//Number:Dimensionless bathShutter_Ang              "Winkel [%d %%]"            { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DFD9:1#ANGLE" }
+//Number               bathShutter_CurrentSpeed     "Aktuelle Geschwindigkeit [%.2f %%/s]"        { channel="homematic:HG-OPUS-BRiDGE-Blind--563-031-:1:EOD0507DFD9:1#CURRENT_SPEED" }

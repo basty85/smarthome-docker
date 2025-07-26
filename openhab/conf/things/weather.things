@@ -1,0 +1,7 @@
+Bridge openweathermap:weather-api:api "Wetter OpenWeatherMap Account" [apikey="58e13d7ee24f5c89b66827a8089047e0", refreshInterval=29, language="de"] {
+
+    //Wetterinfo
+    Thing weather-and-forecast local "Wetter Cleebronn" [location="49.042001413459815,9.036667882367395", forecastHours=24, forecastDays=0]
+    Thing uvindex local "Wetter UV Index Cleebronn" [location="49.042001413459815,9.036667882367395", forecastDays=7]
+
+}

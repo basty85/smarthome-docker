@@ -1,0 +1,766 @@
+<?xml version="1.0" encoding="utf-8"?>
+<homegearDevice xmlns="https://homegear.eu/xmlNamespaces/HomegearDevice" version="1">
+    <supportedDevices xmlns="https://homegear.eu/xmlNamespaces/DeviceType">
+        <device id="OPUS Smart Motion Sensor (563.052)" productId="004000000009">
+            <description>OPUS Smart Motion Sensor (563.052)</description>
+            <typeNumber>0x40A50401</typeNumber>
+        </device>
+    </supportedDevices>
+    <properties>
+        <!-- wakeUp2 means, we need a signal packet (RORG D2) to trigger sending -->
+        <receiveMode>wakeUp2</receiveMode>
+        <timeout>7200</timeout>
+        <pairingMethod>setInstallMode+[remoteCommissioning]</pairingMethod>
+    </properties>
+    <functions xmlns="https://homegear.eu/xmlNamespaces/DeviceType">
+        <function xmlns="https://homegear.eu/xmlNamespaces/FunctionGroupType" channel="0" type="MAINTENANCE">
+            <properties>
+                <internal>true</internal>
+            </properties>
+            <configParameters>EnOceanConfig</configParameters>
+            <variables>maint_ch_values</variables>
+        </function>
+        <function xmlns="https://homegear.eu/xmlNamespaces/FunctionGroupType" channel="1" type="EnOceanMotion">
+            <properties>
+                <linkSenderFunctionTypes channel="0">
+                    <type>SWITCH</type>
+                </linkSenderFunctionTypes>
+            </properties>
+            <variables>EnOceanMotion</variables>
+        </function>
+        <function xmlns="https://homegear.eu/xmlNamespaces/FunctionGroupType" channel="2"
+                  type="EnOceanTemperatureHumidity">
+            <variables>EnOceanTemperatureHumidity</variables>
+        </function>
+    </functions>
+    <metadata>
+        <remoteManagementInfo>
+            <features>
+                <inboundLinkTableSize>0</inboundLinkTableSize>
+                <outboundLinkTableSize>0</outboundLinkTableSize>
+                <deviceConfigurationSize>26</deviceConfigurationSize>
+
+                <unlock>true</unlock><!-- 0x001 -->
+                <lock>true</lock><!-- 0x002 -->
+                <setCode>false</setCode><!-- 0x003 -->
+                <queryId>true</queryId><!-- 0x004 -->
+                <action>false</action><!-- 0x005 -->
+                <ping>true</ping><!-- 0x006 -->
+                <queryFunction>false</queryFunction><!-- 0x007 -->
+                <queryStatus>true</queryStatus><!-- 0x008 -->
+                <startSession>false</startSession><!-- 0x009 -->
+                <closeSession>false</closeSession><!-- 0x00A -->
+                <rpcRemoteLearn>false</rpcRemoteLearn><!-- 0x201 -->
+                <rpcRemoteFlashWrite>false</rpcRemoteFlashWrite><!-- 0x203 -->
+                <rpcRemoteFlashRead>false</rpcRemoteFlashRead><!-- 0x204 -->
+                <rpcSmartAckRead>false</rpcSmartAckRead><!-- 0x205 -->
+                <rpcSmartAckWrite>false</rpcSmartAckWrite><!-- 0x206 -->
+                <getLinkTableMetadata>false</getLinkTableMetadata><!-- 0x210 -->
+                <getLinkTable>false</getLinkTable><!-- 0x211 -->
+                <setLinkTable>false</setLinkTable><!-- 0x212 -->
+                <getLinkTableGpEntry>false</getLinkTableGpEntry><!-- 0x213 -->
+                <setLinkTableGpEntry>false</setLinkTableGpEntry><!-- 0x214 -->
+                <getSecurityProfile>false</getSecurityProfile><!-- 0x215 -->
+                <setSecurityProfile>false</setSecurityProfile><!-- 0x216 -->
+                <remoteSetLearnMode>false</remoteSetLearnMode><!-- 0x220 -->
+                <triggerOutboundRemoteTeachRequest>false</triggerOutboundRemoteTeachRequest><!-- 0x221 -->
+                <resetToDefaults>false</resetToDefaults><!-- 0x224 -->
+                <radioLinkTestControl>false</radioLinkTestControl><!-- 0x225 -->
+                <applyChanges>false</applyChanges><!-- 0x226 -->
+                <getProductId>true</getProductId><!-- 0x227 -->
+                <getDeviceConfiguration>true</getDeviceConfiguration><!-- 0x230 -->
+                <setDeviceConfiguration>true</setDeviceConfiguration><!-- 0x231 -->
+                <getLinkBasedConfiguration>false</getLinkBasedConfiguration><!-- 0x232 -->
+                <setLinkBasedConfiguration>false</setLinkBasedConfiguration><!-- 0x233 -->
+                <getDeviceSecurityInfo>false</getDeviceSecurityInfo><!-- 0x234 -->
+                <setDeviceSecurityInfo>false</setDeviceSecurityInfo><!-- 0x235 -->
+                <getRepeaterFunctions>false</getRepeaterFunctions><!-- 0x250 -->
+                <setRepeaterFunctions>false</setRepeaterFunctions><!-- 0x251 -->
+                <setRepeaterFilter>false</setRepeaterFilter><!-- 0x252 -->
+            </features>
+        </remoteManagementInfo>
+    </metadata>
+    <packets>
+        <packet id="MOTION_ON_DAY">
+            <direction>toCentral</direction>
+            <type>0xF6</type>
+            <channel>1</channel>
+            <binaryPayload>
+                <element>
+                    <bitIndex>51</bitIndex>
+                    <bitSize>1</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>8</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>0x30</constValueInteger>
+                </element>
+                <element>
+                    <parameterId>MOTION</parameterId>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+            </binaryPayload>
+        </packet>
+        <packet id="MOTION_OFF_DAY">
+            <direction>toCentral</direction>
+            <type>0xF6</type>
+            <channel>1</channel>
+            <binaryPayload>
+                <element>
+                    <bitIndex>51</bitIndex>
+                    <bitSize>1</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>8</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>0x20</constValueInteger>
+                </element>
+                <element>
+                    <parameterId>MOTION</parameterId>
+                    <constValueInteger>0</constValueInteger>
+                </element>
+            </binaryPayload>
+        </packet>
+        <packet id="MOTION_ON_NIGHT">
+            <direction>toCentral</direction>
+            <type>0xF6</type>
+            <channel>1</channel>
+            <binaryPayload>
+                <element>
+                    <bitIndex>51</bitIndex>
+                    <bitSize>1</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>8</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>0x10</constValueInteger>
+                </element>
+                <element>
+                    <parameterId>MOTION</parameterId>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+            </binaryPayload>
+        </packet>
+        <packet id="MOTION_OFF_NIGHT">
+            <direction>toCentral</direction>
+            <type>0xF6</type>
+            <channel>1</channel>
+            <binaryPayload>
+                <element>
+                    <bitIndex>51</bitIndex>
+                    <bitSize>1</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>8</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>0</constValueInteger>
+                </element>
+                <element>
+                    <parameterId>MOTION</parameterId>
+                    <constValueInteger>0</constValueInteger>
+                </element>
+            </binaryPayload>
+        </packet>
+        <packet id="INFO_1">
+            <direction>toCentral</direction>
+            <type>0xA5</type>
+            <channel>2</channel>
+            <binaryPayload>
+                <element>
+                    <bitIndex>36</bitIndex>
+                    <bitSize>1</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>38</bitIndex>
+                    <bitSize>1</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>16</bitIndex>
+                    <bitSize>8</bitSize>
+                    <parameterId>HUMIDITY</parameterId>
+                </element>
+                <element>
+                    <bitIndex>24</bitIndex>
+                    <bitSize>8</bitSize>
+                    <parameterId>TEMPERATURE</parameterId>
+                </element>
+            </binaryPayload>
+        </packet>
+        <packet id="INFO_2">
+            <direction>toCentral</direction>
+            <type>0xA5</type>
+            <channel>2</channel>
+            <binaryPayload>
+                <element>
+                    <bitIndex>36</bitIndex>
+                    <bitSize>1</bitSize>
+                    <constValueInteger>1</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>38</bitIndex>
+                    <bitSize>1</bitSize>
+                    <constValueInteger>0</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>16</bitIndex>
+                    <bitSize>8</bitSize>
+                    <parameterId>HUMIDITY</parameterId>
+                </element>
+            </binaryPayload>
+        </packet>
+        <packet id="INFO_3">
+            <direction>toCentral</direction>
+            <type>0xD0</type>
+            <channel>0</channel>
+            <binaryPayload>
+                <element>
+                    <bitIndex>8</bitIndex>
+                    <bitSize>8</bitSize>
+                    <constValueInteger>6</constValueInteger>
+                </element>
+                <element>
+                    <bitIndex>16</bitIndex>
+                    <bitSize>8</bitSize>
+                    <parameterId>SUPPLY_VOLTAGE</parameterId>
+                </element>
+            </binaryPayload>
+        </packet>
+    </packets>
+    <parameterGroups xmlns="https://homegear.eu/xmlNamespaces/DeviceType">
+        <configParameters id="EnOceanConfig">
+            <parameter id="SECURITY_CODE">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <password>true</password>
+                    <casts>
+                        <rpcBinary/>
+                    </casts>
+                </properties>
+                <logicalString>
+                    <defaultValue>00000000</defaultValue>
+                </logicalString>
+                <physicalNone>
+                    <operationType>config</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="ON_TIME">
+                <properties>
+                    <unit>s</unit>
+                </properties>
+                <logicalInteger>
+                    <defaultValue>0x0078</defaultValue>
+                    <minimumValue>60</minimumValue>
+                    <maximumValue>3600</maximumValue>
+                </logicalInteger>
+                <physicalInteger>
+                    <memoryIndex>9</memoryIndex>
+                    <bitSize>16</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="BRIGHTNESS_THRESHOLD">
+                <properties/>
+                <logicalInteger>
+                    <defaultValue>20</defaultValue>
+                    <minimumValue>20</minimumValue>
+                    <maximumValue>2000</maximumValue>
+                </logicalInteger>
+                <physicalInteger>
+                    <memoryIndex>10</memoryIndex>
+                    <bitSize>16</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="OFF_WARNING_TIME">
+                <properties>
+                    <unit>s</unit>
+                </properties>
+                <logicalInteger>
+                    <defaultValue>0</defaultValue>
+                    <minimumValue>0</minimumValue>
+                    <maximumValue>45</maximumValue>
+                </logicalInteger>
+                <physicalInteger>
+                    <memoryIndex>11</memoryIndex>
+                    <bitSize>8</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="OFF_WARNING_DURATION">
+                <properties>
+                    <unit>ms</unit>
+                </properties>
+                <logicalInteger>
+                    <defaultValue>0x01F4</defaultValue>
+                    <minimumValue>200</minimumValue>
+                    <maximumValue>2000</maximumValue>
+                </logicalInteger>
+                <physicalInteger>
+                    <memoryIndex>12</memoryIndex>
+                    <bitSize>16</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="MEASUREMENT_INTERVAL">
+                <properties>
+                    <unit>s</unit>
+                </properties>
+                <logicalInteger>
+                    <defaultValue>15</defaultValue>
+                    <minimumValue>15</minimumValue>
+                    <maximumValue>60</maximumValue>
+                </logicalInteger>
+                <physicalInteger>
+                    <memoryIndex>15</memoryIndex>
+                    <bitSize>16</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="MEASUREMENT_SENDING_COUNT">
+                <properties>
+                    <unit>s</unit>
+                </properties>
+                <logicalInteger>
+                    <defaultValue>10</defaultValue>
+                    <minimumValue>1</minimumValue>
+                    <maximumValue>10</maximumValue>
+                </logicalInteger>
+                <physicalInteger>
+                    <memoryIndex>16</memoryIndex>
+                    <bitSize>8</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="SENDING_TEMPERATURE_DIFFERENCE">
+                <properties>
+                    <unit>°C</unit>
+                    <casts>
+                        <round>
+                            <decimalPlaces>1</decimalPlaces>
+                        </round>
+                        <decimalIntegerScale>
+                            <factor>10.0</factor>
+                        </decimalIntegerScale>
+                    </casts>
+                </properties>
+                <logicalDecimal>
+                    <defaultValue>0.5</defaultValue>
+                    <minimumValue>0.1</minimumValue>
+                    <maximumValue>2.0</maximumValue>
+                </logicalDecimal>
+                <physicalInteger>
+                    <memoryIndex>17</memoryIndex>
+                    <bitSize>8</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="SENDING_HUMIDITY_DIFFERENCE">
+                <properties>
+                    <unit>%</unit>
+                </properties>
+                <logicalInteger>
+                    <defaultValue>3</defaultValue>
+                    <minimumValue>1</minimumValue>
+                    <maximumValue>10</maximumValue>
+                </logicalInteger>
+                <physicalInteger>
+                    <memoryIndex>18</memoryIndex>
+                    <bitSize>8</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="MEASUREMENT_OFFSET">
+                <properties>
+                    <unit>°C</unit>
+                    <casts>
+                        <round>
+                            <decimalPlaces>1</decimalPlaces>
+                        </round>
+                        <decimalIntegerScale>
+                            <factor>10.0</factor>
+                            <offset>12.7</offset>
+                        </decimalIntegerScale>
+                    </casts>
+                </properties>
+                <logicalDecimal>
+                    <defaultValue>0.0</defaultValue>
+                    <minimumValue>-12.0</minimumValue>
+                    <maximumValue>12.0</maximumValue>
+                </logicalDecimal>
+                <physicalInteger>
+                    <memoryIndex>19</memoryIndex>
+                    <bitSize>16</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="MOTION_SENSITIVITY">
+                <properties>
+                    <linkedParameter>MOTION_SENSITIVITY_2</linkedParameter>
+                    <casts>
+                        <integerIntegerMap>
+                            <direction>both</direction>
+                            <value>
+                                <physical>0x0064</physical>
+                                <logical>0</logical>
+                            </value>
+                            <value>
+                                <physical>0x00FA</physical>
+                                <logical>1</logical>
+                            </value>
+                            <value>
+                                <physical>0x012C</physical>
+                                <logical>2</logical>
+                            </value>
+                            <value>
+                                <physical>0x0190</physical>
+                                <logical>3</logical>
+                            </value>
+                        </integerIntegerMap>
+                    </casts>
+                </properties>
+                <logicalEnumeration>
+                    <defaultValue>0</defaultValue>
+                    <value>
+                        <id>High</id>
+                        <index>0</index>
+                    </value>
+                    <value>
+                        <id>Moderate</id>
+                        <index>1</index>
+                    </value>
+                    <value>
+                        <id>Low</id>
+                        <index>2</index>
+                    </value>
+                    <value>
+                        <id>Very low</id>
+                        <index>3</index>
+                    </value>
+                </logicalEnumeration>
+                <physicalInteger>
+                    <memoryIndex>20</memoryIndex>
+                    <bitSize>16</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="MOTION_SENSITIVITY_2">
+                <properties>
+                    <visible>false</visible>
+                    <linkedParameter>MOTION_SENSITIVITY</linkedParameter>
+                    <casts>
+                        <integerIntegerMap>
+                            <direction>both</direction>
+                            <value>
+                                <physical>0x0040</physical>
+                                <logical>0</logical>
+                            </value>
+                            <value>
+                                <physical>0x00E1</physical>
+                                <logical>1</logical>
+                            </value>
+                            <value>
+                                <physical>0x0118</physical>
+                                <logical>2</logical>
+                            </value>
+                            <value>
+                                <physical>0x0177</physical>
+                                <logical>3</logical>
+                            </value>
+                        </integerIntegerMap>
+                    </casts>
+                </properties>
+                <logicalEnumeration>
+                    <defaultValue>0x0040</defaultValue>
+                    <value>
+                        <id>High</id>
+                        <index>0</index>
+                    </value>
+                    <value>
+                        <id>Moderate</id>
+                        <index>1</index>
+                    </value>
+                    <value>
+                        <id>Low</id>
+                        <index>2</index>
+                    </value>
+                    <value>
+                        <id>Very low</id>
+                        <index>3</index>
+                    </value>
+                </logicalEnumeration>
+                <physicalInteger>
+                    <memoryIndex>21</memoryIndex>
+                    <bitSize>16</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="RECOM_ALIVE_INTERVAL">
+                <properties>
+                    <unit>h</unit>
+                    <casts>
+                        <integerIntegerScale>
+                            <operation>multiplication</operation>
+                            <factor>360</factor>
+                            <offset>0</offset>
+                        </integerIntegerScale>
+                    </casts>
+                </properties>
+                <logicalInteger>
+                    <defaultValue>24</defaultValue>
+                    <minimumValue>1</minimumValue>
+                    <maximumValue>24</maximumValue>
+                </logicalInteger>
+                <physicalInteger>
+                    <memoryIndex>7</memoryIndex>
+                    <bitSize>16</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="LIGHT_SWITCH_DETECTION">
+                <properties>
+                    <casts>
+                        <integerIntegerMap>
+                            <direction>both</direction>
+                            <value>
+                                <physical>0x1388</physical>
+                                <logical>0</logical>
+                            </value>
+                            <value>
+                                <physical>0x000A</physical>
+                                <logical>1</logical>
+                            </value>
+                            <value>
+                                <physical>0x001E</physical>
+                                <logical>2</logical>
+                            </value>
+                            <value>
+                                <physical>0x0046</physical>
+                                <logical>3</logical>
+                            </value>
+                            <value>
+                                <physical>0x0096</physical>
+                                <logical>4</logical>
+                            </value>
+                            <value>
+                                <physical>0x00FA</physical>
+                                <logical>5</logical>
+                            </value>
+                        </integerIntegerMap>
+                    </casts>
+                </properties>
+                <logicalEnumeration>
+                    <defaultValue>0</defaultValue>
+                    <value>
+                        <id>Off</id>
+                        <index>0</index>
+                    </value>
+                    <value>
+                        <id>10lx 2s</id>
+                        <index>1</index>
+                    </value>
+                    <value>
+                        <id>30lx 2s</id>
+                        <index>2</index>
+                    </value>
+                    <value>
+                        <id>70lx 3s</id>
+                        <index>3</index>
+                    </value>
+                    <value>
+                        <id>150lx 3s</id>
+                        <index>4</index>
+                    </value>
+                    <value>
+                        <id>250lx 3s</id>
+                        <index>5</index>
+                    </value>
+                </logicalEnumeration>
+                <physicalInteger>
+                    <memoryIndex>13</memoryIndex>
+                    <bitSize>16</bitSize>
+                    <operationType>config</operationType>
+                </physicalInteger>
+            </parameter>
+        </configParameters>
+        <variables id="maint_ch_values">
+            <parameter id="UNREACH">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>false</writeable>
+                    <service>true</service>
+                </properties>
+                <logicalBoolean/>
+                <physicalBoolean>
+                    <operationType>internal</operationType>
+                </physicalBoolean>
+            </parameter>
+            <parameter id="STICKY_UNREACH">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <service>true</service>
+                    <sticky>true</sticky>
+                </properties>
+                <logicalBoolean/>
+                <physicalBoolean>
+                    <operationType>internal</operationType>
+                </physicalBoolean>
+            </parameter>
+            <parameter id="CONFIG_PENDING">
+                <properties>
+                    <writeable>false</writeable>
+                    <service>true</service>
+                </properties>
+                <logicalBoolean/>
+                <physicalInteger groupId="CONFIG_PENDING">
+                    <operationType>internal</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="RSSI_DEVICE">
+                <properties>
+                    <writeable>false</writeable>
+                </properties>
+                <logicalInteger/>
+                <physicalInteger groupId="RSSI_DEVICE">
+                    <operationType>internal</operationType>
+                </physicalInteger>
+            </parameter>
+            <parameter id="SUPPLY_VOLTAGE">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>false</writeable>
+                    <!-- Physical type is not signed -->
+                    <signed>false</signed>
+                    <unit>%</unit>
+                </properties>
+                <logicalInteger>
+                    <minimumValue>0</minimumValue>
+                    <maximumValue>100</maximumValue>
+                </logicalInteger>
+                <physicalInteger groupId="SUPPLY_VOLTAGE">
+                    <operationType>internal</operationType>
+                </physicalInteger>
+                <packets>
+                    <packet id="INFO_3">
+                        <type>event</type>
+                    </packet>
+                </packets>
+            </parameter>
+        </variables>
+        <variables id="EnOceanMotion">
+            <parameter id="MOTION_DAY">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>false</writeable>
+                </properties>
+                <logicalBoolean>
+                    <defaultValue>false</defaultValue>
+                </logicalBoolean>
+                <physicalInteger groupId="MOTION">
+                    <operationType>command</operationType>
+                </physicalInteger>
+                <packets>
+                    <packet id="MOTION_ON_DAY">
+                        <type>event</type>
+                    </packet>
+                    <packet id="MOTION_OFF_DAY">
+                        <type>event</type>
+                    </packet>
+                </packets>
+            </parameter>
+            <parameter id="MOTION_NIGHT">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>false</writeable>
+                </properties>
+                <logicalBoolean>
+                    <defaultValue>false</defaultValue>
+                </logicalBoolean>
+                <physicalInteger groupId="MOTION">
+                    <operationType>command</operationType>
+                </physicalInteger>
+                <packets>
+                    <packet id="MOTION_ON_NIGHT">
+                        <type>event</type>
+                    </packet>
+                    <packet id="MOTION_OFF_NIGHT">
+                        <type>event</type>
+                    </packet>
+                </packets>
+            </parameter>
+        </variables>
+        <variables id="EnOceanTemperatureHumidity">
+            <parameter id="TEMPERATURE">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>false</writeable>
+                    <!-- Physical type is not signed -->
+                    <signed>false</signed>
+                    <unit>°C</unit>
+                    <casts>
+                        <round>
+                            <decimalPlaces>1</decimalPlaces>
+                        </round>
+                        <decimalIntegerScale>
+                            <factor>6.25</factor>
+                        </decimalIntegerScale>
+                    </casts>
+                </properties>
+                <logicalDecimal>
+                    <minimumValue>0.0</minimumValue>
+                    <maximumValue>40.0</maximumValue>
+                </logicalDecimal>
+                <physicalInteger groupId="TEMPERATURE">
+                    <operationType>command</operationType>
+                </physicalInteger>
+                <packets>
+                    <packet id="INFO_1">
+                        <type>event</type>
+                    </packet>
+                    <packet id="INFO_2">
+                        <type>event</type>
+                    </packet>
+                </packets>
+            </parameter>
+            <parameter id="HUMIDITY">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>false</writeable>
+                    <!-- Physical type is not signed -->
+                    <signed>false</signed>
+                    <unit>%</unit>
+                    <casts>
+                        <round>
+                            <decimalPlaces>1</decimalPlaces>
+                        </round>
+                        <decimalIntegerScale>
+                            <factor>2.5</factor>
+                        </decimalIntegerScale>
+                    </casts>
+                </properties>
+                <logicalDecimal>
+                    <minimumValue>0.0</minimumValue>
+                    <maximumValue>100.0</maximumValue>
+                </logicalDecimal>
+                <physicalInteger groupId="HUMIDITY">
+                    <operationType>command</operationType>
+                </physicalInteger>
+                <packets>
+                    <packet id="INFO_1">
+                        <type>event</type>
+                    </packet>
+                    <packet id="INFO_2">
+                        <type>event</type>
+                    </packet>
+                </packets>
+            </parameter>
+        </variables>
+    </parameterGroups>
+</homegearDevice>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<homegearDevice xmlns="https://homegear.eu/xmlNamespaces/HomegearDevice" version="1">
+	<supportedDevices xmlns="https://homegear.eu/xmlNamespaces/DeviceType">
+		<device id="01-D5-00-01">
+			<description>Eltako FTKE</description>
+			<typeNumber>0x01D50001</typeNumber>
+		</device>
+	</supportedDevices>
+	<properties>
+		<pairingMethod>createDevice</pairingMethod>
+	</properties>
+	<functions xmlns="https://homegear.eu/xmlNamespaces/DeviceType">
+		<function xmlns="https://homegear.eu/xmlNamespaces/FunctionGroupType" channel="0" type="MAINTENANCE">
+			<properties>
+				<internal>true</internal>
+			</properties>
+			<configParameters>EnOceanConfig</configParameters>
+			<variables>maint_ch_values</variables>
+		</function>
+		<function xmlns="https://homegear.eu/xmlNamespaces/FunctionGroupType" channel="1" type="EnOceanContact">
+			<variables>EnOceanVariables</variables>
+		</function>
+	</functions>
+	<packets>
+		<packet id="INFO_1">
+			<direction>toCentral</direction>
+			<type>0xF6</type>
+			<channel>1</channel>
+			<binaryPayload>
+				<element>
+					<bitIndex>8</bitIndex>
+					<bitSize>8</bitSize>
+					<constValueInteger>0xF0</constValueInteger>
+				</element>
+				<element>
+					<parameterId>STATE</parameterId>
+					<constValueInteger>0</constValueInteger>
+				</element>
+			</binaryPayload>
+		</packet>
+		<packet id="INFO_2">
+			<direction>toCentral</direction>
+			<type>0xF6</type>
+			<channel>1</channel>
+			<binaryPayload>
+				<element>
+					<bitIndex>8</bitIndex>
+					<bitSize>8</bitSize>
+					<constValueInteger>0xE0</constValueInteger>
+				</element>
+				<element>
+					<parameterId>STATE</parameterId>
+					<constValueInteger>1</constValueInteger>
+				</element>
+			</binaryPayload>
+		</packet>
+		<packet id="INFO_E_1">
+			<direction>toCentral</direction>
+			<type>0x32</type>
+			<channel>1</channel>
+			<binaryPayload>
+				<element>
+					<bitIndex>12</bitIndex>
+					<bitSize>4</bitSize>
+					<constValueInteger>2</constValueInteger>
+				</element>
+				<element>
+					<parameterId>STATE</parameterId>
+					<constValueInteger>0</constValueInteger>
+				</element>
+			</binaryPayload>
+		</packet>
+		<packet id="INFO_E_2">
+			<direction>toCentral</direction>
+			<type>0x32</type>
+			<channel>1</channel>
+			<binaryPayload>
+				<element>
+					<bitIndex>12</bitIndex>
+					<bitSize>4</bitSize>
+					<constValueInteger>3</constValueInteger>
+				</element>
+				<element>
+					<parameterId>STATE</parameterId>
+					<constValueInteger>1</constValueInteger>
+				</element>
+			</binaryPayload>
+		</packet>
+	</packets>
+	<parameterGroups xmlns="https://homegear.eu/xmlNamespaces/DeviceType">
+		<configParameters id="EnOceanConfig">
+			<parameter id="ENCRYPTION">
+				<properties>
+					<readable>true</readable>
+					<writeable>true</writeable>
+				</properties>
+				<logicalBoolean>
+					<defaultValue>false</defaultValue>
+				</logicalBoolean>
+				<physicalBoolean>
+					<operationType>config</operationType>
+				</physicalBoolean>
+			</parameter>
+		</configParameters>
+		<variables id="maint_ch_values">
+			<parameter id="UNREACH">
+				<properties>
+					<readable>true</readable>
+					<writeable>false</writeable>
+					<service>true</service>
+				</properties>
+				<logicalBoolean />
+				<physicalBoolean>
+					<operationType>internal</operationType>
+				</physicalBoolean>
+			</parameter>
+			<parameter id="STICKY_UNREACH">
+				<properties>
+					<readable>true</readable>
+					<writeable>true</writeable>
+					<service>true</service>
+					<sticky>true</sticky>
+				</properties>
+				<logicalBoolean />
+				<physicalBoolean>
+					<operationType>internal</operationType>
+				</physicalBoolean>
+			</parameter>
+			<parameter id="RSSI_DEVICE">
+				<properties>
+					<writeable>false</writeable>
+				</properties>
+				<logicalInteger/>
+				<physicalInteger groupId="RSSI_DEVICE">
+					<operationType>internal</operationType>
+				</physicalInteger>
+			</parameter>
+		</variables>
+		<variables id="EnOceanVariables">
+			<parameter id="STATE">
+				<properties>
+					<readable>true</readable>
+					<writeable>false</writeable>
+				</properties>
+				<logicalBoolean>
+					<defaultValue>false</defaultValue>
+				</logicalBoolean>
+				<physicalInteger groupId="STATE">
+					<operationType>command</operationType>
+				</physicalInteger>
+				<packets>
+					<packet id="INFO_1">
+						<type>event</type>
+					</packet>
+					<packet id="INFO_2">
+						<type>event</type>
+					</packet>
+					<packet id="INFO_E_1">
+						<type>event</type>
+					</packet>
+					<packet id="INFO_E_2">
+						<type>event</type>
+					</packet>
+				</packets>
+			</parameter>
+			<parameter id="SAFE_STATE">
+				<properties>
+					<readable>true</readable>
+					<writeable>false</writeable>
+					<resetAfterRestart>true</resetAfterRestart>
+				</properties>
+                <logicalEnumeration>
+                	<value>
+                        <id>Undefined</id>
+                        <index>-1</index>
+                    </value>
+                    <value>
+                        <id>Closed</id>
+                        <index>0</index>
+                    </value>
+                    <value>
+                        <id>Open</id>
+                        <index>1</index>
+                    </value>
+                </logicalEnumeration>
+				<physicalInteger groupId="STATE">
+					<operationType>command</operationType>
+				</physicalInteger>
+				<packets>
+					<packet id="INFO_1">
+						<type>event</type>
+					</packet>
+					<packet id="INFO_2">
+						<type>event</type>
+					</packet>
+				</packets>
+			</parameter>
+		</variables>
+	</parameterGroups>
+</homegearDevice>

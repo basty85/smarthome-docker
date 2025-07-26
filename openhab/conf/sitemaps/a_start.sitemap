@@ -1,0 +1,55 @@
+sitemap start label="Sina's & Basti's Houzz" {
+
+
+		Frame label="Heute" {
+
+        Text item=localLastMeasurement label= "Zeit"
+				Text item=localCurrentCondition label= "Wetterlage momentan"
+				Text item=localDailyforecastHours3Condition label= "Wetter in 3h"
+				Text item=localCurrentWindSpeed label= "Windgeschwindigkeit"
+				Text item=localCurrentPressure label= "Luftdruck"
+				Text item=Sunrise_Time label= "Sonnenaufgang" icon="sunrise"
+				Text item=Sunset_Time label= "Sonnenuntergang" icon="sunset"
+				Text item=MoonPhase label="Mondphase" icon="moon"
+				Text item=localCurrentTemperature label= "Temperatur Cleebronn" valuecolor=[Last_Update=="Uninitialized"="gray", >=25="orange", >=15="green", 0="white", <15="blue"]
+				Text item=temperatureSensorOutdoor_Temperature label="Sensor Outdoor" icon="temperature" valuecolor=[Last_Update=="Uninitialized"="gray", >=25="orange", >=15="green", 0="white", <15="blue"]
+    }
+
+    Frame label="Lights" {
+
+        Switch item=gLightsWohnzimmer label="Wohnzimmer" icon="light"
+				Colorpicker item=gLightsWohnzimmer label="WZ Farbe"
+
+				Switch item=gLightsOutdoor label="Outdoor" icon="light"
+				Colorpicker item=gLightsOutdoor label="Od Farbe" icon="colorwheel"
+
+				Switch item=gLightsMusikzimmer label="Musikzimmer" icon="light"
+				Colorpicker item=gLightsMusikzimmer label="MZ Farbe"
+
+    }
+
+		Frame label="Jalousien" {
+
+        Slider item=gSchlafzimmer label="Schlafzimmer" icon="blinds"
+				Slider item=gKind label="Kind" icon="blinds"
+				Slider item=gWohnzimmer label="Wohnzimmer" icon="blinds"
+    }
+
+    Frame label="Temperatur im Haus" {
+
+        Text item=temperatureSensorEntrance_Temperature label="Flur" icon="temperature"  	valuecolor=[Last_Update=="Uninitialized"="gray", >=25="orange", >=15="green", 0="white", <15="blue"]
+		    Text item=temperatureSensorHWR_Temperature  label="HWR" icon="temperature" 				valuecolor=[Last_Update=="Uninitialized"="gray", >=25="orange", >=15="green", 0="white", <15="blue"]
+		    Text item=temperatureSensorStairsUG_Temperature  label="Kellertreppe Oben" icon="temperature" valuecolor=[Last_Update=="Uninitialized"="gray", >=25="orange", >=15="green", 0="white", <15="blue"]
+		    Text item=temperatureSensorUG_Temperature label="Keller Unten" icon="temperature" valuecolor=[Last_Update=="Uninitialized"="gray", >=25="orange", >=15="green", 0="white", <15="blue"]
+
+		}
+
+		Frame label="Batteriestatus" {
+
+		    Text item=motionSensorOutdoor_BatteryLevel label="Outdoor" icon="battery" valuecolor=[Last_Update=="Uninitialized"="gray", >=20="green",  <=15="orange", <=5="red"]
+        Text item=motionSensorHWR_BatteryLevel label="HWR" icon="battery" valuecolor=[Last_Update=="Uninitialized"="gray", >=20="green",  <=15="orange", <=5="red"]
+				Text item=motionSensorEntrance_BatteryLevel  label="Flur" icon="battery" valuecolor=[Last_Update=="Uninitialized"="gray", >=20="green",  <=15="orange", <=5="red"]
+				Text item=motionSensorStairsUG_BatteryLevel label="Kellertreppe Oben" icon="battery" valuecolor=[Last_Update=="Uninitialized"="gray", >=20="green",  <=15="orange", <=5="red"]
+				Text item=motionSensorUG_BatteryLevel label="Keller" icon="battery" valuecolor=[Last_Update=="Uninitialized"="gray", >=20="green",  <=15="orange", <=5="red"]
+    }
+}

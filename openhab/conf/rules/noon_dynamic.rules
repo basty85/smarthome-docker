@@ -1,0 +1,84 @@
+rule "noon_dynamic_shutter_rule"
+when
+    Channel 'astro:sun:home:noon#event' triggered START
+    //Item lightActorEntrance_Switch changed //TEST switch
+then
+
+    if (localDailyforecastHours3Cloudiness.state < 75 | "%" ) { //Wenn NICHT bewölkt ist
+
+    livingRoomShutterLeft_Ang.sendCommand(60)
+    livingRoomShutterLeft_Pos.sendCommand(80)
+    Thread::sleep(100)
+    livingRoomShutterMiddle_Ang.sendCommand(60)
+    livingRoomShutterMiddle_Pos.sendCommand(40)
+    Thread::sleep(100)
+    livingRoomShutterRight_Ang.sendCommand(55)
+    livingRoomShutterRight_Pos.sendCommand(80)
+    Thread::sleep(100)
+    bedRoomShutterLeft_Ang.sendCommand(100)
+    bedRoomShutterLeft_Pos.sendCommand(100)
+    Thread::sleep(100)
+    bedRoomShutterUp_Ang.sendCommand(100)
+    bedRoomShutterUp_Pos.sendCommand(100)
+    Thread::sleep(100)
+    bedRoomShutterRight_Ang.sendCommand(100)
+    bedRoomShutterRight_Pos.sendCommand(100)
+    Thread::sleep(100)
+    //childRoomShutterLeft_Ang.sendCommand(100)
+    //childRoomShutterLeft_Pos.sendCommand(100)
+    //Thread::sleep(100)
+    //childRoomShutterUp_Ang.sendCommand(100)
+    //childRoomShutterUp_Pos.sendCommand(100)
+    //Thread::sleep(100)
+    //childRoomShutterRight_Ang.sendCommand(100)
+    //childRoomShutterRight_Pos.sendCommand(100)
+    //Thread::sleep(100)
+    changeRoomShutter_Ang.sendCommand(30)
+    changeRoomShutter_Pos.sendCommand(100)
+    Thread::sleep(100)
+    //diningRoomShutter_Ang.sendCommand(60)
+    //diningRoomShutter_Pos.sendCommand(30)
+    //Thread::sleep(100)
+
+    }
+
+    else { //Wenn bewölkt ist
+
+    //sind dann eh schon unten vom Abend, deshalb nichts tun!
+    /*livingRoomShutterLeft_Ang.sendCommand(0)
+    livingRoomShutterLeft_Pos.sendCommand(0)
+    Thread::sleep(100)
+    livingRoomShutterMiddle_Ang.sendCommand(0)
+    livingRoomShutterMiddle_Pos.sendCommand(0)
+    Thread::sleep(100)
+    livingRoomShutterRight_Ang.sendCommand(0)
+    livingRoomShutterRight_Pos.sendCommand(0)
+    Thread::sleep(100)
+    bedRoomShutterLeft_Ang.sendCommand(0)
+    bedRoomShutterLeft_Pos.sendCommand(0)
+    Thread::sleep(100)
+    bedRoomShutterUp_Ang.sendCommand(0)
+    bedRoomShutterUp_Pos.sendCommand(0)
+    Thread::sleep(100)
+    bedRoomShutterRight_Ang.sendCommand(0)
+    bedRoomShutterRight_Pos.sendCommand(0)
+    Thread::sleep(100)
+    childRoomShutterLeft_Ang.sendCommand(0)
+    childRoomShutterLeft_Pos.sendCommand(0)
+    Thread::sleep(100)
+    childRoomShutterUp_Ang.sendCommand(0)
+    childRoomShutterUp_Pos.sendCommand(0)
+    Thread::sleep(100)
+    childRoomShutterRight_Ang.sendCommand(0)
+    childRoomShutterRight_Pos.sendCommand(0)
+    Thread::sleep(100)*/
+    /*diningRoomShutter_Ang.sendCommand(60)
+    diningRoomShutter_Pos.sendCommand(30)
+    Thread::sleep(100)*/
+    
+    changeRoomShutter_Ang.sendCommand(0)
+    changeRoomShutter_Pos.sendCommand(0)
+     
+    }
+
+end

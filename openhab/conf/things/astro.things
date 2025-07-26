@@ -1,0 +1,3 @@
+//Sonnenaufgang, Untergang
+astro:sun:home  [ geolocation="49.042001413459815,9.036667882367395,257", interval=60 ]
+astro:moon:home [ geolocation="49.042001413459815,9.036667882367395", interval=60 ]

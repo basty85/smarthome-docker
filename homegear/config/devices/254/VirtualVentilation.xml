@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<homegearDevice xmlns="https://homegear.eu/xmlNamespaces/HomegearDevice" version="1">
+    <supportedDevices xmlns="https://homegear.eu/xmlNamespaces/DeviceType">
+        <device id="VirtualVentilation">
+            <description>VirtualVentilation</description>
+            <typeNumber>0xF010</typeNumber>
+        </device>
+    </supportedDevices>
+    <properties/>
+    <functions xmlns="https://homegear.eu/xmlNamespaces/DeviceType">
+        <function xmlns="https://homegear.eu/xmlNamespaces/FunctionGroupType" channel="0" type="MAINTENANCE">
+            <properties>
+                <internal>true</internal>
+            </properties>
+            <configParameters>config</configParameters>
+            <variables>maint_ch0_values</variables>
+        </function>
+        <function xmlns="https://homegear.eu/xmlNamespaces/FunctionGroupType" channel="1" type="VirtualVentilation"
+                  channelCount="1">
+            <variables>custom_ch1_values</variables>
+        </function>
+    </functions>
+    <parameterGroups xmlns="https://homegear.eu/xmlNamespaces/DeviceType">
+        <configParameters id="config"/>
+        <variables id="maint_ch0_values">
+            <parameter id="UNREACH">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <service>true</service>
+                </properties>
+                <logicalBoolean/>
+                <physicalBoolean>
+                    <operationType>internal</operationType>
+                </physicalBoolean>
+            </parameter>
+        </variables>
+        <variables id="custom_ch1_values">
+            <parameter id="ACTIVE">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                </properties>
+                <logicalBoolean/>
+                <physicalNone>
+                    <operationType>store</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="FAULT">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <service>true</service>
+                </properties>
+                <logicalBoolean/>
+                <physicalNone>
+                    <operationType>store</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="COLLECTIVE_FAULT">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <service>true</service>
+                </properties>
+                <logicalBoolean/>
+                <physicalNone>
+                    <operationType>store</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="ALARM">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <service>true</service>
+                </properties>
+                <logicalBoolean/>
+                <physicalNone>
+                    <operationType>store</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="COLLECTIVE_ALARM">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <service>true</service>
+                </properties>
+                <logicalBoolean/>
+                <physicalNone>
+                    <operationType>store</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="OUTSIDE_AIR_DIFFERENTIAL_PRESSURE">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <service>true</service>
+                </properties>
+                <logicalBoolean/>
+                <physicalNone>
+                    <operationType>store</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="OUTSIDE_AIR_VENTILATOR_FAULT">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <service>true</service>
+                </properties>
+                <logicalBoolean/>
+                <physicalNone>
+                    <operationType>store</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="OUTSIDE_AIR_VENTILATOR_ACTIVE">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                </properties>
+                <logicalBoolean/>
+                <physicalNone>
+                    <operationType>store</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="EXHAUST_AIR_DIFFERENTIAL_PRESSURE">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <service>true</service>
+                </properties>
+                <logicalBoolean/>
+                <physicalNone>
+                    <operationType>store</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="EXHAUST_AIR_VENTILATOR_FAULT">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <service>true</service>
+                </properties>
+                <logicalBoolean/>
+                <physicalNone>
+                    <operationType>store</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="EXHAUST_AIR_VENTILATOR_ACTIVE">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                </properties>
+                <logicalBoolean/>
+                <physicalNone>
+                    <operationType>store</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="FIRE_DAMPER_FAULT">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <service>true</service>
+                </properties>
+                <logicalBoolean/>
+                <physicalNone>
+                    <operationType>store</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="FIRE_DAMPER_COLLECTIVE_FAULT">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <service>true</service>
+                </properties>
+                <logicalBoolean/>
+                <physicalNone>
+                    <operationType>store</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="FIRE_DAMPER_STATUS">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <serviceInverted>true</serviceInverted>
+                </properties>
+                <logicalBoolean/>
+                <physicalNone>
+                    <operationType>store</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="CONO_SYSTEM_FAULT">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <service>true</service>
+                </properties>
+                <logicalBoolean/>
+                <physicalNone>
+                    <operationType>store</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="FIRE_ALARM">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <service>true</service>
+                    <priority>1</priority>
+                </properties>
+                <logicalBoolean/>
+                <physicalNone>
+                    <operationType>store</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="FILTER_ALARM">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <service>true</service>
+                </properties>
+                <logicalBoolean/>
+                <physicalNone>
+                    <operationType>store</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="OUTSIDE_AIR_HUMIDITY">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <unit>%</unit>
+                    <casts>
+                        <rpcBinary/>
+                    </casts>
+                </properties>
+                <logicalDecimal>
+                    <minimumValue>0</minimumValue>
+                    <maximumValue>100.0</maximumValue>
+                </logicalDecimal>
+                <physicalNone>
+                    <operationType>store</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="OUTSIDE_AIR_TEMPERATURE">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <unit>°C</unit>
+                    <casts>
+                        <rpcBinary/>
+                    </casts>
+                </properties>
+                <logicalDecimal>
+                    <minimumValue>-273.2</minimumValue>
+                    <maximumValue>1000.0</maximumValue>
+                </logicalDecimal>
+                <physicalNone>
+                    <operationType>store</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="EXHAUST_AIR_HUMIDITY">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <unit>%</unit>
+                    <casts>
+                        <rpcBinary/>
+                    </casts>
+                </properties>
+                <logicalDecimal>
+                    <minimumValue>0</minimumValue>
+                    <maximumValue>100.0</maximumValue>
+                </logicalDecimal>
+                <physicalNone>
+                    <operationType>store</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="EXHAUST_AIR_TEMPERATURE">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <unit>°C</unit>
+                    <casts>
+                        <rpcBinary/>
+                    </casts>
+                </properties>
+                <logicalDecimal>
+                    <minimumValue>-273.2</minimumValue>
+                    <maximumValue>1000.0</maximumValue>
+                </logicalDecimal>
+                <physicalNone>
+                    <operationType>store</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="EXTRACT_AIR_HUMIDITY">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <unit>%</unit>
+                    <casts>
+                        <rpcBinary/>
+                    </casts>
+                </properties>
+                <logicalDecimal>
+                    <minimumValue>0</minimumValue>
+                    <maximumValue>100.0</maximumValue>
+                </logicalDecimal>
+                <physicalNone>
+                    <operationType>store</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="EXTRACT_AIR_TEMPERATURE">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <unit>°C</unit>
+                    <casts>
+                        <rpcBinary/>
+                    </casts>
+                </properties>
+                <logicalDecimal>
+                    <minimumValue>-273.2</minimumValue>
+                    <maximumValue>1000.0</maximumValue>
+                </logicalDecimal>
+                <physicalNone>
+                    <operationType>store</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="SUPPLY_AIR_HUMIDITY">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <unit>%</unit>
+                    <casts>
+                        <rpcBinary/>
+                    </casts>
+                </properties>
+                <logicalDecimal>
+                    <minimumValue>0</minimumValue>
+                    <maximumValue>100.0</maximumValue>
+                </logicalDecimal>
+                <physicalNone>
+                    <operationType>store</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="SUPPLY_AIR_TEMPERATURE">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <unit>°C</unit>
+                    <casts>
+                        <rpcBinary/>
+                    </casts>
+                </properties>
+                <logicalDecimal>
+                    <minimumValue>-273.2</minimumValue>
+                    <maximumValue>1000.0</maximumValue>
+                </logicalDecimal>
+                <physicalNone>
+                    <operationType>store</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="OUTSIDE_TEMPERATURE">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <unit>°C</unit>
+                    <casts>
+                        <rpcBinary/>
+                    </casts>
+                </properties>
+                <logicalDecimal>
+                    <minimumValue>-273.2</minimumValue>
+                    <maximumValue>1000.0</maximumValue>
+                </logicalDecimal>
+                <physicalNone>
+                    <operationType>store</operationType>
+                </physicalNone>
+            </parameter>
+            <parameter id="FAN_LEVEL">
+                <properties>
+                    <readable>true</readable>
+                    <writeable>true</writeable>
+                    <casts>
+                        <rpcBinary/>
+                    </casts>
+                </properties>
+                <logicalDecimal>
+                    <minimumValue>0</minimumValue>
+                    <maximumValue>3</maximumValue>
+                </logicalDecimal>
+                <physicalNone>
+                    <operationType>store</operationType>
+                </physicalNone>
+            </parameter>
+        </variables>
+    </parameterGroups>
+</homegearDevice>

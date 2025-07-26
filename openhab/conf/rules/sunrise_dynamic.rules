@@ -1,0 +1,21 @@
+rule "sunrise_dynamic_shutter_rule"
+when
+    Channel 'astro:sun:home:rise#event' triggered START
+    //Item lightActorEntrance_Switch changed //TEST switch
+then
+
+    if (localDailyforecastHours3Cloudiness.state < 75 | "%" ) { //Wenn NICHT bewölkt ist
+
+    changeRoomShutter_Ang.sendCommand(0)
+    changeRoomShutter_Pos.sendCommand(100)
+    
+    }
+
+    else { //Wenn bewölkt ist
+
+    changeRoomShutter_Ang.sendCommand(0)
+    changeRoomShutter_Pos.sendCommand(0)
+        
+    }
+    
+end

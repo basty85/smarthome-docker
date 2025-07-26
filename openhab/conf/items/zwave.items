@@ -1,0 +1,26 @@
+//HWR
+Switch lightActorHWR_Switch     "Lichtschalter"         {channel="zwave:qubino_zmnhad_00_000:1:lightActor1:switch_binary"}
+Number lightActorHWR_MeterWatts "Leistung [%.1f W]"     { channel="zwave:qubino_zmnhad_00_000:1:lightActor1:meter_watts" }
+//Number lightActorHWR_MeterWatts1 "Leistung"    { channel="zwave:qubino_zmnhad_00_000:1:lightActor1:meter_watts1" }
+
+//Flur
+Switch lightActorEntrance_Switch     "Lichtschalter"         {channel="zwave:qubino_zmnhad_00_000:1:lightActor2:switch_binary"}
+Number lightActorEntrance_MeterWatts "Leistung [%.1f W]"    { channel="zwave:qubino_zmnhad_00_000:1:lightActor2:meter_watts" }
+//Number lightActorEntrance_MeterWatts1 "Leistung"    { channel="zwave:qubino_zmnhad_00_000:1:lightActor2:meter_watts1" }
+
+//TreppenhausUG
+Switch lightActorStairsUG_Switch     "Lichtschalter"         {channel="zwave:qubino_zmnhad_00_000:1:lightActor3:switch_binary"}
+Number lightActorStairsUG_MeterWatts "Leistung [%.1f W]"    { channel="zwave:qubino_zmnhad_00_000:1:lightActor3:meter_watts" }
+//Number lightActorStairsUG_MeterWatts1 "Leistung"    { channel="zwave:qubino_zmnhad_00_000:1:lightActor3:meter_watts1" }
+
+//Esszimmer
+Switch lightActorDining_Switch     "Lichtschalter"         {channel="zwave:qubino_zmnhdd_00_000:1:lightActor4:switch_binary"}
+Number lightActorDining_MeterWatts "Leistung [%.1f W]"    { channel="zwave:qubino_zmnhdd_00_000:1:lightActor4:meter_watts" }
+Dimmer lightActorDining_Dimmer     "Dimmer"                { channel="zwave:qubino_zmnhdd_00_000:1:lightActor4:switch_dimmer" }
+//Number lightActorDining_MeterWatts1 "Leistung"    { channel="zwave:qubino_zmnhad_00_000:1:lightActor4:meter_watts1" }
+
+
+//Draußen
+Switch lightActorOutdoor_Switch     "Lichtschalter"         {channel="zwave:qubino_zmnhad_00_000:1:lightActor5:switch_binary"}
+Number lightActorOutdoor_MeterWatts "Leistung [%.1f W]"    { channel="zwave:qubino_zmnhad_00_000:1:lightActor5:meter_watts" }
+//Number lightActorOutdoor_MeterWatts1 "Leistung"    { channel="zwave:qubino_zmnhad_00_000:1:lightActor5:meter_watts1" }

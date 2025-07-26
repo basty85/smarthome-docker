@@ -1,0 +1,23 @@
+rule "sunrise_static_shutter_rule"
+when
+
+    Channel 'astro:sun:home:rise#event' triggered START
+    //Item lightActorEntrance_Switch changed //TEST switch
+    
+then
+
+    //Rolläden
+    musicRoomShutter_Pos.sendCommand(0)
+    Thread::sleep(100)
+    wcShutter_Pos.sendCommand(0)
+    Thread::sleep(100)
+    officeShutter_Pos.sendCommand(0)
+    Thread::sleep(100)
+    bathShutter_Pos.sendCommand(0)
+    Thread::sleep(100)
+    
+    //Jalousien
+    //diningRoomShutter_Ang.sendCommand(0)
+    //diningRoomShutter_Pos.sendCommand(0)
+    
+end

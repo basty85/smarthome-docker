@@ -1,0 +1,44 @@
+Bridge homematic:bridge:1 "Bridge Homematic 1" [ gatewayAddress="127.0.0.1" ] {
+
+//Jalousien und Rolladen EG
+//Wohnzimmer
+Thing   HG-OPUS-BRiDGE-Blind--563-031-      EOD050BF2A4     "Wohnzimmer Jalousie Links"      @ "Wohn-/Esszimmer"
+Thing   HG-OPUS-BRiDGE-Blind--563-031-      EOD050BF887     "Wohnzimmer Jalousie Mitte"      @ "Wohn-/Esszimmer"
+Thing   HG-OPUS-BRiDGE-Blind--563-031-      EOD050BF866     "Wohnzimmer Jalousie Rechts"     @ "Wohn-/Esszimmer"
+
+//Esszimmer
+Thing   HG-OPUS-BRiDGE-Blind--563-031-      EOD050BF881     "Esszimmer Jalousie"     @ "Wohn-/Esszimmer"
+
+//Musikzimmer
+Thing   HG-OPUS-BRiDGE-Blind--563-031-      EOD050BF81B     "Musikzimmer Rolladen"     @ "Musikzimmer"
+
+//WC
+Thing   HG-OPUS-BRiDGE-Blind--563-031-      EOD0507DFC4     "WC Rolladen"     @ "WC EG"
+
+
+//Jalousien und Rolladen OG
+//Schlafen
+Thing   HG-OPUS-BRiDGE-Blind--563-031-      EOD0507DEE3     "Schlafen Jalousie Rechts"    @ "Schlafen"
+Thing   HG-OPUS-BRiDGE-Blind--563-031-      EOD0507DD7A     "Schlafen Jalousie Links"     @ "Schlafen"
+Thing   HG-OPUS-BRiDGE-Blind--563-031-      EOD0507DFC6     "Schlafen Jalousie Oben"      @ "Schlafen"
+
+//Kind
+Thing   HG-OPUS-BRiDGE-Blind--563-031-      EOD0507DEB1     "Kind Jalousie Links"     @ "Kind"
+Thing   HG-OPUS-BRiDGE-Blind--563-031-      EOD0507DF21     "Kind Jalousie Rechts"    @ "Kind"
+Thing   HG-OPUS-BRiDGE-Blind--563-031-      EOD0507DF6A     "Kind Jalousie Oben"      @ "Kind"
+
+//Ankleide
+Thing   HG-OPUS-BRiDGE-Blind--563-031-      EOD0507DF11     "Ankleide Jalousie"     @ "Ankleide"
+
+//Büro
+Thing   HG-OPUS-BRiDGE-Blind--563-031-      EOD0507C5A1     "Büro Rolladen"     @ "Büro"
+
+//Bad OG
+Thing   HG-OPUS-BRiDGE-Blind--563-031-      EOD0507DFD9     "Bad Rolladen"     @ "Bad OG"
+
+
+
+
+Thing   GATEWAY-EXTRAS-1 GWE00000000     "Bridge Homematic Virtual 2"
+
+}

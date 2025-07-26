@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<homegearDevice xmlns="https://homegear.eu/xmlNamespaces/HomegearDevice" version="1">
+	<supportedDevices xmlns="https://homegear.eu/xmlNamespaces/DeviceType">
+		<device id="01-A5-08-01">
+			<description>Eltako FHB65B/FBH65S/FAH65S/FBH65TFB</description>
+			<typeNumber>0x01A50801</typeNumber>
+		</device>
+	</supportedDevices>
+	<properties>
+		<timeout>7200</timeout>
+		<pairingMethod>createDevice+[PAIRING]</pairingMethod>
+	</properties>
+	<functions xmlns="https://homegear.eu/xmlNamespaces/DeviceType">
+		<function xmlns="https://homegear.eu/xmlNamespaces/FunctionGroupType" channel="0" type="MAINTENANCE">
+			<properties>
+				<internal>true</internal>
+			</properties>
+			<configParameters>EnOceanConfig</configParameters>
+			<variables>maint_ch_values</variables>
+		</function>
+		<function xmlns="https://homegear.eu/xmlNamespaces/FunctionGroupType" channel="1" type="EnOceanOccupancy">
+			<variables>EnOceanVariables</variables>
+		</function>
+	</functions>
+	<packets>
+		<packet id="INFO">
+			<direction>toCentral</direction>
+			<type>0xA5</type>
+			<channel>1</channel>
+			<binaryPayload>
+				<element>
+					<bitIndex>16</bitIndex>
+					<bitSize>8</bitSize>
+					<parameterId>ILLUMINATION</parameterId>
+				</element>
+				<element>
+					<bitIndex>32</bitIndex>
+					<bitSize>8</bitSize>
+					<parameterId>MOTION</parameterId>
+				</element>
+			</binaryPayload>
+		</packet>
+	</packets>
+	<parameterGroups xmlns="https://homegear.eu/xmlNamespaces/DeviceType">
+		<configParameters id="EnOceanConfig">
+			<parameter id="ENCRYPTION">
+				<properties>
+					<readable>true</readable>
+					<writeable>true</writeable>
+				</properties>
+				<logicalBoolean>
+					<defaultValue>false</defaultValue>
+				</logicalBoolean>
+				<physicalBoolean>
+					<operationType>config</operationType>
+				</physicalBoolean>
+			</parameter>
+		</configParameters>
+		<variables id="maint_ch_values">
+			<parameter id="UNREACH">
+				<properties>
+					<readable>true</readable>
+					<writeable>false</writeable>
+					<service>true</service>
+				</properties>
+				<logicalBoolean />
+				<physicalBoolean>
+					<operationType>internal</operationType>
+				</physicalBoolean>
+			</parameter>
+			<parameter id="STICKY_UNREACH">
+				<properties>
+					<readable>true</readable>
+					<writeable>true</writeable>
+					<service>true</service>
+					<sticky>true</sticky>
+				</properties>
+				<logicalBoolean />
+				<physicalBoolean>
+					<operationType>internal</operationType>
+				</physicalBoolean>
+			</parameter>
+			<parameter id="RSSI_DEVICE">
+				<properties>
+					<writeable>false</writeable>
+				</properties>
+				<logicalInteger/>
+				<physicalInteger groupId="RSSI_DEVICE">
+					<operationType>internal</operationType>
+				</physicalInteger>
+			</parameter>
+		</variables>
+		<variables id="EnOceanVariables">
+			<parameter id="MOTION">
+				<properties>
+					<readable>true</readable>
+					<writeable>false</writeable>
+					<casts>
+						<booleanInteger>
+							<trueValue>0x0d</trueValue>
+							<falseValue>0x0f</falseValue>
+							<threshold>0xff</threshold>
+						</booleanInteger>
+					</casts>
+				</properties>
+				<logicalBoolean/>
+				<physicalInteger groupId="MOTION">
+					<operationType>command</operationType>
+				</physicalInteger>
+				<packets>
+					<packet id="INFO">
+						<type>event</type>
+					</packet>
+				</packets>
+			</parameter>
+            <parameter id="ILLUMINATION">
+                    <properties>
+                            <readable>true</readable>
+                            <writeable>false</writeable>
+                            <!-- Physical type is not signed -->
+                            <signed>false</signed>
+                            <unit>lx</unit>
+                            <casts>
+                                    <integerIntegerScale>
+                                            <operation>multiplication</operation>
+                                            <factor>0.125</factor>
+                                    </integerIntegerScale>
+                            </casts>
+                    </properties>
+                    <logicalInteger>
+                            <minimumValue>0</minimumValue>
+                            <maximumValue>2048</maximumValue>
+                            <specialValues>
+                                    <specialValue id="unset">0</specialValue>
+                            </specialValues>
+                    </logicalInteger>
+                    <physicalInteger groupId="ILLUMINATION">
+                            <operationType>command</operationType>
+                    </physicalInteger>
+                    <packets>
+                            <packet id="INFO">
+                                    <type>event</type>
+                            </packet>
+                    </packets>
+            </parameter>
+		</variables>
+	</parameterGroups>
+</homegearDevice>

@@ -1,0 +1,68 @@
+sitemap shutters_EG label="Verschattung EG"
+{
+
+	Frame label="Wohnzimmer Jalousie Links" {
+
+		Switch		item=		livingRoomShutterLeft_Pos           icon="blinds" mappings=[0="AUF", 15="15%", 30="30%"]
+		Switch		item=		livingRoomShutterLeft_Pos           icon="blinds" label="" mappings=[50="50%", 65="65%", 80="80%"]
+
+        Switch		item=		livingRoomShutterLeft_Ang           icon="blinds" label="Winkel" mappings=[0="0%", 15="15%", 30="GERADE"]
+		Switch		item=		livingRoomShutterLeft_Ang           icon="blinds" label="" mappings=[50="50%", 75="75%", 100="ZU"]
+
+        Text	    item=		livingRoomShutterLeft_CurrentPos    label="Aktuelle Position [%d %%]" icon="blinds"
+        Text	    item=		livingRoomShutterLeft_CurrentAng    label="Aktueller Winkel [%d %%]" icon="blinds"
+    }
+
+    Frame label="Wohnzimmer Jalousie Mitte" {
+
+		Switch		item=		livingRoomShutterMiddle_Pos           icon="blinds" mappings=[0="AUF", 15="15%", 30="30%"]
+		Switch		item=		livingRoomShutterMiddle_Pos           icon="blinds" label="" mappings=[50="50%", 65="65%", 80="80%"]
+
+        Switch		item=		livingRoomShutterMiddle_Ang           icon="blinds" label="Winkel" mappings=[0="0%", 15="15%", 30="GERADE"]
+		Switch		item=		livingRoomShutterMiddle_Ang           icon="blinds" label="" mappings=[50="50%", 75="75%", 100="ZU"]
+
+        Text	    item=		livingRoomShutterMiddle_CurrentPos    label="Aktuelle Position [%d %%]" icon="blinds"
+        Text	    item=		livingRoomShutterMiddle_CurrentAng    label="Aktueller Winkel [%d %%]" icon="blinds"
+    }
+
+    Frame label="Wohnzimmer Jalousie Rechts" {
+
+		Switch		item=		livingRoomShutterRight_Pos           icon="blinds" mappings=[0="AUF", 15="15%", 30="30%"]
+		Switch		item=		livingRoomShutterRight_Pos           icon="blinds" label="" mappings=[50="50%", 65="65%", 80="80%"]
+
+        Switch		item=		livingRoomShutterRight_Ang           icon="blinds" label="Winkel" mappings=[0="0%", 15="15%", 30="GERADE"]
+		Switch		item=		livingRoomShutterRight_Ang           icon="blinds" label="" mappings=[50="50%", 75="75%", 100="ZU"]
+
+        Text	    item=		livingRoomShutterRight_CurrentPos    label="Aktuelle Position [%d %%]" icon="blinds"
+        Text	    item=		livingRoomShutterRight_CurrentAng    label="Aktueller Winkel [%d %%]" icon="blinds"
+    }
+
+
+    Frame label="Esszimmer Jalousie" {
+
+		Switch		item=		diningRoomShutter_Pos           icon="blinds" mappings=[0="AUF", 15="15%", 30="30%"]
+		Switch		item=		diningRoomShutter_Pos           icon="blinds" label="" mappings=[50="50%", 65="65%", 80="80%"]
+
+        Switch		item=		diningRoomShutter_Ang           icon="blinds" label="Winkel" mappings=[0="0%", 15="15%", 30="GERADE"]
+		Switch		item=		diningRoomShutter_Ang           icon="blinds" label="" mappings=[50="50%", 75="75%", 100="ZU"]
+
+        Text	    item=		diningRoomShutter_CurrentPos    label="Aktuelle Position [%d %%]" icon="blinds"
+        Text	    item=		diningRoomShutter_CurrentAng    label="Aktueller Winkel [%d %%]" icon="blinds"
+    }
+
+    Frame label="Musikzimmer Rolladen" {
+
+		Switch		item=		musicRoomShutter_Pos           icon="blinds" mappings=[0="AUF", 20="20%", 40="40%"]
+		Switch		item=		musicRoomShutter_Pos           icon="blinds" label="" mappings=[60="60%", 80="80%", 100="ZU"]
+
+        Text	    item=		musicRoomShutter_CurrentPos    label="Aktuelle Position [%d %%]" icon="blinds"
+    }
+
+    Frame label="WC Rolladen" {
+
+		Switch		item=		wcShutter_Pos           icon="blinds" mappings=[0="AUF", 20="20%", 40="40%"]
+		Switch		item=		wcShutter_Pos           icon="blinds" label="" mappings=[60="60%", 80="80%", 100="ZU"]
+
+        Text	    item=		wcShutter_CurrentPos    label="Aktuelle Position [%d %%]" icon="blinds"
+    }
+}

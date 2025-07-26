@@ -1,0 +1,5 @@
+{
+  "system-provider/*": "homegear",
+  "system-distributor/*": "homegear",
+  "end-user/*": "homegear"
+}
