@@ -1,3 +1,9 @@
 openhab/userdata/
-homegear/data/
 homegear/logs/
+backups/
+*.tar.gz
+homegear-backup.tar.gz
+
+# Homegear data - ignoriere alles außer db.sql*
+homegear/data/*
+!homegear/data/db.sql*

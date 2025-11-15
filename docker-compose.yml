@@ -21,18 +21,17 @@ services:
       - HUE_BRIDGE_IP=192.168.1.33
     # privileged: true  # Nicht nötig für OpenHAB
 
-  # Homegear für EnOcean - später aktivieren wenn OpenHAB läuft
-  # homegear:
-  #   image: homegear/homegear:latest
-  #   container_name: homegear
-  #   restart: unless-stopped
-  #   network_mode: host
-  #   devices:
-  #     # EnOcean USB Stick (CP2102N)
-  #     - /dev/serial/by-id/usb-Silicon_Labs_CP2102N_USB_to_UART_Bridge_Controller_1c80343ba979ed11b998d50ffef7b791-if00-port0:/dev/enocean
-  #   volumes:
-  #     - ./homegear/config:/etc/homegear
-  #     - ./homegear/data:/var/lib/homegear
-  #     - ./homegear/logs:/var/log/homegear
-  #   environment:
-  #     - TZ=Europe/Berlin
+  homegear:
+    image: homegear/homegear:latest
+    container_name: homegear
+    restart: unless-stopped
+    network_mode: host
+    devices:
+      # EnOcean USB300 Stick (FTDI FT232R)
+      - /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A600I0TU-if00-port0:/dev/ttyUSB0
+    volumes:
+      - ./homegear/config:/etc/homegear
+      - ./homegear/data:/var/lib/homegear
+      - ./homegear/logs:/var/log/homegear
+    environment:
+      - TZ=Europe/Berlin
