@@ -4,6 +4,20 @@ backups/
 *.tar.gz
 homegear-backup.tar.gz
 
-# Homegear data - ignoriere alles außer db.sql*
+# Homegear data - ignoriere alles außer db.sql (main files only)
 homegear/data/*
-!homegear/data/db.sql*
+!homegear/data/db.sql
+!homegear/data/db.sql-shm
+!homegear/data/db.sql-wal
+
+# Homegear - ignoriere alle Dateien aus dem Backup die nicht benötigt werden
+homegear/admin-ui/
+homegear/node-blue/
+homegear/ui/
+homegear/web-ssh/
+homegear/www/
+homegear/modules/
+homegear/scripts/
+homegear/defaultRoles.json
+homegear/db.sql*
+homegear/config/devices/*/
