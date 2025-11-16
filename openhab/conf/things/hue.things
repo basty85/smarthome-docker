@@ -8,14 +8,14 @@ Bridge hue:bridge:1 "Bridge Hue" [ ipAddress="192.168.1.33", userName="tpqgk-FwA
 0210  huePlay2              "Musikzimmer Hue Play Links"            @ "Musikzimmer"         [ lightId="7" ]
 
 //Hue Flur
-0220  mainEntranceLight     "Flur Lampe"                            @ "Flur"                [ lightId="13" ]
+0220  mainEntranceLight     "Flur Lampe"                            @ "Flur EG"                [ lightId="13" ]
 
 //Hue Wohn-/Esszimmer
-0210  hueColor1             "Wohnzimmer Hue Color Todesstern"                 @ "Wohn-/Esszimmer"     [ lightId="2" ]
-0210  hueColor2             "Wohnzimmer Hue Color Eckstehlampe"               @ "Wohn-/Esszimmer"     [ lightId="9" ]
-0210  lightStrip3           "Wohnzimmer Lightstrip Fernseher"       @ "Wohn-/Esszimmer"     [ lightId="8" ]
-0210  lightStrip4           "Wohnzimmer Lightstrip Sofa"            @ "Wohn-/Esszimmer"     [ lightId="10" ]
-0210  lightStrip5           "Esszimmer Lightstrip"                  @ "Wohn-/Esszimmer"     [ lightId="11" ]
+0210  hueColor1             "Wohnzimmer Hue Color Todesstern"                 @ "Wohnzimmer"     [ lightId="2" ]
+0210  hueColor2             "Wohnzimmer Hue Color Eckstehlampe"               @ "Wohnzimmer"     [ lightId="9" ]
+0210  lightStrip3           "Wohnzimmer Lightstrip Fernseher"       @ "Wohnzimmer"     [ lightId="8" ]
+0210  lightStrip4           "Wohnzimmer Lightstrip Sofa"            @ "Wohnzimmer"     [ lightId="10" ]
+0210  lightStrip5           "Esszimmer Lightstrip"                  @ "Esszimmer"     [ lightId="11" ]
 
 //Outdoor
 0210  lightStrip6           "Draußen Lightstrip Blumenbeet"                    @ "Draußen"             [ lightId="12" ]
@@ -36,9 +36,9 @@ Bridge hue:bridge:1 "Bridge Hue" [ ipAddress="192.168.1.33", userName="tpqgk-FwA
 0302  temperatureSensorUtilRoom "HWR Temperatursensor"          @ "HWR"             [ sensorId="2" ]
 
 //Sensor Flur
-0106  lightSensorEntrance       "Flur Lichtsensor"                     @ "Flur"             [ sensorId="15" ]
-0107  presenceSensorEntrance    "Flur Bewegungssensor"                 @ "Flur"             [ sensorId="14" ]
-0302  temperatureSensorEntrance "Flur Temperatursensor"                @ "Flur"             [ sensorId="16" ]
+0106  lightSensorEntrance       "Flur Lichtsensor"                     @ "Flur EG"             [ sensorId="15" ]
+0107  presenceSensorEntrance    "Flur Bewegungssensor"                 @ "Flur EG"             [ sensorId="14" ]
+0302  temperatureSensorEntrance "Flur Temperatursensor"                @ "Flur EG"             [ sensorId="16" ]
 
 //Sensor TreppenhausUG
 0106  lightSensorStairsUG       "Treppenhaus Lichtsensor Oben"                     @ "Treppenhaus UG"             [ sensorId="7" ]
