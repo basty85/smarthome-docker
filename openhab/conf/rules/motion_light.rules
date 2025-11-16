@@ -4,82 +4,129 @@ var Timer delay3 = null
 var Timer delay4 = null
 
 
-//HWR
+// HWR
 rule "DetectPresenceAndSwitchLight_HWR_EG"
 when
     Item motionSensorHWR_Presence changed
 then
     if (motionSensorHWR_Presence.state == ON && lightLevelSensorHWR_Dark.state == ON) {
+
         if (delay !== null) {
             delay.cancel()
             delay = null
         }
+
         lightActorHWR_Switch.sendCommand(ON)
     }
     else if (motionSensorHWR_Presence.state == OFF) {
-        delay = createTimer(now.plusSeconds(20), [|
-            lightActorHWR_Switch.sendCommand(OFF)
+
+        if (delay !== null) {
+            delay.cancel()
+            delay = null
+        }
+
+        delay = createTimer(now.plusSeconds(20), [ |
+            if (motionSensorHWR_Presence.state == OFF) {
+                lightActorHWR_Switch.sendCommand(OFF)
+            }
+            delay = null
         ])
     }
 end
 
 
-//Trepenhaus Keller
+
+// Treppenhaus Keller
 rule "DetectPresenceAndSwitchLight_Treppenhaus_UG"
 when
     Item motionSensorStairsUG_Presence changed or
     Item motionSensorUG_Presence changed
 then
     if (motionSensorStairsUG_Presence.state == ON || motionSensorUG_Presence.state == ON) {
+
         if (delay2 !== null) {
             delay2.cancel()
             delay2 = null
         }
+
         lightActorStairsUG_Switch.sendCommand(ON)
     }
     else if (motionSensorStairsUG_Presence.state == OFF && motionSensorUG_Presence.state == OFF) {
-        delay2 = createTimer(now.plusSeconds(20), [|
-            lightActorStairsUG_Switch.sendCommand(OFF)
+
+        if (delay2 !== null) {
+            delay2.cancel()
+            delay2 = null
+        }
+
+        delay2 = createTimer(now.plusSeconds(20), [ |
+            if (motionSensorStairsUG_Presence.state == OFF && motionSensorUG_Presence.state == OFF) {
+                lightActorStairsUG_Switch.sendCommand(OFF)
+            }
+            delay2 = null
         ])
     }
 end
 
 
-//Outdoor
+
+// Outdoor
 rule "DetectPresenceAndSwitchLight_Outdoor"
 when
     Item motionSensorOutdoor_Presence changed
 then
     if (motionSensorOutdoor_Presence.state == ON && lightLevelSensorOutdoor_Dark.state == ON) {
+
         if (delay3 !== null) {
             delay3.cancel()
             delay3 = null
         }
+
         lightActorOutdoor_Switch.sendCommand(ON)
     }
     else if (motionSensorOutdoor_Presence.state == OFF) {
-        delay3 = createTimer(now.plusSeconds(20), [|
-            lightActorOutdoor_Switch.sendCommand(OFF)
+
+        if (delay3 !== null) {
+            delay3.cancel()
+            delay3 = null
+        }
+
+        delay3 = createTimer(now.plusSeconds(20), [ |
+            if (motionSensorOutdoor_Presence.state == OFF) {
+                lightActorOutdoor_Switch.sendCommand(OFF)
+            }
+            delay3 = null
         ])
     }
 end
 
 
-//Flur EG
+
+// Flur EG
 rule "DetectPresenceAndSwitchLight_Flur_EG"
 when
     Item motionSensorEntrance_Presence changed
 then
     if (motionSensorEntrance_Presence.state == ON && lightLevelSensorEntrance_Dark.state == ON) {
+
         if (delay4 !== null) {
             delay4.cancel()
             delay4 = null
         }
+
         lightActorEntrance_Switch.sendCommand(ON)
     }
     else if (motionSensorEntrance_Presence.state == OFF) {
-        delay4 = createTimer(now.plusSeconds(20), [|
-            lightActorEntrance_Switch.sendCommand(OFF)
+
+        if (delay4 !== null) {
+            delay4.cancel()
+            delay4 = null
+        }
+
+        delay4 = createTimer(now.plusSeconds(20), [ |
+            if (motionSensorEntrance_Presence.state == OFF) {
+                lightActorEntrance_Switch.sendCommand(OFF)
+            }
+            delay4 = null
         ])
     }
 end

@@ -18,9 +18,11 @@ Switch lightActorDining_Switch     "Lichtschalter"         {channel="zwave:qubin
 Number lightActorDining_MeterWatts "Leistung [%.1f W]"    { channel="zwave:qubino_zmnhdd_00_000:1:node6:meter_watts" }
 Dimmer lightActorDining_Dimmer     "Dimmer"                { channel="zwave:qubino_zmnhdd_00_000:1:node6:switch_dimmer" }
 //Number lightActorDining_MeterWatts1 "Leistung"    { channel="zwave:qubino_zmnhad_00_000:1:node6:meter_watts1" }
+Number:Temperature lightActorDining_Temperature "Temperatur [%.1f %unit%]"  <temperature>  {channel="zwave:qubino_zmnhdd_00_000:1:node6:sensor_temperature"}
 
 
 //Draußen
 Switch lightActorOutdoor_Switch     "Lichtschalter"         {channel="zwave:qubino_zmnhad_00_000:1:node2:switch_binary"}
 Number lightActorOutdoor_MeterWatts "Leistung [%.1f W]"    { channel="zwave:qubino_zmnhad_00_000:1:node2:meter_watts" }
 //Number lightActorOutdoor_MeterWatts1 "Leistung"    { channel="zwave:qubino_zmnhad_00_000:1:node2:meter_watts1" }
+Number:Temperature lightActorOutdoor_Temperature "Temperatur [%.1f %unit%]"  <temperature>  {channel="zwave:qubino_zmnhad_00_000:1:node2:sensor_temperature2"}
