@@ -33,7 +33,11 @@
           "sessionId": "8513d160-f021-4e13-b1df-76ff273bb525",
           "refreshToken": "1970da8111724d028e726c993d0786ab",
           "createdTime": "Nov 16, 2025, 11:07:05 AM",
+<<<<<<< HEAD
           "lastRefreshTime": "Nov 16, 2025, 8:37:53 PM",
+=======
+          "lastRefreshTime": "Nov 16, 2025, 7:43:39 PM",
+>>>>>>> d4494697afa1ae52d764809df6768ddfafe2c7fe
           "clientId": "http://192.168.1.37:8080",
           "redirectUri": "http://192.168.1.37:8080",
           "scope": "admin",

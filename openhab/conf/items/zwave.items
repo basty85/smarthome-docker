@@ -1,28 +1,28 @@
 //HWR
-Switch lightActorHWR_Switch     "Lichtschalter"         {channel="zwave:qubino_zmnhad_00_000:1:node5:switch_binary"}
-Number lightActorHWR_MeterWatts "Leistung [%.1f W]"     { channel="zwave:qubino_zmnhad_00_000:1:node5:meter_watts" }
-//Number lightActorHWR_MeterWatts1 "Leistung"    { channel="zwave:qubino_zmnhad_00_000:1:node5:meter_watts1" }
+Switch lightActorHWR_Switch     "Lichtschalter" (gHWR, gLights) <wallswitch>        {channel="zwave:qubino_zmnhad_00_000:1:hwrLightActor:switch_binary"}
+Number lightActorHWR_MeterWatts "Leistung [%.1f W]" (gHWR) <energy>    { channel="zwave:qubino_zmnhad_00_000:1:hwrLightActor:meter_watts" }
+//Number lightActorHWR_MeterWatts1 "Leistung"    { channel="zwave:qubino_zmnhad_00_000:1:hwrLightActor:meter_watts1" }
 
 //Flur
-Switch lightActorEntrance_Switch     "Lichtschalter"         {channel="zwave:qubino_zmnhad_00_000:1:node3:switch_binary"}
-Number lightActorEntrance_MeterWatts "Leistung [%.1f W]"    { channel="zwave:qubino_zmnhad_00_000:1:node3:meter_watts" }
-//Number lightActorEntrance_MeterWatts1 "Leistung"    { channel="zwave:qubino_zmnhad_00_000:1:node3:meter_watts1" }
+Switch lightActorEntrance_Switch     "Lichtschalter" (gEntrance, gLights) <wallswitch>         {channel="zwave:qubino_zmnhad_00_000:1:entranceLightActor:switch_binary"}
+Number lightActorEntrance_MeterWatts "Leistung [%.1f W]" (gEntrance) <energy>    { channel="zwave:qubino_zmnhad_00_000:1:entranceLightActor:meter_watts" }
+//Number lightActorEntrance_MeterWatts1 "Leistung"    { channel="zwave:qubino_zmnhad_00_000:1:entranceLightActor:meter_watts1" }
 
 //TreppenhausUG
-Switch lightActorStairsUG_Switch     "Lichtschalter"         {channel="zwave:qubino_zmnhad_00_000:1:node4:switch_binary"}
-Number lightActorStairsUG_MeterWatts "Leistung [%.1f W]"    { channel="zwave:qubino_zmnhad_00_000:1:node4:meter_watts" }
-//Number lightActorStairsUG_MeterWatts1 "Leistung"    { channel="zwave:qubino_zmnhad_00_000:1:node4:meter_watts1" }
+Switch lightActorStairsUG_Switch     "Lichtschalter" (gStairsUG, gLights) <wallswitch>         {channel="zwave:qubino_zmnhad_00_000:1:stairsLightActor:switch_binary"}
+Number lightActorStairsUG_MeterWatts "Leistung [%.1f W]" (gStairsUG) <energy>    { channel="zwave:qubino_zmnhad_00_000:1:stairsLightActor:meter_watts" }
+//Number lightActorStairsUG_MeterWatts1 "Leistung"    { channel="zwave:qubino_zmnhad_00_000:1:stairsLightActor:meter_watts1" }
 
 //Esszimmer
-Switch lightActorDining_Switch     "Lichtschalter"         {channel="zwave:qubino_zmnhdd_00_000:1:node6:switch_binary"}
-Number lightActorDining_MeterWatts "Leistung [%.1f W]"    { channel="zwave:qubino_zmnhdd_00_000:1:node6:meter_watts" }
-Dimmer lightActorDining_Dimmer     "Dimmer"                { channel="zwave:qubino_zmnhdd_00_000:1:node6:switch_dimmer" }
-//Number lightActorDining_MeterWatts1 "Leistung"    { channel="zwave:qubino_zmnhad_00_000:1:node6:meter_watts1" }
-Number:Temperature lightActorDining_Temperature "Temperatur [%.1f %unit%]"  <temperature>  {channel="zwave:qubino_zmnhdd_00_000:1:node6:sensor_temperature"}
+Switch lightActorDining_Switch     "Lichtschalter" (gDining, gLights) <wallswitch>         {channel="zwave:qubino_zmnhdd_00_000:1:diningDimmerActor:switch_binary"}
+Number lightActorDining_MeterWatts "Leistung [%.1f W]" (gDining) <energy>    { channel="zwave:qubino_zmnhdd_00_000:1:diningDimmerActor:meter_watts" }
+Dimmer lightActorDining_Dimmer     "Dimmer" (gDining) <slider>                { channel="zwave:qubino_zmnhdd_00_000:1:diningDimmerActor:switch_dimmer" }
+//Number lightActorDining_MeterWatts1 "Leistung"    { channel="zwave:qubino_zmnhdd_00_000:1:diningDimmerActor:meter_watts1" }
+Number:Temperature lightActorDining_Temperature "Temperatur [%.1f %unit%]" (gDining, gTemperatureSensors) <temperature>  {channel="zwave:qubino_zmnhdd_00_000:1:diningDimmerActor:sensor_temperature"}
 
 
 //Draußen
-Switch lightActorOutdoor_Switch     "Lichtschalter"         {channel="zwave:qubino_zmnhad_00_000:1:node2:switch_binary"}
-Number lightActorOutdoor_MeterWatts "Leistung [%.1f W]"    { channel="zwave:qubino_zmnhad_00_000:1:node2:meter_watts" }
-//Number lightActorOutdoor_MeterWatts1 "Leistung"    { channel="zwave:qubino_zmnhad_00_000:1:node2:meter_watts1" }
-Number:Temperature lightActorOutdoor_Temperature "Temperatur [%.1f %unit%]"  <temperature>  {channel="zwave:qubino_zmnhad_00_000:1:node2:sensor_temperature2"}
+Switch lightActorOutdoor_Switch     "Lichtschalter" (gOutdoor, gLights) <wallswitch>         {channel="zwave:qubino_zmnhad_00_000:1:outdoorLightActor:switch_binary"}
+Number lightActorOutdoor_MeterWatts "Leistung [%.1f W]" (gOutdoor) <energy>    { channel="zwave:qubino_zmnhad_00_000:1:outdoorLightActor:meter_watts" }
+//Number lightActorOutdoor_MeterWatts1 "Leistung"    { channel="zwave:qubino_zmnhad_00_000:1:outdoorLightActor:meter_watts1" }
+Number:Temperature lightActorOutdoor_Temperature "Temperatur [%.1f %unit%]" (gOutdoor, gTemperatureSensors) <temperature>  {channel="zwave:qubino_zmnhad_00_000:1:outdoorLightActor:sensor_temperature2"}

@@ -1,12 +1,12 @@
 Bridge zwave:serial_zstick:1 "Bridge Aeotec Z-Stick 7" [ port="/dev/zwave", controller_softreset="false", controller_master="true", heal_enable="true", security_networkkey="36 05 66 8F F9 E4 DF E4 0A EF E7 DF AC DF 21 07" ] {
     
     //Unterputzaktoren - Qubino Flush 1 Relay (ZMNHAD)
-    Thing qubino_zmnhad_00_000 node2 "Draußen Lichtaktor" @ "Draußen" [ node_id=2 ]
-    Thing qubino_zmnhad_00_000 node3 "Flur EG Lichtaktor" @ "Flur EG" [ node_id=3 ]
-    Thing qubino_zmnhad_00_000 node4 "Treppenhaus UG Lichtaktor" @ "Treppenhaus UG" [ node_id=4 ]
-    Thing qubino_zmnhad_00_000 node5 "HWR Lichtaktor" @ "HWR" [ node_id=5 ]
+    Thing qubino_zmnhad_00_000 outdoorLightActor "Lichtaktor" @ "Draußen" [ node_id=2 ]
+    Thing qubino_zmnhad_00_000 entranceLightActor "Lichtaktor" @ "Flur EG" [ node_id=3 ]
+    Thing qubino_zmnhad_00_000 stairsLightActor "Lichtaktor" @ "Treppenhaus UG" [ node_id=4 ]
+    Thing qubino_zmnhad_00_000 hwrLightActor "Lichtaktor" @ "HWR" [ node_id=5 ]
     
     //Dimmeraktor - Qubino Flush Dimmer (ZMNHDD)
-    Thing qubino_zmnhdd_00_000 node6 "Esszimmer Dimmeraktor" @ "Wohn-/Esszimmer" [ node_id=6 ]
+    Thing qubino_zmnhdd_00_000 diningDimmerActor "Dimmeraktor" @ "Esszimmer" [ node_id=6 ]
     
 }
