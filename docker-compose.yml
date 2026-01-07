@@ -34,4 +34,6 @@ services:
       - ./homegear/data:/var/lib/homegear
       - ./homegear/logs:/var/log/homegear
     environment:
+      - USER_ID=1000
+      - GROUP_ID=1000
       - TZ=Europe/Berlin
