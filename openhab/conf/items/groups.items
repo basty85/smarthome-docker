@@ -1,24 +1,46 @@
 // ============================================================================
-// Gruppen-Definitionen für OpenHAB
+// Gruppen-Definitionen für OpenHAB - Semantic Model
 // ============================================================================
 
 // ----------------------------------------------------------------------------
-// Raum-Gruppen (Semantic Model)
+// Hierarchie: Haus → Stockwerke → Räume
 // ----------------------------------------------------------------------------
-Group gHWR "Hauswirtschaftsraum" ["Laundry"]
-Group gOutdoor "Draußen" ["Outdoor"]
-Group gLivingRoom "Wohnzimmer" ["LivingRoom"]
-Group gDining "Esszimmer" ["DiningRoom"]
-Group gMusicRoom "Musikzimmer" ["Room"]
-Group gEntrance "Flur EG" ["Corridor"]
-Group gStairsUG "Treppenhaus UG" ["Corridor"]
-Group gBasement "Keller UG" ["Cellar"]
-Group gBedroom "Schlafzimmer" ["Bedroom"]
-Group gChildRoom "Kinderzimmer" ["Bedroom"]
-Group gChangeRoom "Ankleide" ["Room"]
-Group gOffice "Büro" ["Office"]
-Group gBathOG "Bad OG" ["Bathroom"]
-Group gWC "WC EG" ["Bathroom"]
+
+// Haupt-Gruppe (Property)
+Group gProperty "Smart Property" <none> ["Location"]
+
+// Sub-Haupt-Gruppe (Building)
+Group gHouse "Smart Haus" <house> (gProperty) ["Building"]
+Group gOutdoor "Draußen" <garden> (gProperty) ["Location"]
+
+// Stockwerke (Floors)
+Group gGroundFloor "Erdgeschoss" <groundfloor> (gHouse) ["Floor"]
+Group gFirstFloor "Obergeschoss" <firstfloor> (gHouse) ["Floor"]
+Group gBasementFloor "Untergeschoss" (gHouse) ["Floor"]
+
+// ----------------------------------------------------------------------------
+// Räume nach Stockwerken sortiert (Semantic Model)
+// ----------------------------------------------------------------------------
+
+// ERDGESCHOSS (EG)
+Group gEntrance "Flur EG" (gGroundFloor) ["Corridor"]
+Group gLivingRoom "Wohnzimmer" (gGroundFloor) ["LivingRoom"]
+Group gDining "Esszimmer" (gGroundFloor) ["DiningRoom"]
+Group gMusicRoom "Musikzimmer" (gGroundFloor) ["MusicRoom"]
+Group gWC "WC EG" (gGroundFloor) ["Bathroom"]
+Group gHWR "Hauswirtschaftsraum" (gGroundFloor) ["Laundry"]
+
+// OBERGESCHOSS (OG)
+Group gBedroom "Schlafzimmer" (gFirstFloor) ["Bedroom"]
+Group gChildRoom "Kinderzimmer" (gFirstFloor) ["Bedroom"]
+Group gChangeRoom "Ankleide" (gFirstFloor) ["DressingRoom"]
+Group gOffice "Büro" (gFirstFloor) ["Office"]
+Group gBath "Bad OG" (gFirstFloor) ["Bathroom"]
+
+// UNTERGESCHOSS/KELLER (UG)
+Group gStairs "Treppenhaus UG" (gBasementFloor) ["Corridor"]
+Group gBasement "Flur UG" (gBasementFloor) ["Corridor"]
+
 
 // ----------------------------------------------------------------------------
 // Funktions-Gruppen (nach Gerätetyp)

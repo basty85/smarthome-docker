@@ -6,15 +6,15 @@ then
 
     if (localDailyforecastHours3Cloudiness.state < 75 | "%" ) { //Wenn NICHT bewölkt ist
 
-    changeRoomShutter_Ang.sendCommand(0.0)
-    changeRoomShutter_Pos.sendCommand(1.0)
+    //changeRoomShutter_Ang.sendCommand(0.0)
+    //changeRoomShutter_Pos.sendCommand(1.0)
     
     }
 
     else { //Wenn bewölkt ist
 
-    changeRoomShutter_Ang.sendCommand(0.0)
-    changeRoomShutter_Pos.sendCommand(0.0)
+    //changeRoomShutter_Ang.sendCommand(0.0)
+    //changeRoomShutter_Pos.sendCommand(0.0)
         
     }
     

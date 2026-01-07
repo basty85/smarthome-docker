@@ -36,9 +36,9 @@ then
     diningRoomShutter_Ang.sendCommand(0.75)
     diningRoomShutter_Pos.sendCommand(0.45)
     //Thread::sleep(100)
-    changeRoomShutter_Ang.sendCommand(0.0)
-    changeRoomShutter_Pos.sendCommand(1.0)
-    Thread::sleep(100)
+    //changeRoomShutter_Ang.sendCommand(0.0)
+    //changeRoomShutter_Pos.sendCommand(1.0)
+    //Thread::sleep(100)
 
     //Rolläden
     musicRoomShutter_Pos.sendCommand(0.65)

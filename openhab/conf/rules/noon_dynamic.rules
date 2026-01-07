@@ -33,9 +33,9 @@ then
     //childRoomShutterRight_Ang.sendCommand(100)
     //childRoomShutterRight_Pos.sendCommand(100)
     //Thread::sleep(100)
-    changeRoomShutter_Ang.sendCommand(0.30)
-    changeRoomShutter_Pos.sendCommand(1.0)
-    Thread::sleep(100)
+    //changeRoomShutter_Ang.sendCommand(0.30)
+    //changeRoomShutter_Pos.sendCommand(1.0)
+    //Thread::sleep(100)
     //diningRoomShutter_Ang.sendCommand(60)
     //diningRoomShutter_Pos.sendCommand(30)
     //Thread::sleep(100)
@@ -76,8 +76,8 @@ then
     diningRoomShutter_Pos.sendCommand(30)
     Thread::sleep(100)*/
     
-    changeRoomShutter_Ang.sendCommand(0.0)
-    changeRoomShutter_Pos.sendCommand(0.0)
+    //changeRoomShutter_Ang.sendCommand(0.0)
+    //changeRoomShutter_Pos.sendCommand(0.0)
      
     }
 
