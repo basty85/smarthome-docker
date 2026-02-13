@@ -104,7 +104,8 @@ end
 // Flur EG
 rule "DetectPresenceAndSwitchLight_Flur_EG"
 when
-    Item motionSensorEntrance_Presence changed
+    Item motionSensorEntrance_Presence changed or
+    Item lightLevelSensorEntrance_Dark changed
 then
     if (motionSensorEntrance_Presence.state == ON && lightLevelSensorEntrance_Dark.state == ON) {
 
