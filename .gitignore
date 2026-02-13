@@ -1,7 +1,7 @@
 # Secrets
 .env
 
-# OpenHAB - ignoriere userdata außer wichtige Konfigs
+# OpenHAB - ignore userdata except jsondb
 openhab/userdata/*
 !openhab/userdata/jsondb/
 openhab/userdata/jsondb/*
@@ -13,10 +13,10 @@ backups/
 *.tar.gz
 homegear-backup.tar.gz
 
-# Homegear data - Datenbanken gehören ins Backup, nicht ins Git
+# Homegear db
 homegear/data/*
 
-# Homegear - ignoriere alle Dateien aus dem Backup die nicht benötigt werden
+# Homegear - ignore db
 homegear/admin-ui/
 homegear/node-blue/
 homegear/ui/
