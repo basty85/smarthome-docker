@@ -1,21 +1,20 @@
+# Secrets - NIEMALS committen
+.env
+
 # OpenHAB - ignoriere userdata außer wichtige Konfigs
 openhab/userdata/*
 !openhab/userdata/jsondb/
 openhab/userdata/jsondb/*
 !openhab/userdata/jsondb/uicomponents_ui_page.json
 !openhab/userdata/jsondb/automation_rules.json
-!openhab/userdata/jsondb/users.json
 
 homegear/logs/
 backups/
 *.tar.gz
 homegear-backup.tar.gz
 
-# Homegear data - ignoriere alles außer db.sql (main files only)
+# Homegear data - Datenbanken gehören ins Backup, nicht ins Git
 homegear/data/*
-!homegear/data/db.sql
-!homegear/data/db.sql-shm
-!homegear/data/db.sql-wal
 
 # Homegear - ignoriere alle Dateien aus dem Backup die nicht benötigt werden
 homegear/admin-ui/

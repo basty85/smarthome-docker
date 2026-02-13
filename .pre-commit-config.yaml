@@ -1,0 +1,39 @@
+exclude: '^homegear/(config/devices|config/ca|config/families|data|admin-ui|node-blue|ui|web-ssh|www|modules|scripts|phpinclude|tmp)/'
+
+repos:
+  # General file checks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: '^homegear/'
+      - id: end-of-file-fixer
+        exclude: '^homegear/'
+      - id: check-yaml
+      - id: check-json
+        files: \.(json)$
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: ['--maxkb=500']
+      - id: detect-private-key
+        exclude: '^homegear/config/'
+
+  # Secret detection
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
+        args: ['--baseline', '.secrets.baseline']
+
+  # Shell script linting
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.10.0.1
+    hooks:
+      - id: shellcheck
+        args: ['--severity=warning']
+
+  # Docker Compose validation
+  - repo: https://github.com/IamTheFij/docker-pre-commit
+    rev: v3.0.1
+    hooks:
+      - id: docker-compose-check

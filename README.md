@@ -2,9 +2,9 @@
 
 This project provides a Docker-based environment for a complex Smart Home system using:
 
-- **OpenHAB**: Central automation platform for ZigBee, Z-Wave, and more  
-- **Homegear**: Bridge for EnOcean components like shutters, switches, etc.  
-- All configuration data is versioned and stored outside the containers  
+- **OpenHAB**: Central automation platform for ZigBee, Z-Wave, and more
+- **Homegear**: Bridge for EnOcean components like shutters, switches, etc.
+- All configuration data is versioned and stored outside the containers
 
 ---
 
@@ -36,7 +36,7 @@ smarthome-docker/
 
 **Requirements:**
 
-- Docker & Docker Compose installed  
+- Docker & Docker Compose installed
 - System has access to USB devices:
   - **Z-Wave**: Aeotec Z-Stick 7 (mapped to `/dev/zwave`)
   - **EnOcean**: USB300 Stick with FTDI FT232R (mapped to `/dev/ttyUSB0`)

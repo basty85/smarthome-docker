@@ -4,6 +4,8 @@ services:
     container_name: openhab
     restart: unless-stopped
     network_mode: host
+    env_file:
+      - .env
     devices:
       # Aeotec Z-Stick 7 (Z-Wave)
       - /dev/serial/by-id/usb-Silicon_Labs_CP2102N_USB_to_UART_Bridge_Controller_1c80343ba979ed11b998d50ffef7b791-if00-port0:/dev/zwave
@@ -17,8 +19,6 @@ services:
       - OPENHAB_HTTP_PORT=8080
       - OPENHAB_HTTPS_PORT=8443
       - TZ=Europe/Berlin
-      # Hue Bridge IP
-      - HUE_BRIDGE_IP=192.168.1.33
     # privileged: true  # Nicht nötig für OpenHAB
 
   homegear:
