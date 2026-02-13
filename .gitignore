@@ -1,4 +1,4 @@
-# Secrets - NIEMALS committen
+# Secrets
 .env
 
 # OpenHAB - ignoriere userdata außer wichtige Konfigs
