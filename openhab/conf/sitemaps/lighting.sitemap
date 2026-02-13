@@ -1,20 +1,20 @@
 sitemap lighting label="Beleuchtung"
 {
 	Frame label="Wohn-/Esszimmer" {
-		
+
 		Switch		item=		hueColorDeathstar_Switch label="Todesstern" icon="light"
 		Colorpicker	item=		hueColorDeathstar_Color  label="Todesstern Farbe" icon="colorlight"
 
-		Switch		item=		hueColorCornerLight_Switch label="Ecklampe" icon="light" 
+		Switch		item=		hueColorCornerLight_Switch label="Ecklampe" icon="light"
 		Colorpicker	item=		hueColorCornerLight_Color  label="Ecklampe Farbe" icon="colorlight"
 
-        Switch		item=		lightStripTV_Switch label="Lightstrip TV" icon="light" 
+        Switch		item=		lightStripTV_Switch label="Lightstrip TV" icon="light"
 		Colorpicker	item=		lightStripTV_Color  label="Lightstrip TV Farbe" icon="colorlight"
 
-        Switch		item=		lightStripCouch_Switch label="Lightstrip Sofa" icon="light" 
+        Switch		item=		lightStripCouch_Switch label="Lightstrip Sofa" icon="light"
 		Colorpicker	item=		lightStripCouch_Color  label="Lightstrip Sofa Farbe" icon="colorlight"
-		
-        Switch		item=		lightStripDining_Switch label="Lightstrip Esszimmer" icon="light" 
+
+        Switch		item=		lightStripDining_Switch label="Lightstrip Esszimmer" icon="light"
 		Colorpicker	item=		lightStripDining_Color  label="Lightstrip Esszimmer Farbe" icon="colorlight"
 	}
 
@@ -44,7 +44,7 @@ sitemap lighting label="Beleuchtung"
     Switch		item=		lightStripTerrace_Switch label="Lightstrip Terrasse" icon="light"
 	Colorpicker	item=		lightStripTerrace_Color  label="Lightstrip Terrasse Farbe" icon="colorlight"
     }
-    
+
     Frame label="Lichtaktoren" {
 
     Switch	item=	  lightActorEntrance_Switch     label="Lichtschalter Flur" icon="wallswitch"

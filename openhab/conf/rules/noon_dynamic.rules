@@ -75,10 +75,10 @@ then
     /*diningRoomShutter_Ang.sendCommand(60)
     diningRoomShutter_Pos.sendCommand(30)
     Thread::sleep(100)*/
-    
+
     //changeRoomShutter_Ang.sendCommand(0.0)
     //changeRoomShutter_Pos.sendCommand(0.0)
-     
+
     }
 
 end

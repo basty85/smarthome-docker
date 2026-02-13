@@ -1,10 +1,10 @@
 sitemap shutters_OG label="Verschattung OG"
 {
 	Frame label="Schlafen Jalousie Links" {
-		
+
 		Switch		item=		bedRoomShutterLeft_Pos           icon="blinds" mappings=[0="AUF", 0.20="20%", 0.40="40%"]
 		Switch		item=		bedRoomShutterLeft_Pos           icon="blinds" label="" mappings=[0.60="60%", 0.80="80%", 1.0="ZU"]
-        
+
         Switch		item=		bedRoomShutterLeft_Ang           icon="blinds" label="Winkel" mappings=[0="0%", 0.15="15%", 0.30="GERADE"]
 		Switch		item=		bedRoomShutterLeft_Ang           icon="blinds" label="" mappings=[0.50="50%", 0.75="75%", 1.0="ZU"]
 
@@ -13,10 +13,10 @@ sitemap shutters_OG label="Verschattung OG"
     }
 
     Frame label="Schlafen Jalousie Rechts" {
-		
+
 		Switch		item=		bedRoomShutterRight_Pos           icon="blinds" mappings=[0="AUF", 0.20="20%", 0.40="40%"]
 		Switch		item=		bedRoomShutterRight_Pos           icon="blinds" label="" mappings=[0.60="60%", 0.80="80%", 1.0="ZU"]
-        
+
         Switch		item=		bedRoomShutterRight_Ang           icon="blinds" label="Winkel" mappings=[0="0%", 0.15="15%", 0.30="GERADE"]
 		Switch		item=		bedRoomShutterRight_Ang           icon="blinds" label="" mappings=[0.50="50%", 0.75="75%", 1.0="ZU"]
 
@@ -25,10 +25,10 @@ sitemap shutters_OG label="Verschattung OG"
     }
 
     Frame label="Schlafen Jalousie Oben" {
-		
+
 		Switch		item=		bedRoomShutterUp_Pos           icon="blinds" mappings=[0="AUF", 0.20="20%", 0.40="40%"]
 		Switch		item=		bedRoomShutterUp_Pos           icon="blinds" label="" mappings=[0.60="60%", 0.80="80%", 1.0="ZU"]
-        
+
         Switch		item=		bedRoomShutterUp_Ang           icon="blinds" label="Winkel" mappings=[0="0%", 0.15="15%", 0.30="GERADE"]
 		Switch		item=		bedRoomShutterUp_Ang           icon="blinds" label="" mappings=[0.50="50%", 0.75="75%", 1.0="ZU"]
 
@@ -37,10 +37,10 @@ sitemap shutters_OG label="Verschattung OG"
     }
 
     Frame label="Kind Jalousie Links" {
-		
+
 		Switch		item=		childRoomShutterLeft_Pos           icon="blinds" mappings=[0="AUF", 0.20="20%", 0.40="40%"]
 		Switch		item=		childRoomShutterLeft_Pos           icon="blinds" label="" mappings=[0.60="60%", 0.80="80%", 1.0="ZU"]
-        
+
         Switch		item=		childRoomShutterLeft_Ang           icon="blinds" label="Winkel" mappings=[0="0%", 0.15="15%", 0.30="GERADE"]
 		Switch		item=		childRoomShutterLeft_Ang           icon="blinds" label="" mappings=[0.50="50%", 0.75="75%", 1.0="ZU"]
 
@@ -49,10 +49,10 @@ sitemap shutters_OG label="Verschattung OG"
     }
 
     Frame label="Kind Jalousie Rechts" {
-		
+
 		Switch		item=		childRoomShutterRight_Pos           icon="blinds" mappings=[0="AUF", 0.20="20%", 0.40="40%"]
 		Switch		item=		childRoomShutterRight_Pos           icon="blinds" label="" mappings=[0.60="60%", 0.80="80%", 1.0="ZU"]
-        
+
         Switch		item=		childRoomShutterRight_Ang           icon="blinds" label="Winkel" mappings=[0="0%", 0.15="15%", 0.30="GERADE"]
 		Switch		item=		childRoomShutterRight_Ang           icon="blinds" label="" mappings=[0.50="50%", 0.75="75%", 1.0="ZU"]
 
@@ -61,10 +61,10 @@ sitemap shutters_OG label="Verschattung OG"
     }
 
     Frame label="Kind Jalousie Oben" {
-		
+
 		Switch		item=		childRoomShutterUp_Pos           icon="blinds" mappings=[0="AUF", 0.20="20%", 0.40="40%"]
 		Switch		item=		childRoomShutterUp_Pos           icon="blinds" label="" mappings=[0.60="60%", 0.80="80%", 1.0="ZU"]
-        
+
         Switch		item=		childRoomShutterUp_Ang           icon="blinds" label="Winkel" mappings=[0="0%", 0.15="15%", 0.30="GERADE"]
 		Switch		item=		childRoomShutterUp_Ang           icon="blinds" label="" mappings=[0.50="50%", 0.75="75%", 1.0="ZU"]
 
@@ -73,10 +73,10 @@ sitemap shutters_OG label="Verschattung OG"
     }
 
     Frame label="Ankleide Jalousie" {
-		
+
 		Switch		item=		changeRoomShutter_Pos           icon="blinds" mappings=[0="AUF", 0.20="20%", 0.40="40%"]
 		Switch		item=		changeRoomShutter_Pos           icon="blinds" label="" mappings=[0.60="60%", 0.80="80%", 1.0="ZU"]
-        
+
         Switch		item=		changeRoomShutter_Ang           icon="blinds" label="Winkel" mappings=[0="0%", 0.15="15%", 0.30="30%"]
 		Switch		item=		changeRoomShutter_Ang           icon="blinds" label="" mappings=[0.50="50%", 0.75="75%", 1.0="100%"]
 
@@ -85,18 +85,18 @@ sitemap shutters_OG label="Verschattung OG"
     }
 
     Frame label="Büro Rolladen" {
-		
+
 		Switch		item=		officeShutter_Pos           icon="blinds" mappings=[0="AUF", 0.20="20%", 0.40="40%"]
 		Switch		item=		officeShutter_Pos           icon="blinds" label="" mappings=[0.60="60%", 0.80="80%", 1.0="ZU"]
-        
+
         Text	    item=		officeShutter_CurrentPos    label="Aktuelle Position [%d %%]" icon="blinds"
     }
 
     Frame label="Bad Rolladen" {
-		
+
 		Switch		item=		bathShutter_Pos           icon="blinds" mappings=[0="AUF", 0.20="20%", 0.40="40%"]
 		Switch		item=		bathShutter_Pos           icon="blinds" label="" mappings=[0.60="60%", 0.80="80%", 1.0="ZU"]
-        
+
         Text	    item=		bathShutter_CurrentPos    label="Aktuelle Position [%d %%]" icon="blinds"
     }
 }
