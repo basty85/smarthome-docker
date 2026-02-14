@@ -29,6 +29,9 @@ tar -czf "${BACKUP_DIR}/${BACKUP_FILE}" \
     homegear/config/ca/private/ \
     homegear/config/homegear.key \
     openhab/userdata/jsondb/users.json \
+    openhab/conf/things/hue.things \
+    openhab/conf/things/homeconnect.things \
+    openhab/conf/things/weather.things \
     2>/dev/null || true
 
 # Starte Homegear wieder

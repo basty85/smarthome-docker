@@ -1,4 +1,4 @@
-Bridge hue:bridge:1 "Bridge Hue" [ ipAddress="${HUE_BRIDGE_IP}", userName="${HUE_BRIDGE_USERNAME}" ] {
+Bridge hue:bridge:1 "Bridge Hue" [ ipAddress="192.168.1.33", userName="tpqgk-FwAurb-pBiHH1SDeMsQzAMY5zXCQMRrU5p" ] {
 
 //Lampen
 //Hue Musikzimmer

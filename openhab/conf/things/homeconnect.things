@@ -1,4 +1,4 @@
-Bridge homeconnect:api_bridge:api_bridge_at_home "Home Connect Bridge" [ clientId="${HOMECONNECT_CLIENT_ID}", clientSecret="${HOMECONNECT_CLIENT_SECRET}", simulator=false] {
+Bridge homeconnect:api_bridge:api_bridge_at_home "Home Connect Bridge" [ clientId="77926174105CFA5B02FD030674018B15666A8476E1C50ABA34C9B1F0F9AE53C1", clientSecret="E0B3873A31A24BDB0CA830F06DD5608475D14D2D216E4D16D9DD3A287BFA3FF3", simulator=false] {
 
     // Thing configurations
     Thing washer washer1 "Meister Wasch" [ haId="485090534615014889" ]
