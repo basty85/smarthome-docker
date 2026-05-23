@@ -34,7 +34,7 @@ then
     //childRoomShutterRight_Pos.sendCommand(0)
     //Thread::sleep(100)
     diningRoomShutter_Ang.sendCommand(0.75)
-    diningRoomShutter_Pos.sendCommand(0.45)
+    diningRoomShutter_Pos.sendCommand(0.80)
     //Thread::sleep(100)
     //changeRoomShutter_Ang.sendCommand(0.0)
     //changeRoomShutter_Pos.sendCommand(1.0)

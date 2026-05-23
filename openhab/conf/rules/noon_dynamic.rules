@@ -15,15 +15,15 @@ then
     livingRoomShutterRight_Ang.sendCommand(0.55)
     livingRoomShutterRight_Pos.sendCommand(0.80)
     Thread::sleep(100)
-    bedRoomShutterLeft_Ang.sendCommand(1.0)
-    bedRoomShutterLeft_Pos.sendCommand(1.0)
-    Thread::sleep(100)
-    bedRoomShutterUp_Ang.sendCommand(1.0)
-    bedRoomShutterUp_Pos.sendCommand(1.0)
-    Thread::sleep(100)
-    bedRoomShutterRight_Ang.sendCommand(1.0)
-    bedRoomShutterRight_Pos.sendCommand(1.0)
-    Thread::sleep(100)
+    //bedRoomShutterLeft_Ang.sendCommand(1.0)
+    //bedRoomShutterLeft_Pos.sendCommand(1.0)
+    //Thread::sleep(100)
+    //bedRoomShutterUp_Ang.sendCommand(1.0)
+    //bedRoomShutterUp_Pos.sendCommand(1.0)
+    //Thread::sleep(100)
+    //bedRoomShutterRight_Ang.sendCommand(1.0)
+    //bedRoomShutterRight_Pos.sendCommand(1.0)
+    //Thread::sleep(100)
     //childRoomShutterLeft_Ang.sendCommand(100)
     //childRoomShutterLeft_Pos.sendCommand(100)
     //Thread::sleep(100)
@@ -44,7 +44,7 @@ then
 
     else { //Wenn bewölkt ist
 
-    //sind dann eh schon unten vom Abend, deshalb nichts tun!
+    //sind dann eh schon oben vom Abend, deshalb nichts tun!
     /*livingRoomShutterLeft_Ang.sendCommand(0)
     livingRoomShutterLeft_Pos.sendCommand(0)
     Thread::sleep(100)
