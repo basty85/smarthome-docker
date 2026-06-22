@@ -23,7 +23,7 @@ services:
   enoceanmqtt:
     # EnOcean USB300 → MQTT bridge (replaces Homegear)
     # Supports D2-05-02 (OPUS BRiDGE Jalousien/Rolladen)
-    image: makgitdev/ha_enoceanmqtt_dev-amd64:latest
+    image: makgitdev/ha_enoceanmqtt_dev-aarch64:latest
     container_name: enoceanmqtt
     restart: unless-stopped
     network_mode: host
@@ -32,6 +32,7 @@ services:
       - /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A600I0TU-if00-port0:/dev/enocean
     volumes:
       - ./enoceanmqtt/config:/config
+      - ./enoceanmqtt/config/EEP.xml:/usr/local/lib/python3.11/site-packages/enocean/protocol/EEP.xml:ro
     command: /config/enoceanmqtt.conf --logfile /config/enoceanmqtt.log
 
   zwavejs:
