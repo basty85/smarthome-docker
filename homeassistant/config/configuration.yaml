@@ -9,6 +9,12 @@ homeassistant:
   country: DE
   language: de
 
+# Standard-Integrationen (inkl. mobile_app, discovery, etc.)
+default_config:
+
+# Mobile App Integration (fuer HA Companion App)
+mobile_app:
+
 # Automationen aus automations.yaml
 automation: !include automations.yaml
 

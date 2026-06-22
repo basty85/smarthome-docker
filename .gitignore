@@ -45,3 +45,13 @@ zwavejs/config/nodes.json
 # enoceanmqtt - runtime db
 enoceanmqtt/config/devices.db
 enoceanmqtt/config/enoceanmqtt.log
+
+# Home Assistant - runtime data
+homeassistant/config/.HA_VERSION
+homeassistant/config/.cache/
+homeassistant/config/.ha_run.lock
+homeassistant/config/.storage/
+homeassistant/config/blueprints/
+homeassistant/config/home-assistant.log
+homeassistant/config/home-assistant.log.*
+homeassistant/config/home-assistant_v2.db*

@@ -991,26 +991,6 @@
                  payload_stop: >-
                    {"CMD":"2","CHN":"0","send":"clear"}
                  position_topic: "CMD4"
-                 position_template: "{{ value_json.POS }}"
-                 set_position_topic: "req"
-                 set_position_template: >-
-                   {"CMD":"1","POS":"{{ position }}","ANG":"127","REPO":"0","LOCK":"0","CHN":"0","send":"clear"}
-                 tilt_status_topic: "CMD4"
-                 tilt_status_template: "{{ value_json.ANG }}"
-                 tilt_command_topic: "req"
-                 tilt_command_template: >-
-                   {"CMD":"1","POS":"127","ANG":"{{ tilt_position }}","REPO":"0","LOCK":"0","CHN":"0","send":"clear"}
-            - component: "cover"
-              name: "cover2"
-              config:
-                 command_topic: "req"
-                 payload_open: >-
-                   {"CMD":"1","POS":"0","ANG":"127","REPO":"0","LOCK":"0","CHN":"0","send":"clear"}
-                 payload_close: >-
-                   {"CMD":"1","POS":"100","ANG":"127","REPO":"0","LOCK":"0","CHN":"0","send":"clear"}
-                 payload_stop: >-
-                   {"CMD":"2","CHN":"0","send":"clear"}
-                 position_topic: "CMD4"
                  position_open: 0
                  position_closed: 100
                  position_template: "{{ value_json.POS }}"
@@ -1018,10 +998,10 @@
                  set_position_template: >-
                    {"CMD":"1","POS":"{{ 100 - position }}","ANG":"127","REPO":"0","LOCK":"0","CHN":"0","send":"clear"}
                  tilt_status_topic: "CMD4"
-                 tilt_status_template: "{{ value_json.ANG }}"
+                 tilt_status_template: "{{ 100 - value_json.ANG | int }}"
                  tilt_command_topic: "req"
                  tilt_command_template: >-
-                   {"CMD":"1","POS":"127","ANG":"{{ tilt_position }}","REPO":"0","LOCK":"0","CHN":"0","send":"clear"}
+                   {"CMD":"1","POS":"127","ANG":"{{ 100 - tilt_position }}","REPO":"0","LOCK":"0","CHN":"0","send":"clear"}
       0x02:
          device_config:
             command: "CMD"
@@ -1041,26 +1021,6 @@
                  payload_stop: >-
                    {"CMD":"2","CHN":"0","send":"clear"}
                  position_topic: "CMD4"
-                 position_template: "{{ value_json.POS }}"
-                 set_position_topic: "req"
-                 set_position_template: >-
-                   {"CMD":"1","POS":"{{ position }}","ANG":"127","REPO":"0","LOCK":"0","CHN":"0","send":"clear"}
-                 tilt_status_topic: "CMD4"
-                 tilt_status_template: "{{ value_json.ANG }}"
-                 tilt_command_topic: "req"
-                 tilt_command_template: >-
-                   {"CMD":"1","POS":"127","ANG":"{{ tilt_position }}","REPO":"0","LOCK":"0","CHN":"0","send":"clear"}
-            - component: "cover"
-              name: "cover2"
-              config:
-                 command_topic: "req"
-                 payload_open: >-
-                   {"CMD":"1","POS":"0","ANG":"127","REPO":"0","LOCK":"0","CHN":"0","send":"clear"}
-                 payload_close: >-
-                   {"CMD":"1","POS":"100","ANG":"127","REPO":"0","LOCK":"0","CHN":"0","send":"clear"}
-                 payload_stop: >-
-                   {"CMD":"2","CHN":"0","send":"clear"}
-                 position_topic: "CMD4"
                  position_open: 0
                  position_closed: 100
                  position_template: "{{ value_json.POS }}"
@@ -1068,10 +1028,10 @@
                  set_position_template: >-
                    {"CMD":"1","POS":"{{ 100 - position }}","ANG":"127","REPO":"0","LOCK":"0","CHN":"0","send":"clear"}
                  tilt_status_topic: "CMD4"
-                 tilt_status_template: "{{ value_json.ANG }}"
+                 tilt_status_template: "{{ 100 - value_json.ANG | int }}"
                  tilt_command_topic: "req"
                  tilt_command_template: >-
-                   {"CMD":"1","POS":"127","ANG":"{{ tilt_position }}","REPO":"0","LOCK":"0","CHN":"0","send":"clear"}
+                   {"CMD":"1","POS":"127","ANG":"{{ 100 - tilt_position }}","REPO":"0","LOCK":"0","CHN":"0","send":"clear"}
    0x14:
       0x30:
          device_config:
