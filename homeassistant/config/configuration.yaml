@@ -1,0 +1,17 @@
+homeassistant:
+  name: Smarthome
+  latitude: 49.042001413459815
+  longitude: 9.036667882367395
+  elevation: 257
+  unit_system: metric
+  time_zone: Europe/Berlin
+  currency: EUR
+  country: DE
+  language: de
+
+# Automationen aus automations.yaml
+automation: !include automations.yaml
+
+# Skripte und Szenen (werden über UI befüllt)
+script: !include scripts.yaml
+scene: !include scenes.yaml

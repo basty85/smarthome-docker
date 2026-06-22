@@ -10,6 +10,7 @@ repos:
       - id: end-of-file-fixer
         exclude: '^homegear/'
       - id: check-yaml
+        exclude: '^homeassistant/config/'  # HA uses custom YAML tags (!include, !secret)
       - id: check-json
         files: \.(json)$
       - id: check-merge-conflict

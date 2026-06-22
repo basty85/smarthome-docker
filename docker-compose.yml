@@ -1,39 +1,52 @@
 services:
-  openhab:
-    image: openhab/openhab:latest
-    container_name: openhab
+  homeassistant:
+    image: ghcr.io/home-assistant/home-assistant:stable
+    container_name: homeassistant
     restart: unless-stopped
     network_mode: host
-    env_file:
-      - .env
-    devices:
-      # Aeotec Z-Stick 7 (Z-Wave)
-      - /dev/serial/by-id/usb-Silicon_Labs_CP2102N_USB_to_UART_Bridge_Controller_1c80343ba979ed11b998d50ffef7b791-if00-port0:/dev/zwave
+    privileged: true
     volumes:
-      - ./openhab/conf:/openhab/conf
-      - ./openhab/userdata:/openhab/userdata
-      - ./openhab/addons:/openhab/addons
+      - ./homeassistant/config:/config
     environment:
-      - USER_ID=1000
-      - GROUP_ID=1000
-      - OPENHAB_HTTP_PORT=8080
-      - OPENHAB_HTTPS_PORT=8443
       - TZ=Europe/Berlin
-    # privileged: true  # Nicht nötig für OpenHAB
 
-  homegear:
-    image: homegear/homegear:latest
-    container_name: homegear
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: mosquitto
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
+
+  enoceanmqtt:
+    # EnOcean USB300 → MQTT bridge (replaces Homegear)
+    # Supports D2-05-02 (OPUS BRiDGE Jalousien/Rolladen)
+    image: makgitdev/ha_enoceanmqtt_dev-amd64:latest
+    container_name: enoceanmqtt
     restart: unless-stopped
     network_mode: host
     devices:
       # EnOcean USB300 Stick (FTDI FT232R)
-      - /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A600I0TU-if00-port0:/dev/ttyUSB0
+      - /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A600I0TU-if00-port0:/dev/enocean
     volumes:
-      - ./homegear/config:/etc/homegear
-      - ./homegear/data:/var/lib/homegear
-      - ./homegear/logs:/var/log/homegear
+      - ./enoceanmqtt/config:/config
+    command: /config/enoceanmqtt.conf --logfile /config/enoceanmqtt.log
+
+  zwavejs:
+    # Z-Wave JS UI (Aeotec Z-Stick 7)
+    # Web UI: http://<host>:8091
+    # HA integriert via WebSocket auf Port 3000
+    image: zwavejs/zwave-js-ui:latest
+    container_name: zwavejs
+    restart: unless-stopped
+    network_mode: host
+    devices:
+      # Aeotec Z-Stick 7 (Z-Wave)
+      - /dev/serial/by-id/usb-Silicon_Labs_CP2102N_USB_to_UART_Bridge_Controller_1c80343ba979ed11b998d50ffef7b791-if00-port0:/dev/zwave
+    volumes:
+      - ./zwavejs/config:/usr/src/app/store
     environment:
-      - USER_ID=1000
-      - GROUP_ID=1000
       - TZ=Europe/Berlin
+      - ZWAVEJS_EXTERNAL_CONFIG=/usr/src/app/store/.config-db
