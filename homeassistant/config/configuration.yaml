@@ -8,6 +8,7 @@ homeassistant:
   currency: EUR
   country: DE
   language: de
+  packages: !include_dir_named packages
 
 # Standard-Integrationen (inkl. mobile_app, discovery, etc.)
 default_config:

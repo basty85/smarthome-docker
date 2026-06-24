@@ -55,3 +55,7 @@ homeassistant/config/blueprints/
 homeassistant/config/home-assistant.log
 homeassistant/config/home-assistant.log.*
 homeassistant/config/home-assistant_v2.db*
+
+# Python artifacts
+__pycache__/
+*.pyc

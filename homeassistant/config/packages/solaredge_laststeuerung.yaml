@@ -1,0 +1,234 @@
+input_boolean:
+  solaredge_laststeuerung_aktiv:
+    name: SolarEdge Laststeuerung aktiv
+    icon: mdi:transmission-tower-export
+
+input_number:
+  solaredge_import_soll_w:
+    name: SolarEdge Netzbezug Soll
+    min: 0
+    max: 6000
+    step: 50
+    unit_of_measurement: W
+    mode: box
+    initial: 300
+
+  solaredge_import_deadband_w:
+    name: SolarEdge Deadband
+    min: 50
+    max: 1000
+    step: 50
+    unit_of_measurement: W
+    mode: box
+    initial: 200
+
+  solaredge_limit_step_percent:
+    name: SolarEdge Schrittweite
+    min: 1
+    max: 20
+    step: 1
+    unit_of_measurement: "%"
+    mode: box
+    initial: 5
+
+  solaredge_limit_min_percent:
+    name: SolarEdge Limit Minimum
+    min: 0
+    max: 100
+    step: 1
+    unit_of_measurement: "%"
+    mode: box
+    initial: 10
+
+  solaredge_limit_max_percent:
+    name: SolarEdge Limit Maximum
+    min: 0
+    max: 100
+    step: 1
+    unit_of_measurement: "%"
+    mode: box
+    initial: 100
+
+template:
+  - sensor:
+      - name: "SolarEdge Netzleistung signiert"
+        unique_id: se_grid_power_signed_w
+        unit_of_measurement: "W"
+        device_class: power
+        state_class: measurement
+        state: >-
+          {% set p_kw = states('sensor.solaredge_netzleistung') | float(0) %}
+          {% set direction = states('sensor.solaredge_netzflussrichtung') | lower %}
+          {% set p_w = (p_kw * 1000) | round(0) %}
+          {% if direction == 'import' %}
+            {{ p_w }}
+          {% elif direction == 'export' %}
+            {{ -1 * p_w }}
+          {% else %}
+            0
+          {% endif %}
+
+      - name: "SolarEdge PV-Leistung W"
+        unique_id: se_pv_power_w
+        unit_of_measurement: "W"
+        device_class: power
+        state_class: measurement
+        state: >-
+          {% if has_value('sensor.solaredge_i1_ac_power') %}
+            {{ states('sensor.solaredge_i1_ac_power') | float(0) | round(0) }}
+          {% else %}
+            {{ (states('sensor.solaredge_pv_leistung') | float(0) * 1000) | round(0) }}
+          {% endif %}
+
+      - name: "SolarEdge Hausverbrauch W"
+        unique_id: se_home_power_w
+        unit_of_measurement: "W"
+        device_class: power
+        state_class: measurement
+        state: >-
+          {{ (states('sensor.solaredge_verbraucherleistung') | float(0) * 1000) | round(0) }}
+
+      - name: "SolarEdge Netzbezug W"
+        unique_id: se_grid_import_w
+        unit_of_measurement: "W"
+        device_class: power
+        state_class: measurement
+        state: >-
+          {% set p_kw = states('sensor.solaredge_netzleistung') | float(0) %}
+          {% set direction = states('sensor.solaredge_netzflussrichtung') | lower %}
+          {% set p_w = (p_kw * 1000) | round(0) %}
+          {% if direction == 'import' %}
+            {{ p_w }}
+          {% else %}
+            0
+          {% endif %}
+
+      - name: "SolarEdge Netzeinspeisung W"
+        unique_id: se_grid_export_w
+        unit_of_measurement: "W"
+        device_class: power
+        state_class: measurement
+        state: >-
+          {% set p_kw = states('sensor.solaredge_netzleistung') | float(0) %}
+          {% set direction = states('sensor.solaredge_netzflussrichtung') | lower %}
+          {% set p_w = (p_kw * 1000) | round(0) %}
+          {% if direction == 'export' %}
+            {{ p_w }}
+          {% else %}
+            0
+          {% endif %}
+
+      - name: "SolarEdge Batterie Laden W"
+        unique_id: se_battery_charge_w
+        unit_of_measurement: "W"
+        device_class: power
+        state_class: measurement
+        state: >-
+          {% set p_w = (states('sensor.solaredge_speicherleistung') | float(0) * 1000) | round(0) %}
+          {% if p_w < 0 %}
+            {{ (p_w | abs) | round(0) }}
+          {% else %}
+            0
+          {% endif %}
+
+      - name: "SolarEdge Batterie Entladen W"
+        unique_id: se_battery_discharge_w
+        unit_of_measurement: "W"
+        device_class: power
+        state_class: measurement
+        state: >-
+          {% set p_w = (states('sensor.solaredge_speicherleistung') | float(0) * 1000) | round(0) %}
+          {% if p_w > 0 %}
+            {{ p_w }}
+          {% else %}
+            0
+          {% endif %}
+
+automation:
+  - id: solaredge_laststeuerung_10s
+    alias: "SolarEdge Laststeuerung 10s"
+    description: "Regelt das Inverter-Power-Limit nach Netzbezug (nur wenn passende Number-Entity vorhanden ist)."
+    mode: single
+    trigger:
+      - platform: time_pattern
+        seconds: "/10"
+    condition:
+      - condition: state
+        entity_id: input_boolean.solaredge_laststeuerung_aktiv
+        state: "on"
+      - condition: template
+        value_template: >-
+          {{
+            has_value('number.solaredge_active_power_limit')
+            or has_value('number.solaredge_i1_active_power_limit')
+          }}
+      - condition: numeric_state
+        entity_id: sensor.solaredge_pv_leistung_w
+        above: 200
+    action:
+      - variables:
+          grid: "{{ states('sensor.solaredge_netzleistung_signiert') | float(0) }}"
+          target: "{{ states('input_number.solaredge_import_soll_w') | float(300) }}"
+          deadband: "{{ states('input_number.solaredge_import_deadband_w') | float(200) }}"
+          step: "{{ states('input_number.solaredge_limit_step_percent') | float(5) }}"
+          lim_min: "{{ states('input_number.solaredge_limit_min_percent') | float(10) }}"
+          lim_max: "{{ states('input_number.solaredge_limit_max_percent') | float(100) }}"
+          active_limit: >-
+            {% if has_value('number.solaredge_active_power_limit') %}
+              {{ states('number.solaredge_active_power_limit') | float(100) }}
+            {% elif has_value('number.solaredge_i1_active_power_limit') %}
+              {{ states('number.solaredge_i1_active_power_limit') | float(100) }}
+            {% else %}
+              100
+            {% endif %}
+      - choose:
+          - conditions:
+              - condition: template
+                value_template: "{{ grid > (target + deadband) }}"
+            sequence:
+              - variables:
+                  new_limit: "{{ [lim_min, (active_limit - step)] | max | round(0) }}"
+              - choose:
+                  - conditions:
+                      - condition: template
+                        value_template: "{{ has_value('number.solaredge_active_power_limit') }}"
+                    sequence:
+                      - service: number.set_value
+                        target:
+                          entity_id: number.solaredge_active_power_limit
+                        data:
+                          value: "{{ new_limit }}"
+                  - conditions:
+                      - condition: template
+                        value_template: "{{ has_value('number.solaredge_i1_active_power_limit') }}"
+                    sequence:
+                      - service: number.set_value
+                        target:
+                          entity_id: number.solaredge_i1_active_power_limit
+                        data:
+                          value: "{{ new_limit }}"
+          - conditions:
+              - condition: template
+                value_template: "{{ grid < (target - deadband) }}"
+            sequence:
+              - variables:
+                  new_limit: "{{ [lim_max, (active_limit + step)] | min | round(0) }}"
+              - choose:
+                  - conditions:
+                      - condition: template
+                        value_template: "{{ has_value('number.solaredge_active_power_limit') }}"
+                    sequence:
+                      - service: number.set_value
+                        target:
+                          entity_id: number.solaredge_active_power_limit
+                        data:
+                          value: "{{ new_limit }}"
+                  - conditions:
+                      - condition: template
+                        value_template: "{{ has_value('number.solaredge_i1_active_power_limit') }}"
+                    sequence:
+                      - service: number.set_value
+                        target:
+                          entity_id: number.solaredge_i1_active_power_limit
+                        data:
+                          value: "{{ new_limit }}"
