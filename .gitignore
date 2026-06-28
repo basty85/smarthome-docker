@@ -20,6 +20,10 @@ zwavejs/config/nodes.json
 enoceanmqtt/config/devices.db
 enoceanmqtt/config/enoceanmqtt.log
 
+# Mosquitto - runtime data
+mosquitto/data/
+mosquitto/log/
+
 # Home Assistant - runtime data
 homeassistant/config/.HA_VERSION
 homeassistant/config/.cache/
