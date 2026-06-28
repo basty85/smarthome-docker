@@ -5,20 +5,28 @@ template:
       unique_id: solar_selfconsumption_ratio
       icon: mdi:percent-outline
       state: >
-        {% if (((states('sensor.solar_panel_to_house_daily')| float(0)) + (states('sensor.solar_battery_in_daily')| float(0)) + (states('sensor.solar_exported_power_daily')| float(0))) <= 0) %}
+        {% set used = (states('sensor.solar_panel_to_house_daily') | float(0))
+                    + (states('sensor.solar_battery_out_daily') | float(0)) %}
+
+        {% set total = (states('sensor.solar_panel_production_daily') | float(0)) %}
+
+        {% if total <= 0 %}
           0
         {% else %}
-          {{((((states('sensor.solar_panel_to_house_daily')| float(0)) + (states('sensor.solar_battery_in_daily')| float(0))) / ((states('sensor.solar_panel_to_house_daily')| float(0)) + (states('sensor.solar_battery_in_daily')| float(0)) + (states('sensor.solar_exported_power_daily')| float(0)))) * 100) | round(0) }}
+          {{ (used / total * 100) | round(0) }}
         {% endif %}
 
     - name: "Solar Autarkie Ratio"
       unique_id: solar_autarkie_ratio
       icon: mdi:percent-outline
       state: >
-        {% if ((states('sensor.solar_house_consumption_daily') | float(0)) <= 0) %}
+        {% set cons = states('sensor.solar_house_consumption_daily') | float(0) %}
+        {% set imp = states('sensor.solar_grid_imported_power_daily') | float(0) %}
+
+        {% if cons <= 0 %}
           0
         {% else %}
-          {{((1 - ((states('sensor.solar_imported_power_daily') | float(0)) / (states('sensor.solar_house_consumption_daily') | float(0)))) * 100 ) | round(0)}}
+          {{ ((1 - (imp / cons)) * 100) | round(0) }}
         {% endif %}
 
     # corr.
@@ -40,6 +48,8 @@ template:
     # corr.
     - name: "Solar Panel Production W"
       unique_id: solar_panel_production_w
+      device_class: power
+      state_class: measurement
       unit_of_measurement: 'W'
       icon: mdi:solar-power
       state: >
@@ -127,17 +137,17 @@ template:
       unit_of_measurement: 'W'
       icon: mdi:home
       state: >
-        {{
-          (states('sensor.technikraum_solaredge_se10k_ac_power') | float(0))
-          -
-          (states('sensor.technikraum_solaredge_se4000h_battery1_power') | float(0))
-          -
-          (states('sensor.technikraum_solaredge_se4000h_m1_ac_power') | float(0))
-        }}
+        {% set pv = states('sensor.solar_panel_to_house_w') | float(0) %}
+        {% set batt = states('sensor.solar_battery_discharge_w') | float(0) %}
+        {% set grid = states('sensor.solar_grid_to_house_w') | float(0) %}
+
+        {{ pv + batt + grid }}
 
     # corr.
-    - name: "Grid Import Power W"
+    - name: "Solar Grid Import Power W"
       unique_id: solar_grid_import_power_w
+      device_class: power
+      state_class: measurement
       unit_of_measurement: 'W'
       icon: mdi:transmission-tower-import
       state: >
@@ -145,8 +155,10 @@ template:
         {{ [0, -m1] | max }}
 
     # corr.
-    - name: "Grid Export Power W"
+    - name: "Solar Grid Export Power W"
       unique_id: solar_grid_export_power_w
+      device_class: power
+      state_class: measurement
       unit_of_measurement: 'W'
       icon: mdi:transmission-tower-export
       state: >
@@ -188,13 +200,13 @@ sensor:
     name: solar_house_consumption_kwh
 
   - platform: integration
-    source: sensor.grid_import_power_w
+    source: sensor.solar_grid_import_power_w
     method: left
     unit_prefix: k
     name: solar_grid_imported_power_kwh
 
   - platform: integration
-    source: sensor.grid_export_power_w
+    source: sensor.solar_grid_export_power_w
     method: left
     unit_prefix: k
     name: solar_grid_exported_power_kwh
@@ -234,19 +246,14 @@ utility_meter:
     name: Solar House Consumption Daily
     cycle: daily
 
-  solar_imported_power_daily:
-    source: sensor.solar_imported_power_kwh
-    name: Solar Imported Power Daily
+  solar_grid_imported_power_daily:
+    source: sensor.solar_grid_imported_power_kwh
+    name: Solar Grid Imported Power Daily
     cycle: daily
 
-  solar_imported_power_daily_solaredge:
-    source: sensor.solaredge_m1_imported_kwh
-    name: Solar Imported Power Daily Solar Edge
-    cycle: daily
-
-  solar_exported_power_daily:
-    source: sensor.solar_exported_power_kwh
-    name: Solar Exported Power Daily
+  solar_grid_exported_power_daily:
+    source: sensor.solar_grid_exported_power_kwh
+    name: Solar Grid Exported Power Daily
     cycle: daily
 
   solar_panel_to_house_daily:
@@ -254,14 +261,20 @@ utility_meter:
     name: Solar Panel To House Daily
     cycle: daily
 
+
   solar_panel_to_house_weekly:
     source: sensor.solar_panel_to_house_kwh
     name: Solar Panel To House Weekly
     cycle: weekly
 
   solar_imported_power_weekly:
-    source: sensor.solar_imported_power_kwh
-    name: Solar Imported Power Weekly
+    source: sensor.solar_grid_imported_power_kwh
+    name: Solar Grid Imported Power Weekly
+    cycle: weekly
+
+  solar_exported_power_weekly:
+    source: sensor.solar_grid_exported_power_kwh
+    name: Solar Grid Exported Power Weekly
     cycle: weekly
 
   solar_house_consumption_weekly:
@@ -284,19 +297,20 @@ utility_meter:
     name: Solar Battery Out Weekly
     cycle: weekly
 
-  solar_exported_power_weekly:
-    source: sensor.solar_exported_power_kwh
-    name: Solar Exported Power Weekly
-    cycle: weekly
 
   solar_panel_to_house_monthly:
     source: sensor.solar_panel_to_house_kwh
     name: Solar Panel To House Monthly
     cycle: monthly
 
-  solar_imported_power_monthly:
-    source: sensor.solar_imported_power_kwh
-    name: Solar Imported Power Monthly
+  solar_grid_imported_power_monthly:
+    source: sensor.solar_grid_imported_power_kwh
+    name: Solar Grid Imported Power Monthly
+    cycle: monthly
+
+  solar_grid_exported_power_monthly:
+    source: sensor.solar_grid_exported_power_kwh
+    name: Solar Grid Exported Power Monthly
     cycle: monthly
 
   solar_house_consumption_monthly:
@@ -319,19 +333,20 @@ utility_meter:
     name: Solar Battery Out Monthly
     cycle: monthly
 
-  solar_exported_power_monthly:
-    source: sensor.solar_exported_power_kwh
-    name: Solar Exported Power Monthly
-    cycle: monthly
 
   solar_panel_to_house_yearly:
     source: sensor.solar_panel_to_house_kwh
     name: Solar Panel To House Yearly
     cycle: yearly
 
-  solar_imported_power_yearly:
-    source: sensor.solar_imported_power_kwh
-    name: Solar Imported Power Yearly
+  solar_grid_imported_power_yearly:
+    source: sensor.solar_grid_imported_power_kwh
+    name: Solar Grid Imported Power Yearly
+    cycle: yearly
+
+  solar_grid_exported_power_yearly:
+    source: sensor.solar_grid_exported_power_kwh
+    name: Solar Grid Exported Power Yearly
     cycle: yearly
 
   solar_house_consumption_yearly:
@@ -352,9 +367,4 @@ utility_meter:
   solar_battery_out_yearly:
     source: sensor.solar_battery_out_kwh
     name: Solar Battery Out Yearly
-    cycle: yearly
-
-  solar_exported_power_yearly:
-    source: sensor.solar_exported_power_kwh
-    name: Solar Exported Power Yearly
     cycle: yearly

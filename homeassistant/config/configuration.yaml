@@ -22,3 +22,6 @@ automation: !include automations.yaml
 # Skripte und Szenen (werden über UI befüllt)
 script: !include scripts.yaml
 scene: !include scenes.yaml
+
+# Example configuration.yaml entry
+recorder:
