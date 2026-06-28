@@ -1,3 +1,5 @@
+# automation: !include_dir_merge_list automations/
+
 - id: sunset_jalousien_schliessen
   alias: 'Sonnenuntergang: Jalousien und Rolladen schließen'
   trigger:
@@ -65,7 +67,7 @@
     event: noon
   condition:
   - condition: numeric_state
-    entity_id: sensor.wetter_cleebronn_cloud_coverage
+    entity_id: sensor.technikraum_wetter_cleebronn_cloud_coverage
     below: 75
   action:
   - service: cover.set_cover_position
@@ -107,7 +109,7 @@
   - choose:
     - conditions:
       - condition: numeric_state
-        entity_id: sensor.wetter_cleebronn_cloud_coverage
+        entity_id: sensor.technikraum_wetter_cleebronn_cloud_coverage
         below: 75
       sequence:
       - service: cover.set_cover_position
@@ -128,13 +130,13 @@
   alias: 'Bewegungslicht HWR: Licht bei Bewegung an'
   triggers:
   - entity_id:
-    - binary_sensor.hwr_motion_sensor_bewegung
+    - binary_sensor.technikraum_hwr_motion_sensor_bewegung
     to:
     - 'on'
     trigger: state
   conditions:
   - condition: numeric_state
-    entity_id: sensor.outdoor_hwr_motion_sensor_beleuchtungsstarke
+    entity_id: sensor.technikraum_outdoor_hwr_motion_sensor_beleuchtungsstarke
     below: 10
   actions:
   - action: switch.turn_on
@@ -146,7 +148,7 @@
   alias: 'Bewegungslicht HWR: Licht nach 20s ohne Bewegung aus'
   trigger:
   - platform: state
-    entity_id: binary_sensor.hwr_sensor_motion
+    entity_id: binary_sensor.technikraum_hwr_sensor_motion
     to: 'off'
     for: 00:00:20
   action:
@@ -158,8 +160,8 @@
   trigger:
   - platform: state
     entity_id:
-    - binary_sensor.treppenhaus_sensor_oben_motion
-    - binary_sensor.treppenhaus_sensor_ug_motion
+    - binary_sensor.technikraum_treppenhaus_sensor_oben_motion
+    - binary_sensor.technikraum_treppenhaus_sensor_ug_motion
     to: 'on'
   action:
   - service: light.turn_on
@@ -170,16 +172,16 @@
   trigger:
   - platform: state
     entity_id:
-    - binary_sensor.treppenhaus_sensor_oben_motion
-    - binary_sensor.treppenhaus_sensor_ug_motion
+    - binary_sensor.technikraum_treppenhaus_sensor_oben_motion
+    - binary_sensor.technikraum_treppenhaus_sensor_ug_motion
     to: 'off'
     for: 00:00:30
   condition:
   - condition: state
-    entity_id: binary_sensor.treppenhaus_sensor_oben_motion
+    entity_id: binary_sensor.technikraum_treppenhaus_sensor_oben_motion
     state: 'off'
   - condition: state
-    entity_id: binary_sensor.treppenhaus_sensor_ug_motion
+    entity_id: binary_sensor.technikraum_treppenhaus_sensor_ug_motion
     state: 'off'
   action:
   - service: light.turn_off
@@ -189,7 +191,7 @@
   alias: 'Außenlicht: Blumenbeet bei Dunkelheit an'
   trigger:
   - platform: numeric_state
-    entity_id: sensor.outdoor_sensor_illuminance
+    entity_id: sensor.technikraum_outdoor_sensor_illuminance
     below: 10
   action:
   - service: light.turn_on
@@ -199,7 +201,7 @@
   alias: 'Außenlicht: Blumenbeet bei Helligkeit aus'
   trigger:
   - platform: numeric_state
-    entity_id: sensor.outdoor_sensor_illuminance
+    entity_id: sensor.technikraum_outdoor_sensor_illuminance
     above: 15
   action:
   - service: light.turn_off

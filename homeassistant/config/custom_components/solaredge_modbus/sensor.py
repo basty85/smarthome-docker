@@ -68,12 +68,12 @@ async def async_setup_entry(hass: HomeAssistant, entry, async_add_entities):
 
 
 class SolarEdgeSensor(SolarEdgeEntity, SensorEntity):
-    """Representation of a solaredge sensor."""
+    """Representation of a solaredge sensor.technikraum_"""
 
     def __init__(
         self, hub: SolaredgeModbusCoordinator, description: SensorEntityDescription
     ) -> None:
-        """Init the sensor."""
+        """Init the sensor.technikraum_"""
         super().__init__(hub)
         self.entity_description = description
         self._attr_has_entity_name = True
@@ -83,7 +83,7 @@ class SolarEdgeSensor(SolarEdgeEntity, SensorEntity):
     def _handle_coordinator_update(self) -> None:
         """Handle updated data from the coordinator."""
         new_value = self.hub.modbus_data.get(self.entity_description.key)
-        """We keep old value when we would get a new value of 0 for a total increasing sensor."""
+        """We keep old value when we would get a new value of 0 for a total increasing sensor.technikraum_"""
         if (
             (self.entity_description.state_class != SensorStateClass.TOTAL_INCREASING)
             or (new_value is None)

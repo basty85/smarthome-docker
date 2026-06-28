@@ -1,5 +1,6 @@
 template:
   - sensor:
+
     - name: "Solar Selfconsumption Ratio"
       unique_id: solar_selfconsumption_ratio
       icon: mdi:percent-outline
@@ -9,6 +10,7 @@ template:
         {% else %}
           {{((((states('sensor.solar_panel_to_house_daily')| float(0)) + (states('sensor.solar_battery_in_daily')| float(0))) / ((states('sensor.solar_panel_to_house_daily')| float(0)) + (states('sensor.solar_battery_in_daily')| float(0)) + (states('sensor.solar_exported_power_daily')| float(0)))) * 100) | round (0) }}
         {% endif %}
+
     - name: "Solar Autarkie Ratio"
       unique_id: solar_autarkie_ratio
       icon: mdi:percent-outline
@@ -22,34 +24,30 @@ template:
     - name: "Solar Inverter Effectiveness"
       unique_id: solar_inverter_effectiveness
       icon: mdi:percent-outline
-      unit_of_measurement: '%'
+      unit_of_measurement: ""
       state: >
-        {% if ((states('sensor.solaredge_dc_power') | float(0)) < 100) or ((states('sensor.solaredge_ac_power') | float(0)) < 100)%}
-          {{(states('sensor.solar_inverter_effectiveness'))}}
+        {% set ac = states('sensor.technikraum_solaredge_se10k_ac_power') | float(0) %}
+        {% set dc = states('sensor.technikraum_solaredge_se10k_dc_power') | float(0) %}
+
+        {% if dc < 500 or ac < 500 %}
+          0.98
         {% else %}
-          {% if is_state('sensor.solar_inverter_effectiveness', 'unknown') %}
-            1
-          {% elif ((states('sensor.solaredge_ac_power') | float(0)) <= 0) %}
-            {{(states('sensor.solar_inverter_effectiveness'))}}
-          {% elif ((states('sensor.solaredge_dc_power') | float(0)) <= 0) %}
-            {{(states('sensor.solar_inverter_effectiveness'))}}
-          {% else %}
-            {{(states('sensor.solaredge_ac_power') | float(0)) / (states('sensor.solaredge_dc_power') | float(0))}}
-          {% endif %}
+          {% set eff = ac / dc %}
+          {{ [0.85, [eff, 1.02] | min] | max }}
         {% endif %}
 
     - name: "Solar Battery Effectiveness"
       unique_id: solar_battery_effectiveness
       icon: mdi:percent-outline
-      unit_of_measurement: '%'
+      unit_of_measurement: '1'
       state: >
-        {% if (((states('sensor.solaredge_dc_power') | float(0)) + (states('sensor.solaredge_battery1_power') | float(0))) <= 0 ) %}
-          {% if ((states('sensor.solaredge_battery1_power')| float(0)) >= 0) %}
+        {% if (((states('sensor.technikraum_solaredge_se10k_dc_power') | float(0)) + (states('sensor.technikraum_solaredge_se4000h_battery1_power') | float(0))) <= 0 ) %}
+          {% if ((states('sensor.technikraum_solaredge_se4000h_battery1_power')| float(0)) >= 0) %}
             {{(states('sensor.solar_battery_effectiveness'))}}
-          {% elif ((states('sensor.solaredge_dc_power') | float(0)) <= 0) %}
+          {% elif ((states('sensor.technikraum_solaredge_se10k_dc_power') | float(0)) <= 0) %}
             {{(states('sensor.solar_battery_effectiveness'))}}
           {% else %}
-            {{1 - ((((states('sensor.solaredge_battery1_power') | float(0)) * -1) - (states('sensor.solaredge_dc_power') | float(0))) /  ((states('sensor.solaredge_battery1_power') | float(0)) * -1))}}
+            {{1 - ((((states('sensor.technikraum_solaredge_se4000h_battery1_power') | float(0)) * -1) - (states('sensor.technikraum_solaredge_se10k_dc_power') | float(0))) /  ((states('sensor.technikraum_solaredge_se4000h_battery1_power') | float(0)) * -1))}}
           {% endif %}
         {% elif is_state('sensor.solar_battery_effectiveness', 'unknown') %}
           1
@@ -64,12 +62,15 @@ template:
       unit_of_measurement: 'W'
       icon: mdi:solar-power
       state: >
-        {% if ((states('sensor.solaredge_dc_power') | float(0)) + (states('sensor.solaredge_battery1_power') | float(0)) <= 0) %}
+        {% set ac = states('sensor.technikraum_solaredge_se10k_ac_power') | float(0) %}
+         {% set eff = states('solar.solar_inverter_effectiveness') | float(0.98) %}
+
+        {% if ac <= 0 %}
           0
-        {% elif (is_state('sensor.solaredge_dc_power', 'unknown')) or (is_state('sensor.solaredge_battery1_power', 'unknown'))%}
+        {% elif is_state('sensor.technikraum_solaredge_se10k_ac_power', 'unknown') %}
           0
         {% else %}
-          {{((states('sensor.solaredge_dc_power') | float(0)) + (states('sensor.solaredge_battery1_power') | float(0)))}}
+          {{ (ac * eff) | float(0) }}
         {% endif %}
 
     - name: "Solar Panel To House W"
@@ -77,27 +78,19 @@ template:
       unit_of_measurement: 'W'
       icon: mdi:solar-power
       state: >
-        {% if ((states('sensor.solaredge_battery1_power') | float(0)) >= 0) and ((states('sensor.solaredge_m1_ac_power') | float(0)) > 0) %}
-          {{(states('sensor.solaredge_ac_power') | float(0) - states('sensor.solaredge_m1_ac_power') | float(0))}}
-        {% elif ((states('sensor.solaredge_battery1_power') | float(0)) >= 0) and ((states('sensor.solaredge_m1_ac_power') | float(0)) < 0) %}
-          {{states('sensor.solaredge_ac_power') | float(0)}}
-        {% elif ((states('sensor.solaredge_battery1_power') | float(0)) < 0)%}
-          {% if ((states('sensor.solaredge_dc_power') | float(0) + states('sensor.solaredge_battery1_power') | float(0)) < 0 ) %}
-            0
-          {% else %}
-            {{((states('sensor.solaredge_dc_power') | float(0)) + (states('sensor.solaredge_battery1_power') | float(0))) * (states('sensor.solar_inverter_effectiveness') | float(0))}}
-          {% endif %}
-        {% else %}
-          0
-        {% endif %}
+        {% set v =
+          (states('sensor.technikraum_solaredge_se10k_ac_power') | float(0)) +
+          (states('sensor.technikraum_solaredge_se4000h_ac_power') | float(0))
+        %}
+        {{ [0, v] | max }}
 
     - name: "Solar Grid To House W"
       unique_id: solar_grid_to_house_w
       unit_of_measurement: 'W'
       icon: mdi:transmission-tower-export
       state: >
-        {% if ((states('sensor.solaredge_m1_ac_power') | float(0)) <= 0) %}
-          {{((states('sensor.solaredge_m1_ac_power') | float(0)) *-1)}}
+        {% if ((states('sensor.technikraum_solaredge_se4000h_m1_ac_power') | float(0)) <= 0) %}
+          {{((states('sensor.technikraum_solaredge_se4000h_m1_ac_power') | float(0)) *-1)}}
         {% else %}
           0
         {% endif %}
@@ -107,8 +100,8 @@ template:
       unit_of_measurement: 'W'
       icon: mdi:solar-power
       state: >
-        {% if ((states('sensor.solaredge_m1_ac_power') | float(0)) > 0) %}
-          {{(states('sensor.solaredge_m1_ac_power') | float(0))}}
+        {% if ((states('sensor.technikraum_solaredge_se4000h_m1_ac_power') | float(0)) > 0) %}
+          {{(states('sensor.technikraum_solaredge_se4000h_m1_ac_power') | float(0))}}
         {% else %}
           0
         {% endif %}
@@ -118,8 +111,8 @@ template:
       unit_of_measurement: 'W'
       icon: mdi:battery-negative
       state: >
-        {% if ((states('sensor.solaredge_battery1_power') | float(0)) < 0) %}
-          {{((states('sensor.solaredge_battery1_power') | float(0)) * -1) * (states('sensor.solar_battery_effectiveness')| float(0)) * (states('sensor.solar_inverter_effectiveness')| float(0))}}
+        {% if ((states('sensor.technikraum_solaredge_se4000h_battery1_power') | float(0)) < 0) %}
+          {{ (states('sensor.technikraum_solaredge_se4000h_battery1_power') | float(0)) * -1 }}
         {% else %}
           0
         {% endif %}
@@ -129,11 +122,11 @@ template:
       unit_of_measurement: 'W'
       icon: mdi:solar-power
       state: >
-        {% if ((states('sensor.solaredge_battery1_power') | float(0)) > 0) %}
+        {% if ((states('sensor.technikraum_solaredge_se4000h_battery1_power') | float(0)) > 0) %}
           {% if ((states('sensor.solar_grid_to_battery_w') | float(0)) > 0) %}
             0
           {% else %}
-            {{(states('sensor.solaredge_battery1_power') | float(0))}}
+            {{(states('sensor.technikraum_solaredge_se4000h_battery1_power') | float(0))}}
           {% endif %}
         {% else %}
           0
@@ -144,8 +137,8 @@ template:
       unit_of_measurement: 'W'
       icon: mdi:battery-positive
       state: >
-        {% if (is_state('sensor.solaredge_ac_power', '0')) and ((states('sensor.solaredge_battery1_power') | float(0)) > 0) %}
-          {{(states('sensor.solaredge_battery1_power') | float(0))}}
+        {% if (is_state('sensor.technikraum_solaredge_se10k_ac_power', '0')) and ((states('sensor.technikraum_solaredge_se4000h_battery1_power') | float(0)) > 0) %}
+          {{(states('sensor.technikraum_solaredge_se4000h_battery1_power') | float(0))}}
         {% else %}
           0
         {% endif %}
@@ -169,8 +162,8 @@ template:
       unit_of_measurement: 'W'
       icon: mdi:transmission-tower-export
       state: >
-        {% if ((states('sensor.solaredge_m1_ac_power') | float(0)) <= 0) %}
-          {{((states('sensor.solaredge_m1_ac_power') | float(0)) *-1)}}
+        {% if ((states('sensor.technikraum_solaredge_se4000h_m1_ac_power') | float(0)) <= 0) %}
+          {{((states('sensor.technikraum_solaredge_se4000h_m1_ac_power') | float(0)) *-1)}}
         {% else %}
           0
         {% endif %}
@@ -180,8 +173,8 @@ template:
       unit_of_measurement: 'W'
       icon: mdi:transmission-tower-import
       state: >
-        {% if ((states('sensor.solaredge_m1_ac_power') | float(0)) > 0) %}
-          {{(states('sensor.solaredge_m1_ac_power') | float(0))}}
+        {% if ((states('sensor.technikraum_solaredge_se4000h_m1_ac_power') | float(0)) > 0) %}
+          {{(states('sensor.technikraum_solaredge_se4000h_m1_ac_power') | float(0))}}
         {% else %}
           0
         {% endif %}
@@ -254,30 +247,37 @@ utility_meter:
     source: sensor.solar_panel_production_kwh
     name: Solar Panel Production Daily
     cycle: daily
+
   solar_battery_in_daily:
     source: sensor.solar_battery_in_kwh
     name: Solar Battery In Daily
     cycle: daily
+
   solar_battery_out_daily:
     source: sensor.solar_battery_out_kwh
     name: Solar Battery Out Daily
     cycle: daily
+
   solar_house_consumption_daily:
     source: sensor.solar_house_consumption_kwh
     name: Solar House Consumption Daily
     cycle: daily
+
   solar_imported_power_daily:
     source: sensor.solar_imported_power_kwh
     name: Solar Imported Power Daily
     cycle: daily
+
   solar_imported_power_daily_solaredge:
     source: sensor.solaredge_m1_imported_kwh
     name: Solar Imported Power Daily Solar Edge
     cycle: daily
+
   solar_exported_power_daily:
     source: sensor.solar_exported_power_kwh
     name: Solar Exported Power Daily
     cycle: daily
+
   solar_panel_to_house_daily:
     source: sensor.solar_panel_to_house_kwh
     name: Solar Panel To House Daily
@@ -287,26 +287,32 @@ utility_meter:
     source: sensor.solar_panel_to_house_kwh
     name: Solar Panel To House Weekly
     cycle: weekly
+
   solar_imported_power_weekly:
     source: sensor.solar_imported_power_kwh
     name: Solar Imported Power Weekly
     cycle: weekly
+
   solar_house_consumption_weekly:
     source: sensor.solar_house_consumption_kwh
     name: Solar House Consumption Weekly
     cycle: weekly
+
   solar_panel_production_weekly:
     source: sensor.solar_panel_production_kwh
     name: Solar Panel Production Weekly
     cycle: weekly
+
   solar_battery_in_weekly:
     source: sensor.solar_battery_in_kwh
     name: Solar Battery In Weekly
     cycle: weekly
+
   solar_battery_out_weekly:
     source: sensor.solar_battery_out_kwh
     name: Solar Battery Out Weekly
     cycle: weekly
+
   solar_exported_power_weekly:
     source: sensor.solar_exported_power_kwh
     name: Solar Exported Power Weekly
@@ -316,26 +322,32 @@ utility_meter:
     source: sensor.solar_panel_to_house_kwh
     name: Solar Panel To House Monthly
     cycle: monthly
+
   solar_imported_power_monthly:
     source: sensor.solar_imported_power_kwh
     name: Solar Imported Power Monthly
     cycle: monthly
+
   solar_house_consumption_monthly:
     source: sensor.solar_house_consumption_kwh
     name: Solar House Consumption Monthly
     cycle: monthly
+
   solar_panel_production_monthly:
     source: sensor.solar_panel_production_kwh
     name: Solar Panel Production Monthly
     cycle: monthly
+
   solar_battery_in_monthly:
     source: sensor.solar_battery_in_kwh
     name: Solar Battery In Monthly
     cycle: monthly
+
   solar_battery_out_monthly:
     source: sensor.solar_battery_out_kwh
     name: Solar Battery Out Monthly
     cycle: monthly
+
   solar_exported_power_monthly:
     source: sensor.solar_exported_power_kwh
     name: Solar Exported Power Monthly
@@ -345,26 +357,32 @@ utility_meter:
     source: sensor.solar_panel_to_house_kwh
     name: Solar Panel To House Yearly
     cycle: yearly
+
   solar_imported_power_yearly:
     source: sensor.solar_imported_power_kwh
     name: Solar Imported Power Yearly
     cycle: yearly
+
   solar_house_consumption_yearly:
     source: sensor.solar_house_consumption_kwh
     name: Solar House Consumption Yearly
     cycle: yearly
+
   solar_panel_production_yearly:
     source: sensor.solar_panel_production_kwh
     name: Solar Panel Production Yearly
     cycle: yearly
+
   solar_battery_in_yearly:
     source: sensor.solar_battery_in_kwh
     name: Solar Battery In Yearly
     cycle: yearly
+
   solar_battery_out_yearly:
     source: sensor.solar_battery_out_kwh
     name: Solar Battery Out Yearly
     cycle: yearly
+
   solar_exported_power_yearly:
     source: sensor.solar_exported_power_kwh
     name: Solar Exported Power Yearly
