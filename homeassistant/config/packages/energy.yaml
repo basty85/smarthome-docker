@@ -188,12 +188,6 @@ template:
 
 sensor:
   - platform: integration
-    source: sensor.solar_panel_production_w
-    method: left
-    unit_prefix: k
-    name: solar_panel_production_kwh
-
-  - platform: integration
     source: sensor.solar_battery_discharge_w
     method: left
     unit_prefix: k
@@ -212,18 +206,6 @@ sensor:
     name: solar_house_consumption_kwh
 
   - platform: integration
-    source: sensor.solar_grid_import_power_w
-    method: left
-    unit_prefix: k
-    name: solar_grid_imported_power_kwh
-
-  - platform: integration
-    source: sensor.solar_grid_export_power_w
-    method: left
-    unit_prefix: k
-    name: solar_grid_exported_power_kwh
-
-  - platform: integration
     source: sensor.solar_panel_to_house_w
     method: left
     unit_prefix: k
@@ -239,7 +221,7 @@ sensor:
 
 utility_meter:
   solar_panel_production_daily:
-    source: sensor.solar_panel_production_kwh
+    source: sensor.technikraum_solaredge_se10k_ac_energy_kwh
     name: Solar Panel Production Daily
     cycle: daily
 
@@ -259,12 +241,12 @@ utility_meter:
     cycle: daily
 
   solar_grid_imported_power_daily:
-    source: sensor.solar_grid_imported_power_kwh
+    source: sensor.technikraum_solaredge_se4000h_m1_imported_kwh
     name: Solar Grid Imported Power Daily
     cycle: daily
 
   solar_grid_exported_power_daily:
-    source: sensor.solar_grid_exported_power_kwh
+    source: sensor.technikraum_solaredge_se4000h_m1_exported_kwh
     name: Solar Grid Exported Power Daily
     cycle: daily
 
@@ -279,13 +261,13 @@ utility_meter:
     name: Solar Panel To House Weekly
     cycle: weekly
 
-  solar_imported_power_weekly:
-    source: sensor.solar_grid_imported_power_kwh
+  solar_grid_imported_power_weekly:
+    source: sensor.technikraum_solaredge_se4000h_m1_imported_kwh
     name: Solar Grid Imported Power Weekly
     cycle: weekly
 
-  solar_exported_power_weekly:
-    source: sensor.solar_grid_exported_power_kwh
+  solar_grid_exported_power_weekly:
+    source: sensor.technikraum_solaredge_se4000h_m1_exported_kwh
     name: Solar Grid Exported Power Weekly
     cycle: weekly
 
@@ -295,7 +277,7 @@ utility_meter:
     cycle: weekly
 
   solar_panel_production_weekly:
-    source: sensor.solar_panel_production_kwh
+    source: sensor.technikraum_solaredge_se10k_ac_energy_kwh
     name: Solar Panel Production Weekly
     cycle: weekly
 
@@ -316,12 +298,12 @@ utility_meter:
     cycle: monthly
 
   solar_grid_imported_power_monthly:
-    source: sensor.solar_grid_imported_power_kwh
+    source: sensor.technikraum_solaredge_se4000h_m1_imported_kwh
     name: Solar Grid Imported Power Monthly
     cycle: monthly
 
   solar_grid_exported_power_monthly:
-    source: sensor.solar_grid_exported_power_kwh
+    source: sensor.technikraum_solaredge_se4000h_m1_exported_kwh
     name: Solar Grid Exported Power Monthly
     cycle: monthly
 
@@ -331,7 +313,7 @@ utility_meter:
     cycle: monthly
 
   solar_panel_production_monthly:
-    source: sensor.solar_panel_production_kwh
+    source: sensor.technikraum_solaredge_se10k_ac_energy_kwh
     name: Solar Panel Production Monthly
     cycle: monthly
 
@@ -352,12 +334,12 @@ utility_meter:
     cycle: yearly
 
   solar_grid_imported_power_yearly:
-    source: sensor.solar_grid_imported_power_kwh
+    source: sensor.technikraum_solaredge_se4000h_m1_imported_kwh
     name: Solar Grid Imported Power Yearly
     cycle: yearly
 
   solar_grid_exported_power_yearly:
-    source: sensor.solar_grid_exported_power_kwh
+    source: sensor.technikraum_solaredge_se4000h_m1_exported_kwh
     name: Solar Grid Exported Power Yearly
     cycle: yearly
 
@@ -367,7 +349,7 @@ utility_meter:
     cycle: yearly
 
   solar_panel_production_yearly:
-    source: sensor.solar_panel_production_kwh
+    source: sensor.technikraum_solaredge_se10k_ac_energy_kwh
     name: Solar Panel Production Yearly
     cycle: yearly
 
