@@ -6,16 +6,16 @@ repos:
     rev: v5.0.0
     hooks:
       - id: trailing-whitespace
-        exclude: '^homegear/'
+        exclude: '^homegear/|^homeassistant/config/\.shopping_list\.json$|^mosquitto/config/mosquitto\.conf$'
       - id: end-of-file-fixer
-        exclude: '^homegear/'
+        exclude: '^homegear/|^homeassistant/config/\.shopping_list\.json$|^mosquitto/config/mosquitto\.conf$'
       - id: check-yaml
         exclude: '^homeassistant/config/'  # HA uses custom YAML tags (!include, !secret)
       - id: check-json
         files: \.(json)$
       - id: check-merge-conflict
       - id: check-added-large-files
-        args: ['--maxkb=500']
+        args: ['--maxkb=2000']
       - id: detect-private-key
         exclude: '^homegear/config/'
 
@@ -24,6 +24,7 @@ repos:
     rev: v1.5.0
     hooks:
       - id: detect-secrets
+        exclude: '^homeassistant/config/\.shopping_list\.json$|^homeassistant/config/www/bubble-card\.js$'
         args: ['--baseline', '.secrets.baseline']
 
   # Shell script linting

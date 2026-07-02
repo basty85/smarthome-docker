@@ -353,7 +353,7 @@ const{I:wt}=re,At=e=>e,xt=()=>document.createComment(""),Et=(e,t,i)=>{const n=e.
         </div>
       </ha-sortable>
 
-      
+
       <div class="add-item row">
         <ha-select
           label="${Xe("editor.settings.preset")}"
@@ -472,13 +472,13 @@ const{I:wt}=re,At=e=>e,xt=()=>document.createComment(""),Et=(e,t,i)=>{const n=e.
               min-width: 0;
               --ha-tab-track-color: var(--card-background-color);
             }
-    
+
             #bar-options {
               display: flex;
               justify-content: flex-end;
               width: 100%;
             }
-    
+
             #editor {
               border: 1px solid var(--divider-color);
               padding: 12px;

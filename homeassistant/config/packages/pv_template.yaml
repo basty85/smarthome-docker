@@ -1,12 +1,13 @@
 template:
   - sensor:
-
     - name: "Solar Selfconsumption Ratio"
       unique_id: solar_selfconsumption_ratio
+      unit_of_measurement: "%"
+      state_class: measurement
       icon: mdi:percent-outline
       state: >
         {% set used = (states('sensor.solar_panel_to_house_daily') | float(0))
-                    + (states('sensor.solar_battery_out_daily') | float(0)) %}
+                    + (states('sensor.solar_battery_in_daily') | float(0)) %}
 
         {% set total = (states('sensor.solar_panel_production_daily') | float(0)) %}
 
@@ -18,6 +19,8 @@ template:
 
     - name: "Solar Autarkie Ratio"
       unique_id: solar_autarkie_ratio
+      unit_of_measurement: "%"
+      state_class: measurement
       icon: mdi:percent-outline
       state: >
         {% set cons = states('sensor.solar_house_consumption_daily') | float(0) %}
@@ -185,180 +188,3 @@ template:
       state: >
         {% set kwh = states('sensor.technikraum_solaredge_se10k_ac_energy_kwh') | float(0) %}
         {{ (kwh / 1000) | round(2) }}
-
-sensor:
-  - platform: integration
-    source: sensor.solar_battery_discharge_w
-    method: left
-    unit_prefix: k
-    name: solar_battery_out_kwh
-
-  - platform: integration
-    source: sensor.solar_battery_charge_w
-    method: left
-    unit_prefix: k
-    name: solar_battery_in_kwh
-
-  - platform: integration
-    source: sensor.solar_house_consumption_w
-    method: left
-    unit_prefix: k
-    name: solar_house_consumption_kwh
-
-  - platform: integration
-    source: sensor.solar_panel_to_house_w
-    method: left
-    unit_prefix: k
-    name: solar_panel_to_house_kwh
-
-  - platform: statistics
-    name: "Solar Inverter Effectiveness 24h Average"
-    state_characteristic: mean
-    max_age:
-      hours: 24
-    entity_id: sensor.solar_inverter_effectiveness
-
-
-utility_meter:
-  solar_panel_production_daily:
-    source: sensor.technikraum_solaredge_se10k_ac_energy_kwh
-    name: Solar Panel Production Daily
-    cycle: daily
-
-  solar_battery_in_daily:
-    source: sensor.solar_battery_in_kwh
-    name: Solar Battery In Daily
-    cycle: daily
-
-  solar_battery_out_daily:
-    source: sensor.solar_battery_out_kwh
-    name: Solar Battery Out Daily
-    cycle: daily
-
-  solar_house_consumption_daily:
-    source: sensor.solar_house_consumption_kwh
-    name: Solar House Consumption Daily
-    cycle: daily
-
-  solar_grid_imported_power_daily:
-    source: sensor.technikraum_solaredge_se4000h_m1_imported_kwh
-    name: Solar Grid Imported Power Daily
-    cycle: daily
-
-  solar_grid_exported_power_daily:
-    source: sensor.technikraum_solaredge_se4000h_m1_exported_kwh
-    name: Solar Grid Exported Power Daily
-    cycle: daily
-
-  solar_panel_to_house_daily:
-    source: sensor.solar_panel_to_house_kwh
-    name: Solar Panel To House Daily
-    cycle: daily
-
-
-  solar_panel_to_house_weekly:
-    source: sensor.solar_panel_to_house_kwh
-    name: Solar Panel To House Weekly
-    cycle: weekly
-
-  solar_grid_imported_power_weekly:
-    source: sensor.technikraum_solaredge_se4000h_m1_imported_kwh
-    name: Solar Grid Imported Power Weekly
-    cycle: weekly
-
-  solar_grid_exported_power_weekly:
-    source: sensor.technikraum_solaredge_se4000h_m1_exported_kwh
-    name: Solar Grid Exported Power Weekly
-    cycle: weekly
-
-  solar_house_consumption_weekly:
-    source: sensor.solar_house_consumption_kwh
-    name: Solar House Consumption Weekly
-    cycle: weekly
-
-  solar_panel_production_weekly:
-    source: sensor.technikraum_solaredge_se10k_ac_energy_kwh
-    name: Solar Panel Production Weekly
-    cycle: weekly
-
-  solar_battery_in_weekly:
-    source: sensor.solar_battery_in_kwh
-    name: Solar Battery In Weekly
-    cycle: weekly
-
-  solar_battery_out_weekly:
-    source: sensor.solar_battery_out_kwh
-    name: Solar Battery Out Weekly
-    cycle: weekly
-
-
-  solar_panel_to_house_monthly:
-    source: sensor.solar_panel_to_house_kwh
-    name: Solar Panel To House Monthly
-    cycle: monthly
-
-  solar_grid_imported_power_monthly:
-    source: sensor.technikraum_solaredge_se4000h_m1_imported_kwh
-    name: Solar Grid Imported Power Monthly
-    cycle: monthly
-
-  solar_grid_exported_power_monthly:
-    source: sensor.technikraum_solaredge_se4000h_m1_exported_kwh
-    name: Solar Grid Exported Power Monthly
-    cycle: monthly
-
-  solar_house_consumption_monthly:
-    source: sensor.solar_house_consumption_kwh
-    name: Solar House Consumption Monthly
-    cycle: monthly
-
-  solar_panel_production_monthly:
-    source: sensor.technikraum_solaredge_se10k_ac_energy_kwh
-    name: Solar Panel Production Monthly
-    cycle: monthly
-
-  solar_battery_in_monthly:
-    source: sensor.solar_battery_in_kwh
-    name: Solar Battery In Monthly
-    cycle: monthly
-
-  solar_battery_out_monthly:
-    source: sensor.solar_battery_out_kwh
-    name: Solar Battery Out Monthly
-    cycle: monthly
-
-
-  solar_panel_to_house_yearly:
-    source: sensor.solar_panel_to_house_kwh
-    name: Solar Panel To House Yearly
-    cycle: yearly
-
-  solar_grid_imported_power_yearly:
-    source: sensor.technikraum_solaredge_se4000h_m1_imported_kwh
-    name: Solar Grid Imported Power Yearly
-    cycle: yearly
-
-  solar_grid_exported_power_yearly:
-    source: sensor.technikraum_solaredge_se4000h_m1_exported_kwh
-    name: Solar Grid Exported Power Yearly
-    cycle: yearly
-
-  solar_house_consumption_yearly:
-    source: sensor.solar_house_consumption_kwh
-    name: Solar House Consumption Yearly
-    cycle: yearly
-
-  solar_panel_production_yearly:
-    source: sensor.technikraum_solaredge_se10k_ac_energy_kwh
-    name: Solar Panel Production Yearly
-    cycle: yearly
-
-  solar_battery_in_yearly:
-    source: sensor.solar_battery_in_kwh
-    name: Solar Battery In Yearly
-    cycle: yearly
-
-  solar_battery_out_yearly:
-    source: sensor.solar_battery_out_kwh
-    name: Solar Battery Out Yearly
-    cycle: yearly
