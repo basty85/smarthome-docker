@@ -6,15 +6,12 @@ template:
       state_class: measurement
       icon: mdi:percent-outline
       state: >
-        {% set used = (states('sensor.solar_panel_to_house_daily') | float(0))
-                    + (states('sensor.solar_battery_in_daily') | float(0)) %}
-
-        {% set total = (states('sensor.solar_panel_production_daily') | float(0)) %}
-
+        {% set exported = states('sensor.solar_grid_exported_power_daily') | float(0) %}
+        {% set total = states('sensor.solar_panel_production_daily') | float(0) %}
         {% if total <= 0 %}
           0
         {% else %}
-          {{ (used / total * 100) | round(0) }}
+          {{ (((total - exported) / total) * 100) | round(0) }}
         {% endif %}
 
     - name: "Solar Autarkie Ratio"
