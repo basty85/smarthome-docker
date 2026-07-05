@@ -1,27 +1,27 @@
 template:
   - sensor:
-    - name: "Solar Selfconsumption Ratio"
-      unique_id: solar_selfconsumption_ratio
+    - name: "PV Selfconsumption Ratio"
+      unique_id: pv_selfconsumption_ratio
       unit_of_measurement: "%"
       state_class: measurement
       icon: mdi:percent-outline
       state: >
-        {% set exported = states('sensor.solar_grid_exported_power_daily') | float(0) %}
-        {% set total = states('sensor.solar_panel_production_daily') | float(0) %}
+        {% set exported = states('sensor.pv_grid_exported_power_daily') | float(0) %}
+        {% set total = states('sensor.pv_panel_production_daily') | float(0) %}
         {% if total <= 0 %}
           0
         {% else %}
           {{ (((total - exported) / total) * 100) | round(0) }}
         {% endif %}
 
-    - name: "Solar Autarkie Ratio"
-      unique_id: solar_autarkie_ratio
+    - name: "PV Autarkie Ratio"
+      unique_id: pv_autarkie_ratio
       unit_of_measurement: "%"
       state_class: measurement
       icon: mdi:percent-outline
       state: >
-        {% set cons = states('sensor.solar_house_consumption_daily') | float(0) %}
-        {% set imp = states('sensor.solar_grid_imported_power_daily') | float(0) %}
+        {% set cons = states('sensor.pv_house_consumption_daily') | float(0) %}
+        {% set imp = states('sensor.pv_grid_imported_power_daily') | float(0) %}
 
         {% if cons <= 0 %}
           0
@@ -30,8 +30,8 @@ template:
         {% endif %}
 
     # corr.
-    - name: "Solar Inverter Effectiveness"
-      unique_id: solar_inverter_effectiveness
+    - name: "PV Inverter Effectiveness"
+      unique_id: pv_inverter_effectiveness
       icon: mdi:percent-outline
       state_class: measurement
       unit_of_measurement: ""
@@ -47,8 +47,8 @@ template:
         {% endif %}
 
     # corr.
-    - name: "Solar Panel Production W"
-      unique_id: solar_panel_production_w
+    - name: "PV Panel Production W"
+      unique_id: pv_panel_production_w
       device_class: power
       state_class: measurement
       unit_of_measurement: 'W'
@@ -58,8 +58,8 @@ template:
         {{ [0, ac] | max }}
 
     # corr.
-    - name: "Solar Panel To House W"
-      unique_id: solar_panel_to_house_w
+    - name: "PV Panel To House W"
+      unique_id: pv_panel_to_house_w
       device_class: power
       state_class: measurement
       unit_of_measurement: 'W'
@@ -76,8 +76,8 @@ template:
         {{ [0, panel_to_house] | max }}
 
     # corr.
-    - name: "Solar Grid To House W"
-      unique_id: solar_grid_to_house_w
+    - name: "PV Grid To House W"
+      unique_id: pv_grid_to_house_w
       device_class: power
       state_class: measurement
       unit_of_measurement: 'W'
@@ -87,8 +87,8 @@ template:
         {{ [0, -grid] | max }}
 
     # corr.
-    - name: "Solar Panel To Grid W"
-      unique_id: solar_panel_to_grid_w
+    - name: "PV Panel To Grid W"
+      unique_id: pv_panel_to_grid_w
       device_class: power
       state_class: measurement
       unit_of_measurement: 'W'
@@ -98,8 +98,8 @@ template:
         {{ [0, grid] | max }}
 
     # corr.
-    - name: "Solar Battery To House W"
-      unique_id: solar_battery_to_house_w
+    - name: "PV Battery To House W"
+      unique_id: pv_battery_to_house_w
       device_class: power
       state_class: measurement
       unit_of_measurement: 'W'
@@ -109,8 +109,8 @@ template:
         {{ [0, -batt] | max }}
 
     # corr.
-    - name: "Solar Panel To Battery W"
-      unique_id: solar_panel_to_battery_w
+    - name: "PV Panel To Battery W"
+      unique_id: pv_panel_to_battery_w
       device_class: power
       state_class: measurement
       unit_of_measurement: 'W'
@@ -120,8 +120,8 @@ template:
         {{ [0, batt] | max }}
 
     # corr.
-    - name: "Solar Battery Charge W"
-      unique_id: solar_battery_charge_w
+    - name: "PV Battery Charge W"
+      unique_id: pv_battery_charge_w
       device_class: power
       state_class: measurement
       unit_of_measurement: 'W'
@@ -131,8 +131,8 @@ template:
         {{ [0, batt] | max }}
 
     # corr.
-    - name: "Solar Battery Discharge W"
-      unique_id: solar_battery_discharge_w
+    - name: "PV Battery Discharge W"
+      unique_id: pv_battery_discharge_w
       device_class: power
       state_class: measurement
       unit_of_measurement: 'W'
@@ -142,22 +142,22 @@ template:
         {{ [0, -batt] | max }}
 
     # corr.
-    - name: "Solar House Consumption W"
-      unique_id: solar_house_consumption_w
+    - name: "PV House Consumption W"
+      unique_id: pv_house_consumption_w
       device_class: power
       state_class: measurement
       unit_of_measurement: 'W'
       icon: mdi:home
       state: >
-        {% set pv = states('sensor.solar_panel_to_house_w') | float(0) %}
-        {% set batt = states('sensor.solar_battery_discharge_w') | float(0) %}
-        {% set grid = states('sensor.solar_grid_to_house_w') | float(0) %}
+        {% set pv = states('sensor.pv_panel_to_house_w') | float(0) %}
+        {% set batt = states('sensor.pv_battery_discharge_w') | float(0) %}
+        {% set grid = states('sensor.pv_grid_to_house_w') | float(0) %}
 
         {{ pv + batt + grid }}
 
     # corr.
-    - name: "Solar Grid Import Power W"
-      unique_id: solar_grid_import_power_w
+    - name: "PV Grid Import Power W"
+      unique_id: pv_grid_import_power_w
       device_class: power
       state_class: measurement
       unit_of_measurement: 'W'
@@ -167,8 +167,8 @@ template:
         {{ [0, -m1] | max }}
 
     # corr.
-    - name: "Solar Grid Export Power W"
-      unique_id: solar_grid_export_power_w
+    - name: "PV Grid Export Power W"
+      unique_id: pv_grid_export_power_w
       device_class: power
       state_class: measurement
       unit_of_measurement: 'W'
@@ -178,8 +178,8 @@ template:
         {{ [0, m1] | max }}
 
     # corr.
-    - name: "Solar Lifetime Energy Production"
-      unique_id: solar_lifetime_energy_production
+    - name: "PV Lifetime Energy Production"
+      unique_id: pv_lifetime_energy_production
       unit_of_measurement: 'MWh'
       icon: mdi:solar-power
       state: >

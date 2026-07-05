@@ -1,0 +1,16 @@
+- id: '1783265655637'
+  alias: Automation Licht
+  description: ''
+  use_blueprint:
+    path: Blackshome/sensor-light.yaml
+    input:
+      motion_trigger:
+      - binary_sensor.flur_bewegungssensor_bewegung
+      light_switch:
+        entity_id: switch.flur_lichtaktor
+      include_sun: sun_disabled
+      include_bypass: []
+      ambient_light_sensor: sensor.flur_bewegungssensor_beleuchtungsstarke
+      include_ambient: ambient_enabled
+      ambient_light_options: ambient_light_option_enabled
+      time_delay: 0.5

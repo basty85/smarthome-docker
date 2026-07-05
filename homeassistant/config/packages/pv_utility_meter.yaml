@@ -1,125 +1,125 @@
 utility_meter:
-  solar_panel_production_daily:
+  pv_panel_production_daily:
     source: sensor.technikraum_solaredge_se10k_ac_energy_kwh
-    name: Solar Panel Production Daily
+    name: PV Panel Production Daily
     cycle: daily
-  solar_panel_production_weekly:
+  pv_panel_production_weekly:
     source: sensor.technikraum_solaredge_se10k_ac_energy_kwh
-    name: Solar Panel Production Weekly
+    name: PV Panel Production Weekly
     cycle: weekly
-  solar_panel_production_monthly:
+  pv_panel_production_monthly:
     source: sensor.technikraum_solaredge_se10k_ac_energy_kwh
-    name: Solar Panel Production Monthly
+    name: PV Panel Production Monthly
     cycle: monthly
-  solar_panel_production_yearly:
+  pv_panel_production_yearly:
     source: sensor.technikraum_solaredge_se10k_ac_energy_kwh
-    name: Solar Panel Production Yearly
+    name: PV Panel Production Yearly
     cycle: yearly
 
 
-  solar_grid_imported_power_daily:
+  pv_grid_imported_power_daily:
     source: sensor.technikraum_solaredge_se4000h_m1_imported_kwh
-    name: Solar Grid Imported Power Daily
+    name: PV Grid Imported Power Daily
     cycle: daily
-  solar_grid_imported_power_weekly:
+  pv_grid_imported_power_weekly:
     source: sensor.technikraum_solaredge_se4000h_m1_imported_kwh
-    name: Solar Grid Imported Power Weekly
+    name: PV Grid Imported Power Weekly
     cycle: weekly
-  solar_grid_imported_power_monthly:
+  pv_grid_imported_power_monthly:
     source: sensor.technikraum_solaredge_se4000h_m1_imported_kwh
-    name: Solar Grid Imported Power Monthly
+    name: PV Grid Imported Power Monthly
     cycle: monthly
-  solar_grid_imported_power_yearly:
+  pv_grid_imported_power_yearly:
     source: sensor.technikraum_solaredge_se4000h_m1_imported_kwh
-    name: Solar Grid Imported Power Yearly
+    name: PV Grid Imported Power Yearly
     cycle: yearly
 
 
-  solar_grid_exported_power_daily:
+  pv_grid_exported_power_daily:
     source: sensor.technikraum_solaredge_se4000h_m1_exported_kwh
-    name: Solar Grid Exported Power Daily
+    name: PV Grid Exported Power Daily
     cycle: daily
-  solar_grid_exported_power_weekly:
+  pv_grid_exported_power_weekly:
     source: sensor.technikraum_solaredge_se4000h_m1_exported_kwh
-    name: Solar Grid Exported Power Weekly
+    name: PV Grid Exported Power Weekly
     cycle: weekly
-  solar_grid_exported_power_monthly:
+  pv_grid_exported_power_monthly:
     source: sensor.technikraum_solaredge_se4000h_m1_exported_kwh
-    name: Solar Grid Exported Power Monthly
+    name: PV Grid Exported Power Monthly
     cycle: monthly
-  solar_grid_exported_power_yearly:
+  pv_grid_exported_power_yearly:
     source: sensor.technikraum_solaredge_se4000h_m1_exported_kwh
-    name: Solar Grid Exported Power Yearly
+    name: PV Grid Exported Power Yearly
     cycle: yearly
 
 
-  solar_panel_to_house_daily:
-    source: sensor.solar_panel_to_house_kwh
-    name: Solar Panel To House Daily
+  pv_panel_to_house_daily:
+    source: sensor.pv_panel_to_house_kwh
+    name: PV Panel To House Daily
     cycle: daily
-  solar_panel_to_house_weekly:
-    source: sensor.solar_panel_to_house_kwh
-    name: Solar Panel To House Weekly
+  pv_panel_to_house_weekly:
+    source: sensor.pv_panel_to_house_kwh
+    name: PV Panel To House Weekly
     cycle: weekly
-  solar_panel_to_house_monthly:
-    source: sensor.solar_panel_to_house_kwh
-    name: Solar Panel To House Monthly
+  pv_panel_to_house_monthly:
+    source: sensor.pv_panel_to_house_kwh
+    name: PV Panel To House Monthly
     cycle: monthly
-  solar_panel_to_house_yearly:
-    source: sensor.solar_panel_to_house_kwh
-    name: Solar Panel To House Yearly
+  pv_panel_to_house_yearly:
+    source: sensor.pv_panel_to_house_kwh
+    name: PV Panel To House Yearly
     cycle: yearly
 
 
-  solar_house_consumption_daily:
-    source: sensor.solar_house_consumption_kwh
-    name: Solar House Consumption Daily
+  pv_house_consumption_daily:
+    source: sensor.pv_house_consumption_kwh
+    name: PV House Consumption Daily
     cycle: daily
-  solar_house_consumption_weekly:
-    source: sensor.solar_house_consumption_kwh
-    name: Solar House Consumption Weekly
+  pv_house_consumption_weekly:
+    source: sensor.pv_house_consumption_kwh
+    name: PV House Consumption Weekly
     cycle: weekly
-  solar_house_consumption_monthly:
-    source: sensor.solar_house_consumption_kwh
-    name: Solar House Consumption Monthly
+  pv_house_consumption_monthly:
+    source: sensor.pv_house_consumption_kwh
+    name: PV House Consumption Monthly
     cycle: monthly
-  solar_house_consumption_yearly:
-    source: sensor.solar_house_consumption_kwh
-    name: Solar House Consumption Yearly
+  pv_house_consumption_yearly:
+    source: sensor.pv_house_consumption_kwh
+    name: PV House Consumption Yearly
     cycle: yearly
 
 
-  solar_battery_in_daily:
-    source: sensor.solar_battery_in_kwh
-    name: Solar Battery In Daily
+  pv_battery_in_daily:
+    source: sensor.pv_battery_in_kwh
+    name: PV Battery In Daily
     cycle: daily
-  solar_battery_in_weekly:
-    source: sensor.solar_battery_in_kwh
-    name: Solar Battery In Weekly
+  pv_battery_in_weekly:
+    source: sensor.pv_battery_in_kwh
+    name: PV Battery In Weekly
     cycle: weekly
-  solar_battery_in_monthly:
-    source: sensor.solar_battery_in_kwh
-    name: Solar Battery In Monthly
+  pv_battery_in_monthly:
+    source: sensor.pv_battery_in_kwh
+    name: PV Battery In Monthly
     cycle: monthly
-  solar_battery_in_yearly:
-    source: sensor.solar_battery_in_kwh
-    name: Solar Battery In Yearly
+  pv_battery_in_yearly:
+    source: sensor.pv_battery_in_kwh
+    name: PV Battery In Yearly
     cycle: yearly
 
 
-  solar_battery_out_daily:
-    source: sensor.solar_battery_out_kwh
-    name: Solar Battery Out Daily
+  pv_battery_out_daily:
+    source: sensor.pv_battery_out_kwh
+    name: PV Battery Out Daily
     cycle: daily
-  solar_battery_out_weekly:
-    source: sensor.solar_battery_out_kwh
-    name: Solar Battery Out Weekly
+  pv_battery_out_weekly:
+    source: sensor.pv_battery_out_kwh
+    name: PV Battery Out Weekly
     cycle: weekly
-  solar_battery_out_monthly:
-    source: sensor.solar_battery_out_kwh
-    name: Solar Battery Out Monthly
+  pv_battery_out_monthly:
+    source: sensor.pv_battery_out_kwh
+    name: PV Battery Out Monthly
     cycle: monthly
-  solar_battery_out_yearly:
-    source: sensor.solar_battery_out_kwh
-    name: Solar Battery Out Yearly
+  pv_battery_out_yearly:
+    source: sensor.pv_battery_out_kwh
+    name: PV Battery Out Yearly
     cycle: yearly
