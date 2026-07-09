@@ -33,6 +33,19 @@ homeassistant/config/blueprints/
 homeassistant/config/home-assistant.log
 homeassistant/config/home-assistant.log.*
 homeassistant/config/home-assistant_v2.db*
+homeassistant/config/zigbee.db*
+
+# HACS - managed by HACS, not manually tracked
+homeassistant/config/custom_components/hacs/
+homeassistant/config/custom_components/adaptive_cover_pro/
+homeassistant/config/custom_components/spotifyplus/
+homeassistant/config/custom_components/xsense/
+homeassistant/config/www/community/
+homeassistant/config/themes/
+
+# UI Lovelace Minimalist - managed by HACS
+homeassistant/config/ui_lovelace_minimalist/
+homeassistant/config/custom_components/ui_lovelace_minimalist/
 
 # Python artifacts
 __pycache__/
