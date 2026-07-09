@@ -14,3 +14,52 @@
       include_ambient: ambient_enabled
       ambient_light_options: ambient_light_option_enabled
       time_delay: 0.5
+- id: '1783269107491'
+  alias: Automation Licht
+  description: ''
+  use_blueprint:
+    path: Blackshome/sensor-light.yaml
+    input:
+      motion_trigger:
+      - binary_sensor.treppenhaus_bewegungssensor_oben_bewegung
+      - binary_sensor.treppenhaus_bewegungssensor_unten_bewegung
+      light_switch:
+        entity_id: switch.treppenhaus_lichtaktor
+      include_sun: sun_disabled
+      include_bypass: []
+      ambient_light_sensor: sensor.treppenhaus_bewegungssensor_oben_beleuchtungsstarke
+      include_ambient: ambient_enabled
+      ambient_light_options: ambient_light_option_enabled
+      time_delay: 0.5
+- id: '1783271141765'
+  alias: Neue Automation
+  description: ''
+  use_blueprint:
+    path: Blackshome/sensor-light.yaml
+    input:
+      motion_trigger:
+      - binary_sensor.eingang_hinten_bewegungssensor_bewegung
+      light_switch:
+        entity_id: switch.eingang_hinten_lichtaktor
+      include_sun: sun_disabled
+      include_bypass: []
+      ambient_light_sensor: sensor.eingang_hinten_bewegungssensor_beleuchtungsstarke
+      include_ambient: ambient_enabled
+      ambient_light_options: ambient_light_option_enabled
+      time_delay: 0.5
+- id: '1783271284448'
+  alias: Licht Automation
+  description: ''
+  use_blueprint:
+    path: Blackshome/sensor-light.yaml
+    input:
+      motion_trigger:
+      - binary_sensor.hwr_bewegungssensor_bewegung
+      light_switch:
+        entity_id: switch.hwr_lichtaktor
+      include_sun: sun_disabled
+      include_bypass: []
+      ambient_light_sensor: sensor.hwr_bewegungssensor_beleuchtungsstarke
+      include_ambient: ambient_enabled
+      ambient_light_options: ambient_light_option_enabled
+      time_delay: 0.5

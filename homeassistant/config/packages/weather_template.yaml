@@ -1,0 +1,39 @@
+template:
+  - trigger:
+      - platform: time_pattern
+        minutes: "/30"
+      - platform: homeassistant
+        event: start
+
+    action:
+      - service: weather.get_forecasts
+        data:
+          type: hourly
+        target:
+          entity_id: weather.openweathermap
+        response_variable: stunden_antwort
+
+    sensor:
+      - name: "Weather Temp +4h"
+        unit_of_measurement: "°C"
+        device_class: temperature
+        state: >
+          {% set f = stunden_antwort['weather.openweathermap'].forecast %}
+          {{ f[3].temperature if f|length > 3 else none }}
+
+      - name: "Weather Cloudiness +4h"
+        unit_of_measurement: "%"
+        state_class: measurement
+        state: >
+          {% set f = stunden_antwort['weather.openweathermap'].forecast %}
+          {{ f[3].cloud_coverage if f|length > 3 else none }}
+
+      - name: "Weather API Debug"
+        state: >
+          {{ stunden_antwort['weather.openweathermap'].forecast[4].keys() }}
+
+      - name: "OpenWeatherMap Last Update"
+        unique_id: openweathermap_last_update
+        state: >
+          {{ as_local(states['weather.openweathermap'].last_updated).strftime('%H:%M') }}
+        icon: mdi:update

@@ -1,0 +1,31 @@
+template:
+  - cover:
+    - name: "Pergola Seitenmarkise invertiert"
+      unique_id: pergola_seitenmarkise_invertiert
+      device_class: blind
+
+      position: >
+        {{ 100 - (state_attr('cover.pergola_seitenmarkise', 'current_position') | int(0)) }}
+
+      open_cover:
+        service: cover.close_cover
+        target:
+          entity_id: cover.pergola_seitenmarkise
+
+      close_cover:
+        service: cover.open_cover
+        target:
+          entity_id: cover.pergola_seitenmarkise
+
+      stop_cover:
+        service: cover.stop_cover
+        target:
+          entity_id: cover.pergola_seitenmarkise
+
+      set_cover_position:
+        service: cover.set_cover_position
+        target:
+          entity_id: cover.pergola_seitenmarkise
+        data:
+          position: >
+            {{ 100 - position }}
