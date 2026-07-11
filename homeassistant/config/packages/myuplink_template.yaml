@@ -1,0 +1,35 @@
+template:
+  - select:
+    - name: "NIBE Lüftungsmodus"
+      unique_id: nibe_lueftungsmodus
+
+      state: >
+        {% set value = states('select.vvm_500_fan_speed') %}
+        {% if value == 'Speed 1' %}
+          Hitzeschutz
+        {% else %}
+          {{ value }}
+        {% endif %}
+
+      options: >
+        {{
+          [
+            'Normal',
+            'Hitzeschutz',
+            'Speed 2',
+            'Speed 3',
+            'Speed 4'
+          ]
+        }}
+
+      select_option:
+        - service: select.select_option
+          target:
+            entity_id: select.vvm_500_fan_speed
+          data:
+            option: >
+              {% if option == 'Hitzeschutz' %}
+                Speed 1
+              {% else %}
+                {{ option }}
+              {% endif %}

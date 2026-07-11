@@ -1,0 +1,14 @@
+cover:
+  - platform: group
+    name: Jalousien Westseite
+    unique_id: westseite_jalousien
+    entities:
+      - cover.wohnzimmer_jalousie_links_cover
+      - cover.wohnzimmer_jalousie_mitte_cover
+      - cover.wohnzimmer_jalousie_rechts_cover
+      - cover.schlafzimmer_jalousie_links_cover
+      - cover.schlafzimmer_jalousie_oben_cover
+      - cover.schlafzimmer_jalousie_rechts_cover
+      - cover.kinderzimmer_jalousie_links_cover
+      - cover.kinderzimmer_jalousie_oben_cover
+      - cover.kinderzimmer_jalousie_rechts_cover

@@ -50,3 +50,18 @@ services:
     environment:
       - TZ=Europe/Berlin
       - ZWAVEJS_EXTERNAL_CONFIG=/usr/src/app/store/.config-db
+
+  music-assistant-server:
+    image: ghcr.io/music-assistant/server:latest
+    container_name: music-assistant-server
+    restart: unless-stopped
+    network_mode: host
+    cap_add:
+      - SYS_ADMIN
+      - DAC_READ_SEARCH
+    security_opt:
+      - apparmor:unconfined
+    volumes:
+      - ./music-assistant/data:/data/
+    environment:
+      - LOG_LEVEL=info

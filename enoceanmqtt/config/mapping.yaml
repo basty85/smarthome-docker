@@ -998,10 +998,23 @@
                  set_position_template: >-
                    {"CMD":"1","POS":"{{ 100 - position }}","ANG":"127","REPO":"0","LOCK":"0","CHN":"0","send":"clear"}
                  tilt_status_topic: "CMD4"
-                 tilt_status_template: "{{ 100 - value_json.ANG | int }}"
+                 tilt_status_template: "{{ 100 - ([value_json.ANG | int, 100] | min) }}"
                  tilt_command_topic: "req"
                  tilt_command_template: >-
                    {"CMD":"1","POS":"127","ANG":"{{ 100 - tilt_position }}","REPO":"0","LOCK":"0","CHN":"0","send":"clear"}
+            - component: "number"
+              name: "tilt"
+              config:
+                 state_topic: "CMD4"
+                 value_template: "{{ 100 - ([value_json.ANG | int, 100] | min) }}"
+                 command_topic: "req"
+                 command_template: >-
+                   {"CMD":"1","POS":"127","ANG":"{{ 100 - value | int }}","REPO":"0","LOCK":"0","CHN":"0","send":"clear"}
+                 min: 0
+                 max: 100
+                 step: 1
+                 unit_of_measurement: "%"
+                 icon: "mdi:rotate-right"
       0x02:
          device_config:
             command: "CMD"
@@ -1028,10 +1041,23 @@
                  set_position_template: >-
                    {"CMD":"1","POS":"{{ 100 - position }}","ANG":"127","REPO":"0","LOCK":"0","CHN":"0","send":"clear"}
                  tilt_status_topic: "CMD4"
-                 tilt_status_template: "{{ 100 - value_json.ANG | int }}"
+                 tilt_status_template: "{{ 100 - ([value_json.ANG | int, 100] | min) }}"
                  tilt_command_topic: "req"
                  tilt_command_template: >-
                    {"CMD":"1","POS":"127","ANG":"{{ 100 - tilt_position }}","REPO":"0","LOCK":"0","CHN":"0","send":"clear"}
+            - component: "number"
+              name: "tilt"
+              config:
+                 state_topic: "CMD4"
+                 value_template: "{{ 100 - ([value_json.ANG | int, 100] | min) }}"
+                 command_topic: "req"
+                 command_template: >-
+                   {"CMD":"1","POS":"127","ANG":"{{ 100 - value | int }}","REPO":"0","LOCK":"0","CHN":"0","send":"clear"}
+                 min: 0
+                 max: 100
+                 step: 1
+                 unit_of_measurement: "%"
+                 icon: "mdi:rotate-right"
    0x14:
       0x30:
          device_config:

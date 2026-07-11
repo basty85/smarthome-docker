@@ -24,6 +24,17 @@ enoceanmqtt/config/enoceanmqtt.log
 mosquitto/data/
 mosquitto/log/
 
+# Music Assistant - runtime data
+music-assistant/data/.cache/
+music-assistant/data/*.db
+music-assistant/data/*.db-shm
+music-assistant/data/*.db-wal
+music-assistant/data/musicassistant.log
+music-assistant/data/musicassistant.log.*
+music-assistant/data/settings.json.backup
+music-assistant/data/webrtc_certificate.pem
+music-assistant/data/webrtc_private_key.pem
+
 # Home Assistant - runtime data
 homeassistant/config/.HA_VERSION
 homeassistant/config/.cache/

@@ -1,0 +1,88 @@
+script:
+  westseite_jalousien_auf:
+    alias: "Jalousien Westseite alle öffnen"
+    sequence:
+      - service: cover.open_cover
+        target:
+          entity_id:
+            - cover.wohnzimmer_jalousie_links_cover
+            - cover.wohnzimmer_jalousie_mitte_cover
+            - cover.wohnzimmer_jalousie_rechts_cover
+
+      - delay:
+          milliseconds: 500
+
+      - service: cover.open_cover
+        target:
+          entity_id:
+            - cover.kinderzimmer_jalousie_links_cover
+            - cover.kinderzimmer_jalousie_oben_cover
+            - cover.kinderzimmer_jalousie_rechts_cover
+
+      - delay:
+          milliseconds: 500
+
+      - service: cover.open_cover
+        target:
+          entity_id:
+            - cover.schlafzimmer_jalousie_links_cover
+            - cover.schlafzimmer_jalousie_oben_cover
+            - cover.schlafzimmer_jalousie_rechts_cover
+
+
+
+
+  westseite_jalousien_zu:
+    alias: "Jalousien Westseite schließen"
+    sequence:
+      - service: cover.set_cover_position
+        target:
+          entity_id:
+            - cover.wohnzimmer_jalousie_links_cover
+            - cover.wohnzimmer_jalousie_rechts_cover
+        data:
+          position: 0
+
+      - delay:
+          milliseconds: 500
+
+      - service: cover.set_cover_position
+        target:
+          entity_id:
+            - cover.kinderzimmer_jalousie_links_cover
+            - cover.kinderzimmer_jalousie_oben_cover
+            - cover.kinderzimmer_jalousie_rechts_cover
+        data:
+          position: 0
+
+      - delay:
+          milliseconds: 500
+
+      - service: cover.set_cover_position
+        target:
+          entity_id:
+            - cover.schlafzimmer_jalousie_links_cover
+            - cover.schlafzimmer_jalousie_oben_cover
+            - cover.schlafzimmer_jalousie_rechts_cover
+        data:
+          position: 0
+
+      - wait_template: >
+          {{ is_state('cover.wohnzimmer_jalousie_links_cover', 'closed')
+             and is_state('cover.wohnzimmer_jalousie_rechts_cover', 'closed') }}
+        timeout:
+          seconds: 60
+
+      - service: number.set_value
+        target:
+          entity_id:
+            - number.wohnzimmer_jalousie_links_tilt
+        data:
+          value: 30
+
+      - service: number.set_value
+        target:
+          entity_id:
+            - number.wohnzimmer_jalousie_rechts_tilt
+        data:
+          value: 48
