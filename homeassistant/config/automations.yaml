@@ -63,3 +63,39 @@
       include_ambient: ambient_enabled
       ambient_light_options: ambient_light_option_enabled
       time_delay: 0.5
+- id: '1783744518402'
+  alias: Ventilator Low
+  description: ''
+  triggers:
+  - trigger: template
+    value_template: '{{ states(''sensor.outdoor_openweathermap_temperatur'') | float
+      > states(''sensor.kuche_innenraumklimasensor_temperatur'') | float + 2 }}'
+    for:
+      minutes: 30
+  conditions: []
+  actions:
+  - action: select.select_option
+    target:
+      entity_id: select.vvm_500_fan_speed
+    data:
+      option: Speed 1
+  mode: single
+- id: '1783744872756'
+  alias: Ventilator Normal
+  description: ''
+  triggers:
+  - trigger: template
+    value_template: '{{ states(''sensor.outdoor_openweathermap_temperatur'') | float
+      <
+
+      states(''sensor.kuche_innenraumklimasensor_temperatur'') | float - 1 }}'
+    for:
+      minutes: 30
+  conditions: []
+  actions:
+  - action: select.select_option
+    target:
+      entity_id: select.vvm_500_fan_speed
+    data:
+      option: Normal
+  mode: single

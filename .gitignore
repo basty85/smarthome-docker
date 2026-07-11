@@ -31,6 +31,7 @@ music-assistant/data/*.db-shm
 music-assistant/data/*.db-wal
 music-assistant/data/musicassistant.log
 music-assistant/data/musicassistant.log.*
+music-assistant/data/settings.json
 music-assistant/data/settings.json.backup
 music-assistant/data/webrtc_certificate.pem
 music-assistant/data/webrtc_private_key.pem
