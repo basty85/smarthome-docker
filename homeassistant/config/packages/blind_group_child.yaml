@@ -1,0 +1,8 @@
+cover:
+  - platform: group
+    name: Jalousien Kinderzimmer
+    unique_id: kinderzimmer_jalousien
+    entities:
+      - cover.kinderzimmer_jalousie_links_cover
+      - cover.kinderzimmer_jalousie_oben_cover
+      - cover.kinderzimmer_jalousie_rechts_cover

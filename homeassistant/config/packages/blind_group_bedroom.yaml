@@ -1,0 +1,8 @@
+cover:
+  - platform: group
+    name: Jalousien Schlafzimmer
+    unique_id: schlafzimmer_jalousien
+    entities:
+      - cover.schlafzimmer_jalousie_links_cover
+      - cover.schlafzimmer_jalousie_oben_cover
+      - cover.schlafzimmer_jalousie_rechts_cover

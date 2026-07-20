@@ -63,15 +63,18 @@
       include_ambient: ambient_enabled
       ambient_light_options: ambient_light_option_enabled
       time_delay: 0.5
+
+
+
 - id: '1783744518402'
   alias: Ventilator Low
   description: ''
   triggers:
   - trigger: template
-    value_template: '{{ states(''sensor.outdoor_openweathermap_temperatur'') | float
+    value_template: '{{ states(''sensor.draussen_gw1100a_outdoor_temperature'') | float
       > states(''sensor.kuche_innenraumklimasensor_temperatur'') | float + 2 }}'
     for:
-      minutes: 30
+      minutes: 20
   conditions: []
   actions:
   - action: select.select_option
@@ -85,12 +88,12 @@
   description: ''
   triggers:
   - trigger: template
-    value_template: '{{ states(''sensor.outdoor_openweathermap_temperatur'') | float
+    value_template: '{{ states(''sensor.draussen_gw1100a_outdoor_temperature'') | float
       <
 
       states(''sensor.kuche_innenraumklimasensor_temperatur'') | float - 1 }}'
     for:
-      minutes: 30
+      minutes: 20
   conditions: []
   actions:
   - action: select.select_option

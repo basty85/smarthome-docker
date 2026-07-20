@@ -37,6 +37,7 @@ music-assistant/data/webrtc_certificate.pem
 music-assistant/data/webrtc_private_key.pem
 
 # Home Assistant - runtime data
+homeassistant/config/tesla_fleet.key
 homeassistant/config/.HA_VERSION
 homeassistant/config/.cache/
 homeassistant/config/.ha_run.lock
