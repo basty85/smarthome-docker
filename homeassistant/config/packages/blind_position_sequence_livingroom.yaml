@@ -31,11 +31,11 @@ script:
             - cover.wohnzimmer_jalousie_links_cover
             - cover.wohnzimmer_jalousie_rechts_cover
         data:
-          position: 0
+          position: 20   # 20 = 80% zu, wenn 0=zu und 100=offen
 
       - wait_template: >
-          {{ is_state('cover.wohnzimmer_jalousie_links_cover', 'closed')
-             and is_state('cover.wohnzimmer_jalousie_rechts_cover', 'closed') }}
+          {{ state_attr('cover.wohnzimmer_jalousie_links_cover', 'current_position') | int(-1) == 20
+           and state_attr('cover.wohnzimmer_jalousie_rechts_cover', 'current_position') | int(-1) == 20 }}
         timeout:
           seconds: 60
 
@@ -51,4 +51,4 @@ script:
           entity_id:
             - number.wohnzimmer_jalousie_rechts_tilt
         data:
-          value: 48
+          value: 65
