@@ -9,7 +9,7 @@ script:
             - number.wohnzimmer_jalousie_mitte_tilt
             - number.wohnzimmer_jalousie_rechts_tilt
         data:
-          value: 0
+          value: 100
 
       - delay:
           milliseconds: 2000
